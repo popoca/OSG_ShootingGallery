@@ -1,0 +1,1441 @@
+MatrixTransform {
+  DataVariance STATIC
+  name "Scene Root"
+  nodeMask 0xff
+  cullingActive TRUE
+  StateSet {
+    UniqueID StateSet_0
+    DataVariance STATIC
+    rendering_hint DEFAULT_BIN
+    renderBinMode INHERIT
+    GL_LIGHTING OVERRIDE|OFF
+  }
+  referenceFrame RELATIVE
+  Matrix {
+    1 0 0 0
+    0 1 0 0
+    0 0 1 0
+    0 0 0 1
+  }
+  num_children 5
+  MatrixTransform {
+    DataVariance STATIC
+    name "zona_obstaculos_2_parte_4"
+    nodeMask 0xff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      3.07582 0 0 0
+      0 -1.40242e-007 3.20836 0
+      0 -3.20836 -1.40242e-007 0
+      237.101 791.357 18.8071 1
+    }
+    num_children 1
+    MatrixTransform {
+      DataVariance STATIC
+      name "zona_obstaculos_2_parte_4-OFFSET"
+      nodeMask 0xff
+      cullingActive TRUE
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        -56.4907 46.4003 162.434 1
+      }
+      num_children 1
+      Geode {
+        UniqueID Geode_1
+        DataVariance STATIC
+        name "zona_obstaculos_2_parte_4-GEODE"
+        nodeMask 0xff
+        cullingActive TRUE
+        num_drawables 1
+        Geometry {
+          DataVariance DYNAMIC
+          name "zona_obstaculos_2_parte_4"
+          StateSet {
+            UniqueID StateSet_2
+            DataVariance STATIC
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            GL_CULL_FACE ON
+            GL_LIGHTING OVERRIDE|OFF
+            0xba1 ON
+            Material {
+              DataVariance STATIC
+              ColorMode OFF
+              ambientColor 0 0 0 1
+              diffuseColor 1 1 1 1
+              specularColor 0 0 0 1
+              emissionColor 0 0 0 1
+              shininess 0
+            }
+            textureUnit 0 {
+              GL_TEXTURE_2D ON
+              Texture2D {
+                UniqueID Texture2D_3
+                DataVariance STATIC
+                file "images\flores_rojas.tga"
+                wrap_s CLAMP_TO_EDGE
+                wrap_t CLAMP_TO_EDGE
+                wrap_r CLAMP_TO_EDGE
+                min_filter LINEAR_MIPMAP_LINEAR
+                mag_filter LINEAR
+                maxAnisotropy 1
+                borderColor 0 0 0 0
+                borderWidth 0
+                useHardwareMipMapGeneration TRUE
+                unRefImageDataAfterApply FALSE
+                internalFormatMode USE_IMAGE_DATA_FORMAT
+                resizeNonPowerOfTwo TRUE
+              }
+              TexEnv {
+                DataVariance STATIC
+                mode ADD
+              }
+            }
+            textureUnit 1 {
+              GL_TEXTURE_2D ON
+              Texture2D {
+                UniqueID Texture2D_4
+                DataVariance STATIC
+                file "images\zona_obstaculos_2AO_Lighting.tga"
+                wrap_s CLAMP_TO_EDGE
+                wrap_t CLAMP_TO_EDGE
+                wrap_r CLAMP_TO_EDGE
+                min_filter LINEAR_MIPMAP_LINEAR
+                mag_filter LINEAR
+                maxAnisotropy 1
+                borderColor 0 0 0 0
+                borderWidth 0
+                useHardwareMipMapGeneration TRUE
+                unRefImageDataAfterApply FALSE
+                internalFormatMode USE_IMAGE_DATA_FORMAT
+                resizeNonPowerOfTwo TRUE
+              }
+              TexEnv {
+                DataVariance STATIC
+                mode ADD
+              }
+            }
+          }
+          useDisplayList TRUE
+          useVertexBufferObjects FALSE
+          PrimitiveSets 9
+          {
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              1 2 0 3 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              7 4 6 5 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              31 28 30 29 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              35 32 34 33 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              27 24 26 25 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              23 20 22 21 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              19 16 18 17 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              13 14 12 15 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              9 10 8 11 
+            }
+          }
+          VertexArray Vec3Array 36
+          {
+            68.862 -57.1659 -21.3447
+            68.862 -40.459 -21.3447
+            51.0172 -40.459 -20.0324
+            51.0172 -57.1659 -20.0324
+            220.82 -56.3493 -298.461
+            220.82 -39.6424 -298.461
+            202.976 -39.6424 -297.148
+            202.976 -56.3493 -297.148
+            -85.7399 -50.3153 -68.4202
+            -85.7399 -33.6085 -68.4202
+            -103.585 -33.6085 -67.108
+            -103.585 -50.3153 -67.108
+            -21.3892 -54.9375 -362.009
+            -21.3892 -38.2307 -362.009
+            -39.234 -38.2307 -360.696
+            -39.234 -54.9375 -360.696
+            122.941 -59.1922 35.8294
+            122.941 -42.4853 35.8294
+            105.097 -42.4853 37.1417
+            105.097 -59.1922 37.1417
+            75.9557 -56.5865 -90.7933
+            75.9557 -39.8797 -90.7933
+            58.1109 -39.8797 -89.481
+            58.1109 -56.5865 -89.481
+            -28.2871 -54.4419 -6.7024
+            -28.2871 -37.7351 -6.7024
+            -46.1319 -37.7351 -5.39013
+            -46.1319 -54.4419 -5.39012
+            -89.9943 -53.5071 -351.641
+            -89.9943 -36.8002 -351.641
+            -107.839 -36.8002 -350.329
+            -107.839 -53.5071 -350.329
+            21.9919 -56.2986 -214.306
+            21.9919 -39.5918 -214.306
+            4.14715 -39.5918 -212.993
+            4.14715 -56.2986 -212.993
+          }
+          NormalBinding PER_VERTEX
+          NormalArray Vec3Array 36
+          {
+            0.0733403 2.27716e-007 0.997307
+            0.0733403 2.27716e-007 0.997307
+            0.0733403 2.27716e-007 0.997307
+            0.0733403 2.27716e-007 0.997307
+            0.073339 0 0.997307
+            0.073339 0 0.997307
+            0.0733391 0 0.997307
+            0.073339 0 0.997307
+            0.0733402 2.17781e-007 0.997307
+            0.07334 0 0.997307
+            0.0733403 2.37652e-007 0.997307
+            0.0733405 4.55433e-007 0.997307
+            0.073341 1.90122e-006 0.997307
+            0.0733426 3.64346e-006 0.997307
+            0.0733408 1.74225e-006 0.997307
+            0.0733392 0 0.997307
+            0.0733402 2.27716e-007 0.997307
+            0.0733402 2.27716e-007 0.997307
+            0.0733402 2.27716e-007 0.997307
+            0.0733402 2.27716e-007 0.997307
+            0.0733402 2.17781e-007 0.997307
+            0.07334 0 0.997307
+            0.0733402 2.37652e-007 0.997307
+            0.0733404 4.55433e-007 0.997307
+            0.0733402 2.27716e-007 0.997307
+            0.0733402 2.27716e-007 0.997307
+            0.0733402 2.27716e-007 0.997307
+            0.0733402 2.27716e-007 0.997307
+            0.0733392 0 0.997307
+            0.0733392 0 0.997307
+            0.0733392 0 0.997307
+            0.0733392 0 0.997307
+            0.07334 0 0.997307
+            0.07334 0 0.997307
+            0.07334 0 0.997307
+            0.07334 0 0.997307
+          }
+          TexCoordArray 0 Vec2Array 36
+          {
+            0.000499517 0.000499696
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499517
+            0.000499517 0.000499696
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499517
+            0.000499517 0.000499696
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499517
+            0.000499517 0.000499696
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499517
+            0.000499517 0.000499696
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499517
+            0.000499517 0.000499696
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499517
+            0.000499517 0.000499696
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499517
+            0.000499517 0.000499696
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499517
+            0.000499517 0.000499696
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499517
+          }
+          TexCoordArray 1 Vec2Array 36
+          {
+            0.744032 0.771071
+            0.744032 0.701647
+            0.818385 0.701646
+            0.818386 0.771071
+            0.85857 0.666856
+            0.85857 0.597432
+            0.932924 0.597432
+            0.932924 0.666856
+            0.744032 0.872885
+            0.744032 0.80346
+            0.818385 0.80346
+            0.818385 0.872885
+            0.858574 0.562645
+            0.85857 0.49322
+            0.932924 0.493217
+            0.932927 0.562641
+            0.629493 0.874836
+            0.629493 0.805412
+            0.703847 0.805411
+            0.703847 0.874836
+            0.629493 0.97665
+            0.629493 0.907225
+            0.703847 0.907225
+            0.703847 0.97665
+            0.514955 0.979501
+            0.514955 0.910076
+            0.589308 0.910076
+            0.589308 0.979501
+            0.744032 0.974698
+            0.744032 0.905274
+            0.818385 0.905274
+            0.818385 0.974698
+            0.850775 0.771071
+            0.850775 0.701646
+            0.925128 0.701646
+            0.925128 0.771071
+          }
+        }
+      }
+    }
+  }
+  MatrixTransform {
+    DataVariance STATIC
+    name "zona_obstaculos_2_parte_5"
+    nodeMask 0xff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      3.07582 0 0 0
+      0 -1.40242e-007 3.20836 0
+      0 -3.20836 -1.40242e-007 0
+      -186.534 1026.21 35.8668 1
+    }
+    num_children 1
+    MatrixTransform {
+      DataVariance STATIC
+      name "zona_obstaculos_2_parte_5-OFFSET"
+      nodeMask 0xff
+      cullingActive TRUE
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        81.2403 41.0831 235.632 1
+      }
+      num_children 1
+      Geode {
+        UniqueID Geode_5
+        DataVariance STATIC
+        name "zona_obstaculos_2_parte_5-GEODE"
+        nodeMask 0xff
+        cullingActive TRUE
+        num_drawables 1
+        Geometry {
+          DataVariance DYNAMIC
+          name "zona_obstaculos_2_parte_5"
+          StateSet {
+            UniqueID StateSet_6
+            DataVariance STATIC
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            GL_CULL_FACE OVERRIDE|OFF
+            GL_LIGHTING OVERRIDE|OFF
+            0xba1 ON
+            Material {
+              DataVariance STATIC
+              ColorMode OFF
+              ambientColor 0 0 0 1
+              diffuseColor 1 1 1 1
+              specularColor 0 0 0 1
+              emissionColor 0 0 0 1
+              shininess 0
+            }
+            textureUnit 0 {
+              GL_TEXTURE_2D ON
+              Texture2D {
+                UniqueID Texture2D_7
+                DataVariance STATIC
+                file "images\flores_ama.tga"
+                wrap_s CLAMP_TO_EDGE
+                wrap_t CLAMP_TO_EDGE
+                wrap_r CLAMP_TO_EDGE
+                min_filter LINEAR_MIPMAP_LINEAR
+                mag_filter LINEAR
+                maxAnisotropy 1
+                borderColor 0 0 0 0
+                borderWidth 0
+                useHardwareMipMapGeneration TRUE
+                unRefImageDataAfterApply FALSE
+                internalFormatMode USE_IMAGE_DATA_FORMAT
+                resizeNonPowerOfTwo TRUE
+              }
+              TexEnv {
+                DataVariance STATIC
+                mode ADD
+              }
+            }
+            textureUnit 1 {
+              GL_TEXTURE_2D ON
+              Texture2D {
+                UniqueID Texture2D_8
+                DataVariance STATIC
+                file "images\zona_obstaculos_2AO_Lighting.tga"
+                wrap_s CLAMP_TO_EDGE
+                wrap_t CLAMP_TO_EDGE
+                wrap_r CLAMP_TO_EDGE
+                min_filter LINEAR_MIPMAP_LINEAR
+                mag_filter LINEAR
+                maxAnisotropy 1
+                borderColor 0 0 0 0
+                borderWidth 0
+                useHardwareMipMapGeneration TRUE
+                unRefImageDataAfterApply FALSE
+                internalFormatMode USE_IMAGE_DATA_FORMAT
+                resizeNonPowerOfTwo TRUE
+              }
+              TexEnv {
+                DataVariance STATIC
+                mode ADD
+              }
+            }
+          }
+          useDisplayList TRUE
+          useVertexBufferObjects FALSE
+          PrimitiveSets 7
+          {
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              1 2 0 3 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              7 4 6 5 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              27 24 26 25 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              23 20 22 21 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              19 16 18 17 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              13 14 12 15 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              9 10 8 11 
+            }
+          }
+          VertexArray Vec3Array 28
+          {
+            -63.8261 -50.293 -227.103
+            -63.8261 -28.5754 -227.103
+            -83.0075 -28.5754 -225.692
+            -83.0075 -50.293 -225.692
+            -282.236 -48.0113 -315.161
+            -282.236 -26.2936 -315.161
+            -301.417 -26.2936 -313.751
+            -301.417 -48.0113 -313.751
+            138.936 -55.9514 -114.303
+            138.936 -34.2338 -114.303
+            119.755 -34.2338 -112.893
+            119.755 -55.9514 -112.893
+            62.8905 -55.06 -252.983
+            62.8905 -33.3424 -252.983
+            43.7091 -33.3424 -251.572
+            43.7091 -55.06 -251.572
+            -3.08006 -54.2879 -358.372
+            -3.08006 -32.5703 -358.372
+            -22.2615 -32.5703 -356.961
+            -22.2615 -54.2879 -356.961
+            -98.271 -47.9324 -234.079
+            -98.271 -26.2147 -234.079
+            -117.452 -26.2147 -232.668
+            -117.452 -47.9324 -232.668
+            78.6444 -54.9142 -339.634
+            78.6444 -33.1966 -339.634
+            59.463 -33.1966 -338.223
+            59.463 -54.9142 -338.223
+          }
+          NormalBinding PER_VERTEX
+          NormalArray Vec3Array 28
+          {
+            0.0733401 0 0.997307
+            0.07334 0 0.997307
+            0.0733401 0 0.997307
+            0.07334 0 0.997307
+            0.0733408 0 0.997307
+            0.0733408 0 0.997307
+            0.0733408 0 0.997307
+            0.0733408 0 0.997307
+            0.0733403 3.23324e-007 0.997307
+            0.0733408 7.00706e-007 0.997307
+            0.0733404 3.77383e-007 0.997307
+            0.07334 0 0.997307
+            0.0733393 0 0.997307
+            0.0733393 0 0.997307
+            0.0733393 0 0.997307
+            0.0733393 0 0.997307
+            0.0733408 0 0.997307
+            0.0733408 0 0.997307
+            0.0733408 0 0.997307
+            0.0733408 0 0.997307
+            0.0733409 0 0.997307
+            0.0733409 0 0.997307
+            0.0733409 0 0.997307
+            0.0733409 0 0.997307
+            0.0733408 0 0.997307
+            0.0733408 0 0.997307
+            0.0733408 0 0.997307
+            0.0733408 0 0.997307
+          }
+          TexCoordArray 0 Vec2Array 28
+          {
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+          }
+          TexCoordArray 1 Vec2Array 28
+          {
+            0.605201 0.677355
+            0.514955 0.677355
+            0.514955 0.597432
+            0.605201 0.597432
+            0.605201 0.57314
+            0.514955 0.57314
+            0.514955 0.493217
+            0.605201 0.493217
+            0.100248 0.883276
+            0.0100008 0.883277
+            0.01 0.803353
+            0.100247 0.803353
+            0.895387 0.427398
+            0.80514 0.427398
+            0.80514 0.347475
+            0.895387 0.347475
+            0.490662 0.781571
+            0.400415 0.781571
+            0.400415 0.701647
+            0.490662 0.701647
+            0.834279 0.57314
+            0.744032 0.57314
+            0.744032 0.493217
+            0.834279 0.493217
+            0.329325 0.883276
+            0.239078 0.883276
+            0.239078 0.803353
+            0.329325 0.803353
+          }
+        }
+      }
+    }
+  }
+  MatrixTransform {
+    DataVariance STATIC
+    name "zona_obstaculos_2_parte_1"
+    nodeMask 0xff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      3.07582 0 0 0
+      0 -1.40242e-007 3.20836 0
+      0 -3.20836 -1.40242e-007 0
+      -37.0486 499.376 162.804 1
+    }
+    num_children 1
+    MatrixTransform {
+      DataVariance STATIC
+      name "zona_obstaculos_2_parte_1-OFFSET"
+      nodeMask 0xff
+      cullingActive TRUE
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        32.64 1.51868 71.4271 1
+      }
+      num_children 1
+      Geode {
+        UniqueID Geode_9
+        DataVariance STATIC
+        name "zona_obstaculos_2_parte_1-GEODE"
+        nodeMask 0xff
+        cullingActive TRUE
+        num_drawables 1
+        Geometry {
+          DataVariance DYNAMIC
+          name "zona_obstaculos_2_parte_1"
+          StateSet {
+            UniqueID StateSet_10
+            DataVariance STATIC
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            GL_CULL_FACE ON
+            GL_LIGHTING OVERRIDE|OFF
+            0xba1 ON
+            Material {
+              DataVariance STATIC
+              ColorMode OFF
+              ambientColor 0 0 0 1
+              diffuseColor 1 1 1 1
+              specularColor 0 0 0 1
+              emissionColor 0 0 0 1
+              shininess 0
+            }
+            textureUnit 0 {
+              GL_TEXTURE_2D ON
+              Texture2D {
+                UniqueID Texture2D_11
+                DataVariance STATIC
+                file "images\arbol_1.tga"
+                wrap_s CLAMP_TO_EDGE
+                wrap_t CLAMP_TO_EDGE
+                wrap_r CLAMP_TO_EDGE
+                min_filter LINEAR_MIPMAP_LINEAR
+                mag_filter LINEAR
+                maxAnisotropy 1
+                borderColor 0 0 0 0
+                borderWidth 0
+                useHardwareMipMapGeneration TRUE
+                unRefImageDataAfterApply FALSE
+                internalFormatMode USE_IMAGE_DATA_FORMAT
+                resizeNonPowerOfTwo TRUE
+              }
+              TexEnv {
+                DataVariance STATIC
+                mode ADD
+              }
+            }
+            textureUnit 1 {
+              GL_TEXTURE_2D ON
+              Texture2D {
+                UniqueID Texture2D_12
+                DataVariance STATIC
+                file "images\zona_obstaculos_2AO_Lighting.tga"
+                wrap_s CLAMP_TO_EDGE
+                wrap_t CLAMP_TO_EDGE
+                wrap_r CLAMP_TO_EDGE
+                min_filter LINEAR_MIPMAP_LINEAR
+                mag_filter LINEAR
+                maxAnisotropy 1
+                borderColor 0 0 0 0
+                borderWidth 0
+                useHardwareMipMapGeneration TRUE
+                unRefImageDataAfterApply FALSE
+                internalFormatMode USE_IMAGE_DATA_FORMAT
+                resizeNonPowerOfTwo TRUE
+              }
+              TexEnv {
+                DataVariance STATIC
+                mode ADD
+              }
+            }
+          }
+          useDisplayList TRUE
+          useVertexBufferObjects FALSE
+          PrimitiveSets 2
+          {
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              2 0 1 3 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              7 5 4 6 
+            }
+          }
+          VertexArray Vec3Array 8
+          {
+            -142.507 -54.414 -142.854
+            -12.1312 56.0249 -142.854
+            -142.507 56.0249 -142.854
+            -12.1312 -54.414 -142.854
+            28.8876 -59.0623 0
+            77.2267 5.66287 0
+            28.8876 5.66287 0
+            77.2267 -59.0623 0
+          }
+          NormalBinding PER_VERTEX
+          NormalArray Vec3Array 8
+          {
+            0 0 1
+            0 0 1
+            0 0 1
+            0 0 1
+            0 0 1
+            0 0 1
+            0 0 1
+            0 0 1
+          }
+          TexCoordArray 0 Vec2Array 8
+          {
+            0.000499487 0.000499725
+            0.999501 0.9995
+            0.000499785 0.9995
+            0.9995 0.000499547
+            0.000499487 0.000499725
+            0.999501 0.9995
+            0.000499785 0.9995
+            0.9995 0.000499547
+          }
+          TexCoordArray 1 Vec2Array 8
+          {
+            0.551771 0.468925
+            0.01 0.01
+            0.551771 0.01
+            0.01 0.468925
+            0.576062 0.210871
+            0.845026 0.01
+            0.845026 0.210871
+            0.576062 0.01
+          }
+        }
+      }
+    }
+  }
+  MatrixTransform {
+    DataVariance STATIC
+    name "zona_obstaculos_2_parte_2"
+    nodeMask 0xff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      3.07582 0 0 0
+      0 -1.40242e-007 3.20836 0
+      0 -3.20836 -1.40242e-007 0
+      -268.969 585.105 132.64 1
+    }
+    num_children 1
+    MatrixTransform {
+      DataVariance STATIC
+      name "zona_obstaculos_2_parte_2-OFFSET"
+      nodeMask 0xff
+      cullingActive TRUE
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        108.041 10.9201 98.1476 1
+      }
+      num_children 1
+      Geode {
+        UniqueID Geode_13
+        DataVariance STATIC
+        name "zona_obstaculos_2_parte_2-GEODE"
+        nodeMask 0xff
+        cullingActive TRUE
+        num_drawables 1
+        Geometry {
+          DataVariance DYNAMIC
+          name "zona_obstaculos_2_parte_2"
+          StateSet {
+            UniqueID StateSet_14
+            DataVariance STATIC
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            GL_CULL_FACE ON
+            GL_LIGHTING OVERRIDE|OFF
+            0xba1 ON
+            Material {
+              DataVariance STATIC
+              ColorMode OFF
+              ambientColor 0 0 0 1
+              diffuseColor 1 1 1 1
+              specularColor 0 0 0 1
+              emissionColor 0 0 0 1
+              shininess 0
+            }
+            textureUnit 0 {
+              GL_TEXTURE_2D ON
+              Texture2D {
+                UniqueID Texture2D_15
+                DataVariance STATIC
+                file "images\arbol_2.tga"
+                wrap_s CLAMP_TO_EDGE
+                wrap_t CLAMP_TO_EDGE
+                wrap_r CLAMP_TO_EDGE
+                min_filter LINEAR_MIPMAP_LINEAR
+                mag_filter LINEAR
+                maxAnisotropy 1
+                borderColor 0 0 0 0
+                borderWidth 0
+                useHardwareMipMapGeneration TRUE
+                unRefImageDataAfterApply FALSE
+                internalFormatMode USE_IMAGE_DATA_FORMAT
+                resizeNonPowerOfTwo TRUE
+              }
+              TexEnv {
+                DataVariance STATIC
+                mode ADD
+              }
+            }
+            textureUnit 1 {
+              GL_TEXTURE_2D ON
+              Texture2D {
+                UniqueID Texture2D_16
+                DataVariance STATIC
+                file "images\zona_obstaculos_2AO_Lighting.tga"
+                wrap_s CLAMP_TO_EDGE
+                wrap_t CLAMP_TO_EDGE
+                wrap_r CLAMP_TO_EDGE
+                min_filter LINEAR_MIPMAP_LINEAR
+                mag_filter LINEAR
+                maxAnisotropy 1
+                borderColor 0 0 0 0
+                borderWidth 0
+                useHardwareMipMapGeneration TRUE
+                unRefImageDataAfterApply FALSE
+                internalFormatMode USE_IMAGE_DATA_FORMAT
+                resizeNonPowerOfTwo TRUE
+              }
+              TexEnv {
+                DataVariance STATIC
+                mode ADD
+              }
+            }
+          }
+          useDisplayList TRUE
+          useVertexBufferObjects FALSE
+          PrimitiveSets 1
+          {
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              2 0 1 3 
+            }
+          }
+          VertexArray Vec3Array 4
+          {
+            -142.354 -54.9734 -95.7853
+            -73.7287 33.1331 -100.51
+            -142.354 33.1331 -95.7853
+            -73.7287 -54.9734 -100.51
+          }
+          NormalBinding PER_VERTEX
+          NormalArray Vec3Array 4
+          {
+            0.0686823 0 0.997639
+            0.0686823 0 0.997639
+            0.0686823 0 0.997639
+            0.0686823 0 0.997639
+          }
+          TexCoordArray 0 Vec2Array 4
+          {
+            0.000499547 0.000499696
+            0.9995 0.9995
+            0.000499845 0.999501
+            0.9995 0.000499517
+          }
+          TexCoordArray 1 Vec2Array 4
+          {
+            0.376123 0.493217
+            0.01 0.779061
+            0.01 0.493217
+            0.376123 0.779061
+          }
+        }
+      }
+    }
+  }
+  MatrixTransform {
+    DataVariance STATIC
+    name "zona_obstaculos_2_parte_3"
+    nodeMask 0xff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      3.07582 0 0 0
+      0 -1.40242e-007 3.20836 0
+      0 -3.20836 -1.40242e-007 0
+      -142.321 782.367 33.0326 1
+    }
+    num_children 1
+    MatrixTransform {
+      DataVariance STATIC
+      name "zona_obstaculos_2_parte_3-OFFSET"
+      nodeMask 0xff
+      cullingActive TRUE
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        66.866 41.9665 159.631 1
+      }
+      num_children 1
+      Geode {
+        UniqueID Geode_17
+        DataVariance STATIC
+        name "zona_obstaculos_2_parte_3-GEODE"
+        nodeMask 0xff
+        cullingActive TRUE
+        num_drawables 1
+        Geometry {
+          DataVariance DYNAMIC
+          name "zona_obstaculos_2_parte_3"
+          StateSet {
+            UniqueID StateSet_18
+            DataVariance STATIC
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            GL_CULL_FACE ON
+            GL_LIGHTING OVERRIDE|OFF
+            0xba1 ON
+            Material {
+              DataVariance STATIC
+              ColorMode OFF
+              ambientColor 0.588235 0.588235 0.588235 1
+              diffuseColor 1 1 1 1
+              specularColor 0 0 0 1
+              emissionColor 0 0 0 1
+              shininess 0
+            }
+            textureUnit 0 {
+              GL_TEXTURE_2D ON
+              Texture2D {
+                UniqueID Texture2D_19
+                DataVariance STATIC
+                file "images\arbusto.tga"
+                wrap_s CLAMP_TO_EDGE
+                wrap_t CLAMP_TO_EDGE
+                wrap_r CLAMP_TO_EDGE
+                min_filter LINEAR_MIPMAP_LINEAR
+                mag_filter LINEAR
+                maxAnisotropy 1
+                borderColor 0 0 0 0
+                borderWidth 0
+                useHardwareMipMapGeneration TRUE
+                unRefImageDataAfterApply FALSE
+                internalFormatMode USE_IMAGE_DATA_FORMAT
+                resizeNonPowerOfTwo TRUE
+              }
+              TexEnv {
+                DataVariance STATIC
+                mode ADD
+              }
+            }
+            textureUnit 1 {
+              GL_TEXTURE_2D ON
+              Texture2D {
+                UniqueID Texture2D_20
+                DataVariance STATIC
+                file "images\zona_obstaculos_2AO_Lighting.tga"
+                wrap_s CLAMP_TO_EDGE
+                wrap_t CLAMP_TO_EDGE
+                wrap_r CLAMP_TO_EDGE
+                min_filter LINEAR_MIPMAP_LINEAR
+                mag_filter LINEAR
+                maxAnisotropy 1
+                borderColor 0 0 0 0
+                borderWidth 0
+                useHardwareMipMapGeneration TRUE
+                unRefImageDataAfterApply FALSE
+                internalFormatMode USE_IMAGE_DATA_FORMAT
+                resizeNonPowerOfTwo TRUE
+              }
+              TexEnv {
+                DataVariance STATIC
+                mode ADD
+              }
+            }
+          }
+          useDisplayList TRUE
+          useVertexBufferObjects FALSE
+          PrimitiveSets 21
+          {
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              1 2 0 3 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              7 4 6 5 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              31 28 30 29 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              83 80 82 81 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              79 76 78 77 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              75 72 74 73 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              71 68 70 69 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              67 64 66 65 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              61 62 60 63 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              57 58 56 59 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              53 54 52 55 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              49 50 48 51 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              45 46 44 47 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              41 42 40 43 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              37 38 36 39 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              33 34 32 35 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              27 24 26 25 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              23 20 22 21 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              19 16 18 17 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              15 12 14 13 
+            }
+            DrawElementsUShort TRIANGLE_STRIP 4
+            {
+              9 10 8 11 
+            }
+          }
+          VertexArray Vec3Array 84
+          {
+            -74.4533 -52.1132 -167.779
+            -74.4533 -30.3956 -167.779
+            -93.6347 -30.3956 -166.368
+            -93.6347 -52.1132 -166.368
+            -248.414 -47.0778 -206.522
+            -248.414 -25.3601 -206.522
+            -267.595 -25.3601 -205.111
+            -267.595 -47.0778 -205.111
+            29.9052 -57.8072 -76.4817
+            29.9052 -36.0895 -76.4817
+            10.7237 -36.0895 -75.0711
+            10.7237 -57.8072 -75.0711
+            -47.2622 -54.1718 -82.2413
+            -47.2622 -32.4541 -82.2413
+            -66.4437 -32.4541 -80.8308
+            -66.4437 -54.1718 -80.8308
+            -67.4664 -53.8733 -317.939
+            -67.4664 -32.1557 -317.939
+            -86.6478 -32.1557 -316.528
+            -86.6478 -53.8733 -316.528
+            132.448 -57.6977 -192.238
+            132.448 -35.9801 -192.238
+            113.267 -35.9801 -190.827
+            113.267 -57.6977 -190.827
+            -183.04 -50.965 -286.606
+            -183.04 -29.2473 -286.606
+            -202.221 -29.2473 -285.196
+            -202.221 -50.965 -285.196
+            133.863 -60.3291 15.3655
+            133.863 -38.6114 15.3655
+            114.682 -38.6114 16.7761
+            114.682 -60.3291 16.7761
+            69.7261 -57.6909 -160.79
+            69.7261 -35.9733 -160.79
+            50.5447 -35.9733 -159.38
+            50.5447 -57.6909 -159.38
+            -9.96909 -56.4781 -240.862
+            -9.96909 -34.7605 -240.862
+            -29.1505 -34.7605 -239.452
+            -29.1505 -56.4781 -239.452
+            -221.81 -45.3215 -146.263
+            -221.81 -23.6038 -146.263
+            -240.992 -23.6038 -144.852
+            -240.992 -45.3215 -144.852
+            96.1606 -57.5835 -232.888
+            96.1606 -35.8659 -232.888
+            76.9791 -35.8659 -231.478
+            76.9791 -57.5835 -231.478
+            -105.578 -49.9101 -183.88
+            -105.578 -28.1925 -183.88
+            -124.76 -28.1925 -182.469
+            -124.76 -49.9101 -182.469
+            17.7471 -57.508 -229.343
+            17.7471 -35.7904 -229.343
+            -1.43433 -35.7904 -227.932
+            -1.43433 -57.508 -227.932
+            -48.446 -53.6764 -302.516
+            -48.446 -31.9588 -302.516
+            -67.6274 -31.9588 -301.105
+            -67.6274 -53.6764 -301.105
+            -186.413 -52.7564 -337.88
+            -186.413 -31.0388 -337.88
+            -205.594 -31.0388 -336.47
+            -205.594 -52.7564 -336.47
+            69.6015 -58.9 9.86184
+            69.6015 -37.1824 9.86183
+            50.42 -37.1824 11.2724
+            50.42 -58.9 11.2724
+            33.4476 -57.7675 -99.6483
+            33.4476 -36.0498 -99.6483
+            14.2662 -36.0498 -98.2377
+            14.2662 -57.7675 -98.2377
+            -28.1048 -55.7835 24.6088
+            -28.1048 -34.0659 24.6088
+            -47.2863 -34.0659 26.0194
+            -47.2863 -55.7835 26.0194
+            -12.3401 -56.9954 -338.271
+            -12.3401 -35.2777 -338.271
+            -30.1337 -35.2777 -345.282
+            -30.1337 -56.9954 -345.282
+            60.3144 -58.7738 -160.493
+            60.3144 -37.0562 -160.493
+            42.5208 -37.0562 -167.504
+            42.5208 -58.7738 -167.504
+          }
+          NormalBinding PER_VERTEX
+          NormalArray Vec3Array 84
+          {
+            0.0733401 0 0.997307
+            0.0733401 0 0.997307
+            0.0733401 0 0.997307
+            0.0733401 0 0.997307
+            0.07334 7.00706e-007 0.997307
+            0.07334 7.00706e-007 0.997307
+            0.07334 7.00706e-007 0.997307
+            0.07334 7.00706e-007 0.997307
+            0.0733403 1.88691e-007 0.997307
+            0.0733401 0 0.997307
+            0.0733402 1.61662e-007 0.997307
+            0.0733405 3.50353e-007 0.997307
+            0.0733403 1.61662e-007 0.997307
+            0.0733405 3.50353e-007 0.997307
+            0.0733403 1.88692e-007 0.997307
+            0.0733401 0 0.997307
+            0.0733408 0 0.997307
+            0.0733408 0 0.997307
+            0.0733408 0 0.997307
+            0.0733408 0 0.997307
+            0.0733401 0 0.997307
+            0.0733401 0 0.997307
+            0.0733401 0 0.997307
+            0.0733401 0 0.997307
+            0.0733377 0 0.997307
+            0.0733377 0 0.997307
+            0.0733377 0 0.997307
+            0.0733377 0 0.997307
+            0.0733403 1.75177e-007 0.997307
+            0.0733403 1.75177e-007 0.997307
+            0.0733403 1.75177e-007 0.997307
+            0.0733403 1.75177e-007 0.997307
+            0.0733401 0 0.997307
+            0.0733401 0 0.997307
+            0.0733401 0 0.997307
+            0.0733401 0 0.997307
+            0.0733405 3.77383e-007 0.997307
+            0.0733401 0 0.997307
+            0.0733404 3.23324e-007 0.997307
+            0.0733409 7.00706e-007 0.997307
+            0.0733403 3.23324e-007 0.997307
+            0.0733408 7.00706e-007 0.997307
+            0.0733404 3.77383e-007 0.997307
+            0.07334 0 0.997307
+            0.07334 0 0.997307
+            0.07334 0 0.997307
+            0.07334 0 0.997307
+            0.07334 0 0.997307
+            0.0733405 3.77383e-007 0.997307
+            0.0733401 0 0.997307
+            0.0733404 3.23324e-007 0.997307
+            0.0733409 7.00706e-007 0.997307
+            0.0733401 0 0.997307
+            0.0733401 0 0.997307
+            0.0733401 0 0.997307
+            0.0733401 0 0.997307
+            0.0733394 1.50953e-006 0.997307
+            0.0733377 0 0.997307
+            0.0733391 1.29329e-006 0.997307
+            0.0733408 2.80283e-006 0.997307
+            0.0733377 0 0.997307
+            0.0733377 0 0.997307
+            0.0733377 0 0.997307
+            0.0733377 0 0.997307
+            0.0733403 1.95384e-007 0.997307
+            0.0733403 2.18971e-007 0.997307
+            0.0733403 1.98763e-007 0.997307
+            0.0733402 1.75177e-007 0.997307
+            0.0733403 1.88691e-007 0.997307
+            0.0733401 0 0.997307
+            0.0733402 1.61662e-007 0.997307
+            0.0733405 3.50353e-007 0.997307
+            0.0733403 2.22349e-007 0.997307
+            0.0733402 1.75177e-007 0.997307
+            0.0733403 2.15592e-007 0.997307
+            0.0733403 2.62765e-007 0.997307
+            -0.366589 1.4129e-006 0.930383
+            -0.36659 0 0.930382
+            -0.366589 1.20185e-006 0.930383
+            -0.366587 2.61474e-006 0.930384
+            -0.366588 6.53686e-007 0.930383
+            -0.366588 6.53686e-007 0.930383
+            -0.366588 6.53686e-007 0.930383
+            -0.366588 6.53686e-007 0.930383
+          }
+          TexCoordArray 0 Vec2Array 84
+          {
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+            0.000499517 0.000499666
+            0.000499874 0.999501
+            0.999501 0.9995
+            0.9995 0.000499487
+          }
+          TexCoordArray 1 Vec2Array 84
+          {
+            0.329325 0.98749
+            0.239078 0.98749
+            0.239078 0.907567
+            0.329325 0.907567
+            0.66631 0.323183
+            0.576063 0.323184
+            0.576062 0.243261
+            0.666309 0.24326
+            0.780849 0.427398
+            0.690602 0.427398
+            0.690602 0.347475
+            0.780849 0.347475
+            0.967662 0.0899231
+            0.877415 0.0899235
+            0.877414 0.0100004
+            0.967661 0.01
+            0.666309 0.427399
+            0.576062 0.427399
+            0.576062 0.347476
+            0.666309 0.347476
+            0.895387 0.323183
+            0.80514 0.323183
+            0.80514 0.24326
+            0.895387 0.24326
+            0.214786 0.987491
+            0.124539 0.987491
+            0.124539 0.907568
+            0.214786 0.907568
+            0.490662 0.677355
+            0.400415 0.677356
+            0.400415 0.597433
+            0.490662 0.597432
+            0.490662 0.99
+            0.400415 0.99
+            0.400415 0.910077
+            0.490662 0.910077
+            0.71974 0.677355
+            0.629493 0.677355
+            0.629493 0.597432
+            0.71974 0.597432
+            0.490663 0.57314
+            0.400416 0.573141
+            0.400415 0.493217
+            0.490662 0.493217
+            0.967661 0.194138
+            0.877414 0.194138
+            0.877414 0.114215
+            0.967661 0.114215
+            0.490662 0.885785
+            0.400415 0.885785
+            0.400415 0.805862
+            0.490662 0.805862
+            0.71974 0.57314
+            0.629493 0.57314
+            0.629493 0.493217
+            0.71974 0.493217
+            0.780849 0.323183
+            0.690602 0.323183
+            0.690602 0.24326
+            0.780849 0.24326
+            0.605201 0.885784
+            0.514955 0.885784
+            0.514955 0.805861
+            0.605201 0.805861
+            0.100247 0.987492
+            0.0100002 0.987492
+            0.01 0.907569
+            0.100247 0.907568
+            0.605201 0.781569
+            0.514955 0.781569
+            0.514955 0.701646
+            0.605201 0.701646
+            0.214786 0.883276
+            0.12454 0.883276
+            0.124539 0.803353
+            0.214786 0.803353
+            0.744032 0.597432
+            0.834279 0.597432
+            0.834279 0.676905
+            0.744032 0.676905
+            0.629493 0.701646
+            0.71974 0.701647
+            0.71974 0.78112
+            0.629493 0.78112
+          }
+        }
+      }
+    }
+  }
+}
