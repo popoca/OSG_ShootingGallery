@@ -13,6 +13,9 @@
   <ItemGroup>
     <ClCompile Include="..\src\Main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\MouseEventHandler.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B5E577F3-5F8B-4DAC-94AE-197B6083C89D}</ProjectGuid>
     <RootNamespace>OSGDefaultProject</RootNamespace>
