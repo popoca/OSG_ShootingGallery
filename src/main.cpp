@@ -2,7 +2,7 @@
 #include <osg/Group>
 #include <osg/Geode>
 #include <osg/Geometry>
-#include <osg/Texture2D>
+#include <osg/Texture2D> 
 #include <osgDB/ReadFile> 
 #include <osgViewer/Viewer>
 #include <osg/PositionAttitudeTransform>
@@ -10,7 +10,7 @@
 #include <osg/CullFace>
 #include <osg/Depth>
 #include <osg/MatrixTransform>
-#include "MouseEventHandler.h"
+//#include "MouseEventHandler.h"
 
 int main( int argc, char** argv )
 {
@@ -31,8 +31,8 @@ int main( int argc, char** argv )
 	osg::PositionAttitudeTransform *modelXForm2 = new osg::PositionAttitudeTransform();
 	osg::Group *auxGroup1 = new osg::Group();
 	osg::Group *auxGroup2 = new osg::Group();
-	osg::Node *modelNode = osgDB::readNodeFile("sin_shader.osg");
-	osg::Node *modelNode2 = osgDB::readNodeFile("pasto.osg");
+	osg::Node *modelNode = osgDB::readNodeFile("content/bg/sin_shader/sin_shader.osg");
+	osg::Node *modelNode2 = osgDB::readNodeFile("content/bg/shader_dif_transp_ao/pasto.osg");
 	auxGroup1->addChild(modelNode);
 	auxGroup2->addChild(modelNode2);
 
