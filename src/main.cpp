@@ -17,6 +17,7 @@ static double delta;
 
 int main(int args, char **argv)
 {
+<<<<<<< HEAD
 
     // Construye el visualizador.
 	osgViewer::Viewer *viewer = new osgViewer::Viewer();
@@ -122,4 +123,15 @@ int main(int args, char **argv)
 
     return -1;
 
+=======
+    osgViewer::Viewer viewer;
+    viewer.realize();
+
+    while( !viewer.done() )
+    {
+        viewer.frame();
+    }
+
+    return 0;
+>>>>>>> 8e6af90702fec52e3368c07e5ba61e40f0fb97b8
 }
