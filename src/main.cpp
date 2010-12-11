@@ -10,7 +10,6 @@
 #include <osg/CullFace>
 #include <osg/Depth>
 #include <osg/MatrixTransform>
-#include "MouseEventHandler.h"
 
 int main( int argc, char** argv )
 {
