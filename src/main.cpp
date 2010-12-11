@@ -20,9 +20,6 @@ int main( int argc, char** argv )
 	static double delta;
 
 	/* Initialize viewer */
-
-
-        // Construye el visualizador.
 	osgViewer::Viewer *viewer = new osgViewer::Viewer();
 	osg::Group *root = new osg::Group();
 
@@ -104,37 +101,14 @@ int main( int argc, char** argv )
 	viewer->setSceneData( root );
 
 	viewer->setCameraManipulator(new osgGA::TrackballManipulator);
+
+	/* Realize the viewer */
     viewer->realize();
 
 	// Inicializa old_tick
 	old_tick = osg::Timer::instance()->getStartTick();
 
-	while(!viewer->done())
-	{
-		// Actualizacion de delta
-		new_tick = osg::Timer::instance()->tick();
-        delta = osg::Timer::instance()->delta_s(old_tick, new_tick);
-
-		// Actualizacion de la posicion de la camara
-		viewer->getCamera()->getViewMatrixAsLookAt(eye, center, up);
-		camPosition->set( osg::Vec3( eye.x(), eye.y(), eye.z() ) );
-		//camPosition->set( viewer->getCamera()->getBound().center() ); metodo para obtener las coords sin usar 3 osg::vec3, probar eficiencia
-
-	    viewer->frame();
-		old_tick = new_tick;
-	}
-
-    return -1;
-
-=======
-    osgViewer::Viewer viewer;
-
-	// Rest of the code goes here
-
-	/* Realize the viewer */
-    viewer.realize();
-
-    while( !viewer.done() )
+    while( !viewer->done() )
     {
 
 		/* tick, tick, tick... */
@@ -142,12 +116,11 @@ int main( int argc, char** argv )
         delta = osg::Timer::instance()->delta_s( old_tick, new_tick );
 
 		/* frame */
-        viewer.frame();
+        viewer->frame();
 
 		/* Actualizacion del tick */
 		old_tick = new_tick;
     }
 
     return 0;
->>>>>>> 8e6af90702fec52e3368c07e5ba61e40f0fb97b8
 }
