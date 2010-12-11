@@ -23,28 +23,62 @@ int main( int argc, char** argv )
 	osgViewer::Viewer *viewer = new osgViewer::Viewer();
 	osg::Group *root = new osg::Group();
 
-	// ----------------Carga de los modelos------------------------
+	// ----------------Carga de los modelos-----------------------------
 	// Grupo 1 ---- sin shader
 	// Grupo 2 ---- difuso, transparencia y ambient occlusion
-	//-------------------------------------------------------------
+	// Grupo 3 ---- difuso, normal, ambient occlusion y detalle
+	// Grupo 4 ---- difuso, normal y ambient occlusion
+	//------------------------------------------------------------------
 	osg::PositionAttitudeTransform *modelXForm = new osg::PositionAttitudeTransform();
 	osg::PositionAttitudeTransform *modelXForm2 = new osg::PositionAttitudeTransform();
+	osg::PositionAttitudeTransform *modelXForm3 = new osg::PositionAttitudeTransform();
+	osg::PositionAttitudeTransform *modelXForm4 = new osg::PositionAttitudeTransform();
+
 	osg::Group *auxGroup1 = new osg::Group();
 	osg::Group *auxGroup2 = new osg::Group();
+	osg::Group *auxGroup3 = new osg::Group();
+	osg::Group *auxGroup4 = new osg::Group();
+
+	// grupo 1
 	osg::Node *modelNode = osgDB::readNodeFile("content/bg/sin_shader/sin_shader.osg");
+	// grupo 2
 	osg::Node *modelNode2 = osgDB::readNodeFile("content/bg/shader_dif_transp_ao/pasto.osg");
+	osg::Node *modelNode3 = osgDB::readNodeFile("content/bg/shader_dif_transp_ao/relleno.osg");
+	osg::Node *modelNode4 = osgDB::readNodeFile("content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg");
+	osg::Node *modelNode5 = osgDB::readNodeFile("content/bg/shader_dif_transp_ao/zona_obstaculos_2.osg");
+	osg::Node *modelNode6 = osgDB::readNodeFile("content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg");
+	// grupo 3
+	osg::Node *modelNode7 = osgDB::readNodeFile("content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg");
+	// grupo 4
+	osg::Node *modelNode8 = osgDB::readNodeFile("content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg");
+
 	auxGroup1->addChild(modelNode);
+
 	auxGroup2->addChild(modelNode2);
+	auxGroup2->addChild(modelNode3);
+	auxGroup2->addChild(modelNode4);
+	auxGroup2->addChild(modelNode5);
+	auxGroup2->addChild(modelNode6);
+
+	auxGroup3->addChild(modelNode7);
+
+	auxGroup3->addChild(modelNode8);
 
 	// Construccion del grafo de escena
 	modelXForm->addChild(auxGroup1);
 	modelXForm2->addChild(auxGroup2);
+	modelXForm3->addChild(auxGroup3);
+	modelXForm4->addChild(auxGroup4);
 	root->addChild(modelXForm);
 	root->addChild(modelXForm2);
+	root->addChild(modelXForm3);
+	root->addChild(modelXForm4);
 
 	// Estado de auxGroups
 	osg::StateSet *modelState = auxGroup1->getOrCreateStateSet();
 	osg::StateSet *modelState2 = auxGroup2->getOrCreateStateSet();
+	osg::StateSet *modelState3 = auxGroup2->getOrCreateStateSet();
+	osg::StateSet *modelState4 = auxGroup2->getOrCreateStateSet();
 
 	// Se activa la prueba de culling para las caras posteriores
 	osg::CullFace *cullm1 = new osg::CullFace();
@@ -53,7 +87,15 @@ int main( int argc, char** argv )
 
 	osg::CullFace *cullm2 = new osg::CullFace();
 	cullm2->setMode(osg::CullFace::BACK);
-	modelState2->setAttribute(cullm1);
+	modelState2->setAttribute(cullm2);
+
+	osg::CullFace *cullm3 = new osg::CullFace();
+	cullm3->setMode(osg::CullFace::BACK);
+	modelState3->setAttribute(cullm3);
+
+	osg::CullFace *cullm4 = new osg::CullFace();
+	cullm4->setMode(osg::CullFace::BACK);
+	modelState4->setAttribute(cullm4);
 
 	//// se Define la funcion de profundidad
 	osg::Depth *depthfunc1 = new osg::Depth();
@@ -62,7 +104,15 @@ int main( int argc, char** argv )
 
 	osg::Depth *depthfunc2 = new osg::Depth();
 	depthfunc2->setFunction(osg::Depth::LEQUAL);
-	modelState2->setAttribute(depthfunc1);
+	modelState2->setAttribute(depthfunc2);
+
+	osg::Depth *depthfunc3 = new osg::Depth();
+	depthfunc3->setFunction(osg::Depth::LEQUAL);
+	modelState3->setAttribute(depthfunc3);
+
+	osg::Depth *depthfunc4 = new osg::Depth();
+	depthfunc4->setFunction(osg::Depth::LEQUAL);
+	modelState4->setAttribute(depthfunc4);
 	
 	// Estado del nodo raiz
 	osg::StateSet *rootState = new osg::StateSet();
