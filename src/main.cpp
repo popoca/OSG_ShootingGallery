@@ -41,6 +41,7 @@ int main( int argc, char** argv )
 
 	// grupo 1
 	osg::Node *modelNode = osgDB::readNodeFile("../content/bg/sin_shader/sin_shader.osg");
+	osg::Node *modelNode9 = osgDB::readNodeFile("../content/npcs/cielo/cielo.osg");
 	// grupo 2
 	osg::Node *modelNode2 = osgDB::readNodeFile("../content/bg/shader_dif_transp_ao/pasto.osg");
 	osg::Node *modelNode3 = osgDB::readNodeFile("../content/bg/shader_dif_transp_ao/relleno.osg");
@@ -53,6 +54,7 @@ int main( int argc, char** argv )
 	osg::Node *modelNode8 = osgDB::readNodeFile("../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg");
 
 	auxGroup1->addChild(modelNode);
+	auxGroup1->addChild(modelNode9);
 
 	auxGroup2->addChild(modelNode2);
 	auxGroup2->addChild(modelNode3);
