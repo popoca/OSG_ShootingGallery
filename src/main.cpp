@@ -40,17 +40,17 @@ int main( int argc, char** argv )
 	osg::Group *auxGroup4 = new osg::Group();
 
 	// grupo 1
-	osg::Node *modelNode = osgDB::readNodeFile("content/bg/sin_shader/sin_shader.osg");
+	osg::Node *modelNode = osgDB::readNodeFile("../content/bg/sin_shader/sin_shader.osg");
 	// grupo 2
-	osg::Node *modelNode2 = osgDB::readNodeFile("content/bg/shader_dif_transp_ao/pasto.osg");
-	osg::Node *modelNode3 = osgDB::readNodeFile("content/bg/shader_dif_transp_ao/relleno.osg");
-	osg::Node *modelNode4 = osgDB::readNodeFile("content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg");
-	osg::Node *modelNode5 = osgDB::readNodeFile("content/bg/shader_dif_transp_ao/zona_obstaculos_2.osg");
-	osg::Node *modelNode6 = osgDB::readNodeFile("content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg");
+	osg::Node *modelNode2 = osgDB::readNodeFile("../content/bg/shader_dif_transp_ao/pasto.osg");
+	osg::Node *modelNode3 = osgDB::readNodeFile("../content/bg/shader_dif_transp_ao/relleno.osg");
+	osg::Node *modelNode4 = osgDB::readNodeFile("../content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg");
+	osg::Node *modelNode5 = osgDB::readNodeFile("../content/bg/shader_dif_transp_ao/zona_obstaculos_2.osg");
+	osg::Node *modelNode6 = osgDB::readNodeFile("../content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg");
 	// grupo 3
-	osg::Node *modelNode7 = osgDB::readNodeFile("content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg");
+	osg::Node *modelNode7 = osgDB::readNodeFile("../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg");
 	// grupo 4
-	osg::Node *modelNode8 = osgDB::readNodeFile("content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg");
+	osg::Node *modelNode8 = osgDB::readNodeFile("../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg");
 
 	auxGroup1->addChild(modelNode);
 
