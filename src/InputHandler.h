@@ -1,12 +1,10 @@
-#ifndef _INPUTH_
+
+#ifndef 	_INPUTH_
 #define _INPUTH_
 
-#include "MouseEventHandler.h"
+#include "PickerHandler.h"
 #include "MyKeyboardEventHandler.h"
 #include <osg/Group>
-#include <osg/MatrixTransform>
-#include <osg/PositionAttitudeTransform>
-#include <osg/Matrix>
 
 class InputHandler
 {
@@ -14,15 +12,15 @@ class InputHandler
 	
 	public:	
 	
-	InputHandler( osg::ref_ptr< osg::Group > rootNode );
+	InputHandler(osgText::Text* updateText);
 	~InputHandler();
-	osg::Vec3f camera;
 	
 	MyKeyboardEventHandler* myKBH;
-	MouseEventHandler* myMSH;
+	PickHandler *myPKH;
+	osgText::Text* updateText;
 	
 	MyKeyboardEventHandler* getKeyboardHandler();
-	MouseEventHandler* getMouseHandler();
+	PickHandler* getPickHandler();
 	
 };
 

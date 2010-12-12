@@ -25,7 +25,7 @@ void ModelManager::setUpScene()
 	if( bg.empty() )
 		cout << "Escenario cargado" << endl;
 
-	for( int i = 0; i < (int)en.size(); i++ )
+	/*for( int i = 0; i < (int)en.size(); i++ )
 	{
 		root->addChild( en[i]->mPat.get() );
 	}
@@ -34,7 +34,7 @@ void ModelManager::setUpScene()
 
 	if( en.empty() )
 		cout << "Enemigos cargados" << endl;
-
+	*/
 }
 
 void ModelManager::updateScene()

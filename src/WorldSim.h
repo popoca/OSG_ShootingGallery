@@ -17,7 +17,7 @@ public:
 	
 	InputHandler* myIH;
 	// Constructor 
-	WorldSim();
+	WorldSim(osg::ref_ptr<osgText::Text> _updateText);
 	// Desctructor
 	~WorldSim()
 	{
@@ -39,7 +39,7 @@ public:
 private:
 
 	 osg::ref_ptr<osg::Group> root;
-	 osg::ref_ptr<ShaderHandler> mySH;
+	 //osg::ref_ptr<ShaderHandler> mySH;
 	 bool start;
 };
 
