@@ -226,12 +226,12 @@ void ShaderHandler::illuShader(osg::Node* node)
 			osg::StateSet *tmpstate = tmpgeode->getDrawable(i)->getOrCreateStateSet();
 			tmpstate->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 
-			osg::TexEnv* decalTexEnv = new osg::TexEnv();
-			tmpstate->setMode(osg::TexEnv::DECAL, osg::StateAttribute::ON);
+			//osg::TexEnv* decalTexEnv = new osg::TexEnv();
+			//tmpstate->setMode(osg::TexEnv::DECAL, osg::StateAttribute::ON);
 
-			tmpstate->setTextureAttributeAndModes
-			(0,KLN89FaceTexture,osg::StateAttribute::ON);
-			tmpstate->setTextureAttribute(0,decalTexEnv);
+			//tmpstate->setTextureAttributeAndModes
+			//(0,KLN89FaceTexture,osg::StateAttribute::ON);
+			//tmpstate->setTextureAttribute(0,decalTexEnv);
 
 		
 
