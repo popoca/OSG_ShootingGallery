@@ -59,6 +59,8 @@ int main( int argc, char** argv )
 			center.y() << ", " <<
 			center.z() << endl;*/
 
+		myGS->update();
+
 		/* frame */
         viewer.frame();
 

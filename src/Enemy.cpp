@@ -12,20 +12,15 @@ Enemy::Enemy( const char* file, const char* file2, const char* name, float speed
 		mPatXplode = new osg::PositionAttitudeTransform();
 		mPatXplode->addChild( mNodeXplode.get() );
 	}
-	cout << "Cargando modelo: " << file2 << endl;
 
-	if( !strcmp( name, "buitre" ) )
+	if( !strcmp( mNode->getName().c_str(), "buitre" ) )
 	{
-		mPat->setUpdateCallback( new EnemyController( 1.0f ) );
-		cout << "AI cargada para " << name << endl;
+		mPat->setUpdateCallback( new EnemyController( 1.0f, osg::Vec3f( -10.0f, 0.0f, 0.0f ), "buitre" ) );
+		cout << "AI cargada para " << mNode->getName() << endl;
 	}
+	
 }
 
 Enemy::~Enemy()
 {
-}
-
-void Enemy::loadIA()
-{
-
 }

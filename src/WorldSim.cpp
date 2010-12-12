@@ -11,9 +11,9 @@
 #include <iostream>
 
 #include "WorldSim.h"
-#include "ModelManager.h"
 
 WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
+: currState( Start ), hasLoaded( false )
 {
 	start = false;
 
@@ -21,8 +21,40 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	myIH = new InputHandler(_updateText);
 
 	mySH= new ShaderHandler();
+	
+	cout << "Iniciando el grafo de escena..." << endl;
 
-	 // Creacion y configuracion de la luz
+	/* Una prueba del manejador de modelos */
+	mm = new ModelManager( root );
+
+	mm->bg.push_back( new BasicModel( "../content/bg/sin_shader/sin_shader.osg", "casa" ) );
+	mm->bg.push_back( new BasicModel( "../content/npcs/cielo/cielo.osg", "cielo" ) );
+	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/pasto.osg", "pasto" ) );
+	//mySH->transShader(mm->bg[2]->mNode);
+	//mySH->aOShader(mm->bg[2]->mNode);
+	mySH->transpShader(mm->bg[2]->mNode);
+
+	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/relleno.osg", "relleno" ) );
+	mySH->transpShader(mm->bg[3]->mNode);
+	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg", "obstaculo" ) );
+	mySH->transpShader(mm->bg[4]->mNode);
+	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_2.osg", "obstaculo" ) );
+	mySH->transpShader(mm->bg[5]->mNode);
+	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg", "obstaculo" ) );
+	mySH->transpShader(mm->bg[6]->mNode);
+
+	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg", "ao_detail" ) );
+	mySH->illuShader(mm->bg[7]->mNode);
+	mySH->BumpMappingShader(mm->bg[7]->mNode);
+
+	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg", "ao" ) );
+	mySH->illuShader2(mm->bg[8]->mNode);
+	mySH->BumpMappingShader(mm->bg[8]->mNode);
+
+	/* Inicializa el escenario */
+	mm->setUpScene();
+
+	// Creacion y configuracion de la luz
 	osg::Light* myLight = new osg::Light;
     myLight->setLightNum(0);
 	myLight->setPosition(osg::Vec4(0.0,0.0,1500.0,1.0));
@@ -50,44 +82,6 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	root->addChild(lightS);
 	root->addChild(sphere);
 	sphere->setPosition(osg::Vec3(myLight->getPosition().x(), myLight->getPosition().y(), myLight->getPosition().z()));
-	
-	/* Una prueba del manejador de modelos */
-	ModelManager mm( root );
-
-	// ----------------Carga de los modelos-----------------------------
-	// Grupo 1 ---- sin shader
-	// Grupo 2 ---- difuso, transparencia y ambient occlusion
-	// Grupo 3 ---- difuso, normal, ambient occlusion y detalle
-	// Grupo 4 ---- difuso, normal y ambient occlusion
-	//------------------------------------------------------------------
-
-	mm.bg.push_back( new BasicModel( "../content/bg/sin_shader/sin_shader.osg", "casa" ) );
-	mm.bg.push_back( new BasicModel( "../content/npcs/cielo/cielo.osg", "cielo" ) );
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/pasto.osg", "pasto" ) );
-	//mySH->transShader(mm.bg[2]->mNode);
-	//mySH->aOShader(mm.bg[2]->mNode);
-	mySH->transpShader(mm.bg[2]->mNode);
-
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/relleno.osg", "relleno" ) );
-	mySH->transpShader(mm.bg[3]->mNode);
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg", "obstaculo" ) );
-	mySH->transpShader(mm.bg[4]->mNode);
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_2.osg", "obstaculo" ) );
-	mySH->transpShader(mm.bg[5]->mNode);
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg", "obstaculo" ) );
-	mySH->transpShader(mm.bg[6]->mNode);
-
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg", "ao_detail" ) );
-	mySH->illuShader(mm.bg[7]->mNode);
-	mySH->BumpMappingShader(mm.bg[7]->mNode);
-
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg", "ao" ) );
-	mySH->illuShader2(mm.bg[8]->mNode);
-	mySH->BumpMappingShader(mm.bg[8]->mNode);
-	
-	mm.en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 1.0f ) );
-
-	mm.setUpScene();
 
 	// Estado del nodo raiz
 	osg::StateSet *rootState = new osg::StateSet();
@@ -96,3 +90,43 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 
 }
 	
+void WorldSim::update()
+{
+	switch( currState )
+	{
+	case Start:
+
+		if( !hasLoaded )
+		{
+			
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 1.0f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 1.0f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 1.0f ) );
+
+			hasLoaded = true;
+
+		}
+		else
+			mm->updateScene();
+
+		break;
+
+	case Level1:
+		break;
+
+	case Level2:
+		break;
+
+	case Level3:
+		break;
+
+	case Level4:
+		break;
+
+	case Level5:
+		break;
+
+	case GameOver:
+		break;
+	}
+}

@@ -18,12 +18,14 @@
 #include <string>
 #include <iostream>
 
+using namespace std;
+
 class EnemyController : public osg::NodeCallback 
 {
 public:
 
    //Constructor
-   EnemyController( float delta );
+	EnemyController( float delta, osg::Vec3f pos, const char* name );
    ~EnemyController();
    void update( float delta );
 
@@ -32,11 +34,17 @@ public:
    // presupone que el nodo que se va a operar es un nodo PositionAttitudeTransform
    virtual void operator()( osg::Node* node, osg::NodeVisitor* nv );
 
-private: 
-   float accAngle;
-   float x;
+   // delta de tiempo
    float delta;
-   bool reverse;
+
+private:
+
+	osg::Vec3f pos;
+	string name;
+	float accAngle;
+	float x;
+	bool reverse;
+
 };
 
 #endif

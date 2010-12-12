@@ -43,6 +43,8 @@ public:
 	// Una lista de Enemies para los enemigos
 	vector< osg::ref_ptr< Enemy > > en;
 
+	bool init;
+
 };
 
 #endif

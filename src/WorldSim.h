@@ -3,6 +3,7 @@
 
 #include "ShaderHandler.h"
 #include "InputHandler.h"
+#include "ModelManager.h"
 
 #include <osg/MatrixTransform>
 #include <osg/PositionAttitudeTransform>
@@ -36,10 +37,19 @@ public:
 
 	osg::ref_ptr<osg::Group> getRootNode() { return root; }
 
+	/* estructura para detectar el estado actual del juego */
+	enum GameState{ Start, Level1, Level2, Level3, Level4, Level5, GameOver };
+	GameState currState;
+
+	/* metodo para actualizar la escena dependiendo del estado actual */
+	void update();
+	bool hasLoaded;
+
 private:
 
 	 osg::ref_ptr<osg::Group> root;
 	 osg::ref_ptr<ShaderHandler> mySH;
+	 osg::ref_ptr< ModelManager > mm;
 	 bool start;
 };
 

@@ -1,7 +1,9 @@
 #include "EnemyController.h"
 
-EnemyController::EnemyController( float delta )
-: accAngle( 0.0f ), x( 0.0f ), reverse( false ), delta( delta )
+using namespace std;
+
+EnemyController::EnemyController( float delta, osg::Vec3f pos, const char* name )
+: accAngle( 0.0f ), x( 0.0f ), reverse( false ), delta( delta ), pos( pos ), name( name )
 {
 }
 
