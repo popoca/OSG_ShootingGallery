@@ -178,6 +178,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\src\FindNodeVisitor.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\src\main.cpp"
 				>
 			</File>
@@ -197,6 +201,10 @@
 			>
 			<File
 				RelativePath="..\src\BasicModel.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\FindNodeVisitor.h"
 				>
 			</File>
 			<File
