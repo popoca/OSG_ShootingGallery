@@ -176,7 +176,7 @@ void ShaderHandler::aOShader(osg::Node* node)
 	//nodeState->addUniform( new osg::Uniform("Environment", 3) );
 	nodeState->addUniform( new osg::Uniform( "colorMap", 1 ) );
 	//nodeState->addUniform( new osg::Uniform( "ambientO", 1 ) );
-	nodeState->addUniform( new osg::Uniform( "normalMap", 3 ) );
+	nodeState->addUniform( new osg::Uniform( "normalMap", 7 ) );
 	//osg::Uniform* tsUniform   = new osg::Uniform( "time_scale", 4.0f );
 	//osg::Uniform* t2piUniform   = new osg::Uniform( "time_0_2PI", 0.0f );
  

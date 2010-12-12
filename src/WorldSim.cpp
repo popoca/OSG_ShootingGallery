@@ -32,8 +32,8 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/pasto.osg", "pasto" ) );
 	//mySH->aOShader(mm->bg[2]->mNode);
 	mySH->transpShader(mm->bg[2]->mNode);
-
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/relleno.osg", "relleno" ) );
+	mySH->aOShader(mm->bg[3]->mNode);
 	mySH->transpShader(mm->bg[3]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg", "obstaculo" ) );
 	mySH->transpShader(mm->bg[4]->mNode);
