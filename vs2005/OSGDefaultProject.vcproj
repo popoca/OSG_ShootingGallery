@@ -178,7 +178,19 @@
 				>
 			</File>
 			<File
+				RelativePath="..\src\Enemy.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\EnemyController.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\src\FindNodeVisitor.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\InputHandler.cpp"
 				>
 			</File>
 			<File
@@ -187,6 +199,14 @@
 			</File>
 			<File
 				RelativePath="..\src\ModelManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\MouseEventHandler.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\MyKeyboardEventHandler.cpp"
 				>
 			</File>
 			<File
@@ -208,11 +228,31 @@
 				>
 			</File>
 			<File
+				RelativePath="..\src\Enemy.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\EnemyController.h"
+				>
+			</File>
+			<File
 				RelativePath="..\src\FindNodeVisitor.h"
 				>
 			</File>
 			<File
+				RelativePath="..\src\InputHandler.h"
+				>
+			</File>
+			<File
 				RelativePath="..\src\ModelManager.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\MouseEventHandler.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\MyKeyboardEventHandler.h"
 				>
 			</File>
 			<File

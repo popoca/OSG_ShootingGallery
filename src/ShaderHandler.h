@@ -18,8 +18,8 @@ public:
 	~ShaderHandler();
 
 	void BumpMappingShader(osg::Node* node);
-	void TextureShader(osg::Node* node);
 	void IlluminationShader(osg::Node* node);
+	void aOShader(osg::Node* node);
 
 private:
 
