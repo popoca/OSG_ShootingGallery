@@ -15,7 +15,7 @@ class MouseEventHandler : public osgGA::GUIEventHandler {
     float _mX, _mY;
  
     public:
-    
+
      MouseEventHandler();
     ~MouseEventHandler();
     void setRootNode(osg::Group *rootNode);

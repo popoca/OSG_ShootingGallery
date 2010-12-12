@@ -6,6 +6,8 @@
     	mRootNode = rootNode;
     }
 
+	MouseEventHandler::~MouseEventHandler(){}
+	
     bool MouseEventHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter& aa) {
  
         switch (ea.getEventType()) {

@@ -2,6 +2,7 @@
 #define _WORLDSIM_
 
 #include "ShaderHandler.h"
+#include "InputHandler.h"
 
 #include <osg/MatrixTransform>
 #include <osg/PositionAttitudeTransform>
@@ -13,7 +14,8 @@ class WorldSim: public osg::Referenced
 {
 
 public:
-
+	
+	InputHandler* myIH;
 	// Constructor 
 	WorldSim();
 	// Desctructor
@@ -21,7 +23,7 @@ public:
 	{
 	
 	}
-
+	
 	// GameStates
 	bool startGame(){
 		if(!start)

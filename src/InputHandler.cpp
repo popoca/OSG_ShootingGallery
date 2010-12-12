@@ -5,14 +5,18 @@
 
 InputHandler::InputHandler(osg::Group *rootNode)
 {
-	myMSH.setRootNode(rootNode);
+	printf("Not created");
+	myMSH = new MouseEventHandler();
+	myKBH = new MyKeyboardEventHandler();
+	myMSH->setRootNode(rootNode);
+	
 }
 
-MyKeyboardEventHandler InputHandler::getKeyboardHandler()
+MyKeyboardEventHandler* InputHandler::getKeyboardHandler()
 {
 	return myKBH; 
 }
-MouseEventHandler InputHandler::getMouseHandler()
+MouseEventHandler* InputHandler::getMouseHandler()
 {
 	return myMSH;
 }

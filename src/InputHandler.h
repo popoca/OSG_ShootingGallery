@@ -16,11 +16,11 @@ class InputHandler
 	~InputHandler();
 	osg::Vec3f camera;
 	
-	MyKeyboardEventHandler myKBH;
-	MouseEventHandler myMSH;
+	MyKeyboardEventHandler* myKBH;
+	MouseEventHandler* myMSH;
 	
-	MyKeyboardEventHandler getKeyboardHandler();
-	MouseEventHandler getMouseHandler();
+	MyKeyboardEventHandler* getKeyboardHandler();
+	MouseEventHandler* getMouseHandler();
 	
 };
 

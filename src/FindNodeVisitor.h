@@ -3,6 +3,8 @@
 #include <osg/PositionAttitudeTransform>
 #include <iostream>
 #include <vector>
+#include <string.h>
+
 
 //Se hereda de la clase NodeVisitor para poder hacer el recorrido del grafo
 //La idea es reimplementar el metodo apply para realizar tareas especificas
@@ -11,13 +13,9 @@
 class FindNodeVisitor : public osg::NodeVisitor { 
 public: 
 
-   FindNodeVisitor(const char* nodetype)				    
-{ 
-
-  setTraversalMode(osg::NodeVisitor::TRAVERSE_ALL_CHILDREN);
-  className = nodetype;
-} 
- 
+   FindNodeVisitor(const char* nodetype);
+ 	~FindNodeVisitor();
+ 	
    virtual void apply(osg::Node &searchNode);
    
    //Cambiamos la definición a nodes
