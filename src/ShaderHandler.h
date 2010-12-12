@@ -19,6 +19,7 @@ public:
 
 	void BumpMappingShader(osg::Node* node);
 	void IlluminationShader(osg::Node* node);
+	void aOShader(osg::Node* node);
 
 private:
 

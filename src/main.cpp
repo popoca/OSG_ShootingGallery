@@ -23,23 +23,23 @@ int main( int argc, char** argv )
 	osg::ref_ptr<osg::Camera> vcam = viewer.getCamera();
 	
 
-	//// Configuracion de los rasgos del contexto grafico
-	//osg::ref_ptr<osg::GraphicsContext::Traits> traits = new osg::GraphicsContext::Traits;
- //   traits->x = 200;
- //   traits->y = 200;
- //   traits->width = 600;
- //   traits->height = 600;
- //   traits->windowDecoration = true;
-	//traits->supportsResize = true;
-	//traits->doubleBuffer = true;
- //   traits->sharedContext = 0;
- //   traits->sampleBuffers = true;
-	//traits->samples=8;
+	// Configuracion de los rasgos del contexto grafico
+	osg::ref_ptr<osg::GraphicsContext::Traits> traits = new osg::GraphicsContext::Traits;
+    traits->x = 200;
+    traits->y = 200;
+    traits->width = 600;
+    traits->height = 600;
+    traits->windowDecoration = true;
+	traits->supportsResize = true;
+	traits->doubleBuffer = true;
+    traits->sharedContext = 0;
+    traits->sampleBuffers = true;
+	traits->samples=8;
 
- //   osg::ref_ptr<osg::GraphicsContext> gc = osg::GraphicsContext::createGraphicsContext(traits.get());
- //   vcam->setGraphicsContext(gc.get());
- //   vcam->setViewport(new osg::Viewport(0,0, traits->width,traits->height));
-	//vcam->setProjectionMatrixAsPerspective(60.0f, 1.0f, 1.0f, 500.0f);
+    osg::ref_ptr<osg::GraphicsContext> gc = osg::GraphicsContext::createGraphicsContext(traits.get());
+    vcam->setGraphicsContext(gc.get());
+    vcam->setViewport(new osg::Viewport(0,0, traits->width,traits->height));
+	vcam->setProjectionMatrixAsPerspective(60.0f, 1.0f, 1.0f, 500.0f);
 
 	viewer.addEventHandler( myGS->myIH->myKBH );
 	viewer.addEventHandler( myGS->myIH->myMSH );
