@@ -11,20 +11,23 @@
 #include <osg/Depth>
 #include <osg/MatrixTransform>
 #include <osg/ShapeDrawable>
+#include <string>
+#include <vector>
 #include "ModelManager.h"
 
 //#include "MouseEventHandler.h"
 
 int main( int argc, char** argv )
 {
-
 	/* Timer */
 	static osg::Timer_t old_tick, new_tick; 
 	static double delta;
 
 	/* Initialize viewer */
 	osgViewer::Viewer *viewer = new osgViewer::Viewer();
-	osg::Group *root = new osg::Group();
+	osg::ref_ptr< osg::Group > root = new osg::Group();
+	/* Una prueba del manejador de modelos */
+	ModelManager mm( root );
 
 	// ----------------Carga de los modelos-----------------------------
 	// Grupo 1 ---- sin shader
@@ -32,42 +35,19 @@ int main( int argc, char** argv )
 	// Grupo 3 ---- difuso, normal, ambient occlusion y detalle
 	// Grupo 4 ---- difuso, normal y ambient occlusion
 	//------------------------------------------------------------------
-	osg::PositionAttitudeTransform *modelXForm = new osg::PositionAttitudeTransform();
-	osg::PositionAttitudeTransform *modelXForm2 = new osg::PositionAttitudeTransform();
-	osg::PositionAttitudeTransform *modelXForm3 = new osg::PositionAttitudeTransform();
-	osg::PositionAttitudeTransform *modelXForm4 = new osg::PositionAttitudeTransform();
-
-	osg::Group *auxGroup1 = new osg::Group();
-	osg::Group *auxGroup2 = new osg::Group();
-	osg::Group *auxGroup3 = new osg::Group();
-	osg::Group *auxGroup4 = new osg::Group();
 
 	// grupo 1
-	osg::Node *modelNode = osgDB::readNodeFile("../content/bg/sin_shader/sin_shader.osg");
-	osg::Node *modelNode9 = osgDB::readNodeFile("../content/npcs/cielo/cielo.osg");
-	// grupo 2
-	osg::Node *modelNode2 = osgDB::readNodeFile("../content/bg/shader_dif_transp_ao/pasto.osg");
-	osg::Node *modelNode3 = osgDB::readNodeFile("../content/bg/shader_dif_transp_ao/relleno.osg");
-	osg::Node *modelNode4 = osgDB::readNodeFile("../content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg");
-	osg::Node *modelNode5 = osgDB::readNodeFile("../content/bg/shader_dif_transp_ao/zona_obstaculos_2.osg");
-	osg::Node *modelNode6 = osgDB::readNodeFile("../content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg");
-	// grupo 3
-	osg::Node *modelNode7 = osgDB::readNodeFile("../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg");
-	// grupo 4
-	osg::Node *modelNode8 = osgDB::readNodeFile("../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg");
+	mm.bg.push_back( new BasicModel( "../content/bg/sin_shader/sin_shader.osg" ) );
+	mm.bg.push_back( new BasicModel( "../content/npcs/cielo/cielo.osg" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/pasto.osg" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/relleno.osg" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_2.osg" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg" ) );
 
-	auxGroup1->addChild(modelNode);
-	auxGroup1->addChild(modelNode9);
-
-	auxGroup2->addChild(modelNode2);
-	auxGroup2->addChild(modelNode3);
-	auxGroup2->addChild(modelNode4);
-	auxGroup2->addChild(modelNode5);
-	auxGroup2->addChild(modelNode6);
-
-	auxGroup3->addChild(modelNode7);
-
-	auxGroup3->addChild(modelNode8);
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg" ) );
+	mm.setUpScene();
 
 	// Creacion y configuracion de la luz
 	osg::Light* myLight = new osg::Light;
@@ -97,57 +77,6 @@ int main( int argc, char** argv )
 	root->addChild(lightS);
 	root->addChild(sphere);
 	sphere->setPosition(osg::Vec3(myLight->getPosition().x(), myLight->getPosition().y(), myLight->getPosition().z()));
-
-
-	// Construccion del grafo de escena
-	modelXForm->addChild(auxGroup1);
-	modelXForm2->addChild(auxGroup2);
-	modelXForm3->addChild(auxGroup3);
-	modelXForm4->addChild(auxGroup4);
-	root->addChild(modelXForm);
-	root->addChild(modelXForm2);
-	root->addChild(modelXForm3);
-	root->addChild(modelXForm4);
-
-	// Estado de auxGroups
-	osg::StateSet *modelState = auxGroup1->getOrCreateStateSet();
-	osg::StateSet *modelState2 = auxGroup2->getOrCreateStateSet();
-	osg::StateSet *modelState3 = auxGroup2->getOrCreateStateSet();
-	osg::StateSet *modelState4 = auxGroup2->getOrCreateStateSet();
-
-	// Se activa la prueba de culling para las caras posteriores
-	osg::CullFace *cullm1 = new osg::CullFace();
-	cullm1->setMode(osg::CullFace::BACK);
-	modelState->setAttribute(cullm1);
-
-	osg::CullFace *cullm2 = new osg::CullFace();
-	cullm2->setMode(osg::CullFace::BACK);
-	modelState2->setAttribute(cullm2);
-
-	osg::CullFace *cullm3 = new osg::CullFace();
-	cullm3->setMode(osg::CullFace::BACK);
-	modelState3->setAttribute(cullm3);
-
-	osg::CullFace *cullm4 = new osg::CullFace();
-	cullm4->setMode(osg::CullFace::BACK);
-	modelState4->setAttribute(cullm4);
-
-	//// se Define la funcion de profundidad
-	osg::Depth *depthfunc1 = new osg::Depth();
-	depthfunc1->setFunction(osg::Depth::LEQUAL);
-	modelState->setAttribute(depthfunc1);
-
-	osg::Depth *depthfunc2 = new osg::Depth();
-	depthfunc2->setFunction(osg::Depth::LEQUAL);
-	modelState2->setAttribute(depthfunc2);
-
-	osg::Depth *depthfunc3 = new osg::Depth();
-	depthfunc3->setFunction(osg::Depth::LEQUAL);
-	modelState3->setAttribute(depthfunc3);
-
-	osg::Depth *depthfunc4 = new osg::Depth();
-	depthfunc4->setFunction(osg::Depth::LEQUAL);
-	modelState4->setAttribute(depthfunc4);
 	
 	// Estado del nodo raiz
 	osg::StateSet *rootState = new osg::StateSet();

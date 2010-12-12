@@ -24,15 +24,21 @@ class BasicModel : public osg::Referenced
 public:
 
 	// Constructor toma una referencia a un string
-	BasicModel( string& file );
+	BasicModel( const char* file );
 	~BasicModel();
 
-protected:
+// protected:
 
 	// Una lista de Modelos
 	osg::ref_ptr< osg::Node > mNode;
 	// Una matriz de transformacion
-	osg::ref_ptr< osg::MatrixTransform > mPat;
+	osg::ref_ptr< osg::MatrixTransform > mMat;
+	// Un StateSet
+	osg::ref_ptr< osg::StateSet > mState;
+	// Un cullFace
+	osg::ref_ptr< osg::CullFace > mCull;
+	// Un depth
+	osg::ref_ptr< osg::Depth > mDepth;
 	// Vectores de posicion, axis, escala
 	osg::Vec3 position, axis, scale;
 	// Una matriz para hacer las transformaciones

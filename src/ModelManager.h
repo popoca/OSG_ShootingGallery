@@ -16,6 +16,7 @@
 #include <osg/MatrixTransform>
 #include <string>
 #include <iostream>
+#include <algorithm>
 #include "BasicModel.h"
 
 using namespace std;
@@ -24,16 +25,19 @@ class ModelManager : public osg::Referenced
 {
 public:
 
+	/* Methods */
+
 	// Constructor toma una referencia a un string
 	ModelManager( osg::ref_ptr< osg::Group > rt );
+	// Destructor
 	~ModelManager();
-
-protected:
+	// Metodos para agregar todo a root
+	void setUpScene();
 
 	// Esta clase tiene una referencia a root
 	osg::ref_ptr< osg::Group > root;
 	// Una lista de BasicModels para el escenario
-	vector< BasicModel > bg;
+	vector< osg::ref_ptr< BasicModel > > bg;
 	// Una lista de Enemies para los enemigos
 	
 

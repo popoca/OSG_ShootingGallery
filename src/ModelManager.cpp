@@ -9,6 +9,18 @@ ModelManager::ModelManager( osg::ref_ptr< osg::Group > rt )
 }
 
 ModelManager::~ModelManager()
+{	
+}
+
+void ModelManager::setUpScene()
 {
-	
+	for( int i = 0; i < (int)bg.size(); i++ )
+	{
+		root->addChild( bg[i]->mMat.get() );
+	}
+
+	bg.clear();
+
+	if( bg.empty() )
+		cout << "Escenario cargado" << endl;
 }
