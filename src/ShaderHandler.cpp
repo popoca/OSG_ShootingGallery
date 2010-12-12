@@ -26,18 +26,8 @@ ShaderHandler::ShaderHandler()
 	_shadersList[1]->setName( "IlluminationShader" );
 	_vertexList[1]->loadShaderSourceFromFile( "../shaders/illu.vert" );
 	_fragmentList[1]->loadShaderSourceFromFile( "../shaders/illu.frag" );
+	
 
-	_shadersList.resize(3);
-	_shadersList[2] = new osg::Program();
-	_vertexList.resize(3);
-	_vertexList[2] = new osg::Shader( osg::Shader::VERTEX );
-	_fragmentList.resize(3);
-	_fragmentList[2] = new osg::Shader( osg::Shader::FRAGMENT );
-	_shadersList[2]->addShader(_vertexList[2]);
-	_shadersList[2]->addShader(_fragmentList[2]);
-	_shadersList[2]->setName( "TextureShader" );
-	_vertexList[2]->loadShaderSourceFromFile( "../shaders/flw.vert" );
-	_fragmentList[2]->loadShaderSourceFromFile( "../shaders/flw.frag" );
 }
 
 ShaderHandler::~ShaderHandler(){};
@@ -48,7 +38,7 @@ void ShaderHandler::BumpMappingShader(osg::Node* node)
 
 	nodeState->addUniform( new osg::Uniform( "colorMap", 0 ) );
 	nodeState->addUniform( new osg::Uniform( "normalMap", 1 ) );
-
+ 
 
 	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
 	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
@@ -124,38 +114,4 @@ void ShaderHandler::IlluminationShader(osg::Node* node)
 	}
 
 	nodeState->setAttributeAndModes(_shadersList[1],osg::StateAttribute::ON);
-}
-
-void ShaderHandler::TextureShader(osg::Node* node)
-{
-	osg::ref_ptr<osg::StateSet> nodeState = node->getOrCreateStateSet();
-
-	nodeState->addUniform( new osg::Uniform( "colorMap", 0 ) );
-
-
-	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
-	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
-	node->accept(*(fnv.get()));
-	//std::cout<<fnv->foundNodeList.size()<<std::endl;
-
-	std::vector<osg::Node*>::iterator giter;
-	for(giter = fnv->foundNodeList.begin(); giter != fnv->foundNodeList.end(); giter++)
-	{
-		osg::Geode* tmpgeode = dynamic_cast<osg::Geode*>(*giter);
-		for(unsigned int i = 0; i< tmpgeode->getNumDrawables(); i++)
-		{
-			osg::StateSet *tmpstate = tmpgeode->getDrawable(i)->getOrCreateStateSet();
-			tmpstate->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
-
-			//osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
-
-			//osg::Material *material = new osg::Material();
-			//material->setAmbient(osg::Material::FRONT_AND_BACK, osg::Vec4(0.9f, 0.9f, 0.9f, 1.0f));
-			//material->setDiffuse(osg::Material::FRONT_AND_BACK, osg::Vec4(0.9f, 0.9f, 0.9f, 1.0f));
-			//material->setSpecular(osg::Material::FRONT_AND_BACK, osg::Vec4(0.2f, 0.2f, 0.2f, 1.0f));
-			//material->setShininess(osg::Material::FRONT_AND_BACK, 40.0f);
-			//tmpstate->setAttribute(material, osg::StateAttribute::ON);
-		}
-	}
-	nodeState->setAttributeAndModes(_shadersList[2],osg::StateAttribute::ON);
 }

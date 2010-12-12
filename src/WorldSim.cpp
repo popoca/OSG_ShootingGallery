@@ -22,17 +22,17 @@ WorldSim::WorldSim()
 
 	mySH= new ShaderHandler();
 
-	 // Creacion y configuracion de la luz
+	// Creacion y configuracion de la luz
 	osg::Light* myLight = new osg::Light;
     myLight->setLightNum(0);
-	myLight->setPosition(osg::Vec4(0.0,0.0,90.0,1.0));
-    myLight->setAmbient(osg::Vec4(1.0f,1.0f,1.0f,1.0f));
-    myLight->setDiffuse(osg::Vec4(1.0f,1.0f,1.0f,1.0f));
-	myLight->setSpecular(osg::Vec4(1.0f,1.0f,1.0f,1.0f));
-	myLight->setDirection(osg::Vec3(0.0,0.0,-1.0));
+	myLight->setPosition(osg::Vec4(0.0,0.0,1300.0,1.0));
+    myLight->setAmbient(osg::Vec4(0.85f,0.85f,0.85f,1.0f));
+    myLight->setDiffuse(osg::Vec4(0.85f,0.85f,0.85f,1.0f));
+	myLight->setSpecular(osg::Vec4(0.85f,0.85f,0.85f,1.0f));
+	myLight->setDirection(osg::Vec3(-1.0,-1.0,-1.0));
     myLight->setConstantAttenuation(1.0f);
-    myLight->setLinearAttenuation(2.0f/80.0f);
-    myLight->setQuadraticAttenuation(2.0f/osg::square(80.0f));
+    myLight->setLinearAttenuation(2.0f/40.0f);
+    myLight->setQuadraticAttenuation(2.0f/osg::square(40.0f));
 
     osg::LightSource* lightS = new osg::LightSource;    
     lightS->setLight(myLight);
@@ -76,8 +76,10 @@ WorldSim::WorldSim()
 
 	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg", "ao_detail" ) );
 	mySH->IlluminationShader(mm.bg[7]->mNode);
+	mySH->BumpMappingShader(mm.bg[7]->mNode);
 	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg", "ao" ) );
 	mySH->IlluminationShader(mm.bg[8]->mNode);
+	mySH->BumpMappingShader(mm.bg[8]->mNode);
 	
 	mm.en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 1.0f ) );
 

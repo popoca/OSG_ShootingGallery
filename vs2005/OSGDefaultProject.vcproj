@@ -178,6 +178,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\src\Enemy.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\EnemyController.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\src\FindNodeVisitor.cpp"
 				>
 			</File>
@@ -205,6 +213,14 @@
 			>
 			<File
 				RelativePath="..\src\BasicModel.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\Enemy.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\EnemyController.h"
 				>
 			</File>
 			<File
