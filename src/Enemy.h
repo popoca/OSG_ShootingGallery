@@ -1,5 +1,5 @@
-#ifndef BASICMODEL_H
-#define BASICMODEL_H
+#ifndef ENEMY_H
+#define ENEMY_H
 
 #include <osg/Node>
 #include <osg/Group>
@@ -16,29 +16,28 @@
 #include <osg/MatrixTransform>
 #include <string>
 #include <iostream>
+#include "BasicModel.h"
 
 using namespace std;
 
-class BasicModel : public osg::Referenced
+class Enemy : public BasicModel
 {
 public:
 
 	// Constructor toma una referencia a un string
-	BasicModel( const char* file, const char* name );
-	~BasicModel();
+	Enemy( const char* file, const char* name );
+	~Enemy();
 
 // protected:
 
-	// Una lista de Modelos
+	// Un enemigo tiene
+
+	// Un Modelo para la explosion
 	osg::ref_ptr< osg::Node > mNode;
-	// Una matriz de transformacion
-	osg::ref_ptr< osg::MatrixTransform > mMat;
-	// Un StateSet
-	osg::ref_ptr< osg::StateSet > mState;
-	// Un cullFace
-	osg::ref_ptr< osg::CullFace > mCull;
-	// Un depth
-	osg::ref_ptr< osg::Depth > mDepth;
+	// Vectores de posicion, axis, escala
+	osg::Vec3 position, axis, scale;
+	// Una matriz para hacer las transformaciones
+	osg::Matrix matrix;
 
 };
 

@@ -177,6 +177,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\src\Enemy.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\src\main.cpp"
 				>
 			</File>
@@ -192,6 +196,10 @@
 			>
 			<File
 				RelativePath="..\src\BasicModel.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\Enemy.h"
 				>
 			</File>
 			<File

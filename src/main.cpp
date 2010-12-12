@@ -37,16 +37,16 @@ int main( int argc, char** argv )
 	//------------------------------------------------------------------
 
 	// grupo 1
-	mm.bg.push_back( new BasicModel( "../content/bg/sin_shader/sin_shader.osg" ) );
-	mm.bg.push_back( new BasicModel( "../content/npcs/cielo/cielo.osg" ) );
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/pasto.osg" ) );
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/relleno.osg" ) );
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg" ) );
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_2.osg" ) );
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/sin_shader/sin_shader.osg", "casa" ) );
+	mm.bg.push_back( new BasicModel( "../content/npcs/cielo/cielo.osg", "cielo" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/pasto.osg", "pasto" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/relleno.osg", "relleno" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg", "obstaculo" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_2.osg", "obstaculo" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg", "obstaculo" ) );
 
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg" ) );
-	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg", "ao_detail" ) );
+	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg", "ao" ) );
 	mm.setUpScene();
 
 	// Creacion y configuracion de la luz

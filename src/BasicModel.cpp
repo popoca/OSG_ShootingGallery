@@ -2,13 +2,14 @@
 
 using namespace std;
 
-BasicModel::BasicModel( const char* file )
+BasicModel::BasicModel( const char* file, const char* name )
 {
 	mNode = osgDB::readNodeFile( file );
 	if( mNode )
 	{
 		mNode->setName( file );
 		mState = mNode->getOrCreateStateSet();
+		mNode->setName( name );
 		// Se activa la prueba de culling para las caras posteriores
 		mCull = new osg::CullFace();
 		mCull->setMode( osg::CullFace::BACK );
