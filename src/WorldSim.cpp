@@ -96,6 +96,12 @@ void WorldSim::update()
 	{
 	case Start:
 
+		// do stuff
+
+		break;
+
+	case Level1:
+
 		if( !hasLoaded )
 		{
 			
@@ -109,9 +115,6 @@ void WorldSim::update()
 		else
 			mm->updateScene();
 
-		break;
-
-	case Level1:
 		break;
 
 	case Level2:
