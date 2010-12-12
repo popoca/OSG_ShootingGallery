@@ -25,13 +25,13 @@ class Enemy : public BasicModel
 public:
 
 	// Constructor toma una referencia a un string
-	Enemy( const char* file, const char* name );
+	Enemy( const char* file, const char* name, float speed );
 	~Enemy();
 
 // protected:
 
-	// Un enemigo tiene
-
+	// Un enemigo tiene velocidad
+	float speed;
 	// Un Modelo para la explosion
 	osg::ref_ptr< osg::Node > mNode;
 	// Vectores de posicion, axis, escala

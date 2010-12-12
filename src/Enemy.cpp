@@ -1,7 +1,6 @@
 #include "Enemy.h"
 
-Enemy::Enemy( const char* file, const char* name )
-: BasicModel( file )
+Enemy::Enemy( const char* file, const char* name, float speed )
+: BasicModel( file, name ), speed( speed )
 {
-	mNode->setName( name );
 }
