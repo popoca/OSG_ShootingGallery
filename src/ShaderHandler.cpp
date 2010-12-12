@@ -2,6 +2,12 @@
 #include "FindNodeVisitor.h"
 #include <osg/Depth>
 #include <osg/TexEnv>
+#include <osg/Texture2D>
+#include <osgDB/ReadFile>
+#include <osgDB/FileUtils>
+#include <osgViewer/Viewer>
+#include <osg/TexGen>
+#include <osg/StateSet>
 
 ShaderHandler::ShaderHandler()
 {
@@ -210,7 +216,16 @@ void ShaderHandler::illuShader(osg::Node* node)
 
 	nodeState->addUniform( new osg::Uniform( "colorMap", 0 ) );
 	nodeState->addUniform( new osg::Uniform( "ambientO", 2 ) );
-
+	osg::Texture2D* detalle = new osg::Texture2D;
+	detalle->setDataVariance(osg::Object::DYNAMIC); 
+    osg::Image* cbi = osgDB::readImageFile("../content/bg/shader_dif_normal_ao_detail/images/pisoDetailCompleteMap.tga"); 
+	detalle->setImage(cbi);
+   
+	// Declare a TexEnv instance, set the mode to 'BLEND'
+    osg::TexEnv* blendTexEnv = new osg::TexEnv;
+    blendTexEnv->setMode(osg::TexEnv::BLEND);
+    osg::TexEnv* decalTexEnv = new osg::TexEnv();
+    decalTexEnv->setMode(osg::TexEnv::DECAL);
 
 	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
 	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
@@ -226,22 +241,30 @@ void ShaderHandler::illuShader(osg::Node* node)
 			osg::StateSet *tmpstate = tmpgeode->getDrawable(i)->getOrCreateStateSet();
 			tmpstate->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 
-			//osg::TexEnv* decalTexEnv = new osg::TexEnv();
-			//tmpstate->setMode(osg::TexEnv::DECAL, osg::StateAttribute::ON);
+			/*tmpstate->setTextureAttributeAndModes(0,detalle,osg::StateAttribute::ON);
+			// Set the texture texture environment for texture 0 to the 
+			//  texture envirnoment we declared above:
+			tmpstate->setTextureAttribute(0,blendTexEnv);
 
-			//tmpstate->setTextureAttributeAndModes
-			//(0,KLN89FaceTexture,osg::StateAttribute::ON);
-			//tmpstate->setTextureAttribute(0,decalTexEnv);
+
+			osg::TexEnv* decalTexEnv = new osg::TexEnv();
+			decalTexEnv->setMode(osg::TexEnv::DECAL);
+
+
+			tmpstate->setTextureAttributeAndModes(0,detalle,osg::StateAttribute::ON);
+			tmpstate->setTextureAttribute(1,decalTexEnv);*/
+
+
 
 		
 
-			//osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
+			osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
 
 			osg::Material *material = new osg::Material();
-			material->setAmbient(osg::Material::FRONT_AND_BACK, osg::Vec4(0.9f, 0.9f, 0.9f, 1.0f));
+			material->setAmbient(osg::Material::FRONT_AND_BACK, osg::Vec4(1.0f, 1.0f, 1.0f, 1.0f));
 			material->setDiffuse(osg::Material::FRONT_AND_BACK, osg::Vec4(0.9f, 0.9f, 0.9f, 1.0f));
-			material->setSpecular(osg::Material::FRONT_AND_BACK, osg::Vec4(0.2f, 0.2f, 0.2f, 1.0f));
-			material->setShininess(osg::Material::FRONT_AND_BACK, 60.0f);
+			material->setSpecular(osg::Material::FRONT_AND_BACK, osg::Vec4(0.9f, 0.9f, 0.9f, 1.0f));
+			material->setShininess(osg::Material::FRONT_AND_BACK, 120.0f);
 			tmpstate->setAttribute(material, osg::StateAttribute::ON);
 
 		}
