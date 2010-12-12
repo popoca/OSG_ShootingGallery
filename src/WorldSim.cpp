@@ -64,20 +64,32 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	mm.bg.push_back( new BasicModel( "../content/bg/sin_shader/sin_shader.osg", "casa" ) );
 	mm.bg.push_back( new BasicModel( "../content/npcs/cielo/cielo.osg", "cielo" ) );
 	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/pasto.osg", "pasto" ) );
-	mySH->IlluminationShader(mm.bg[2]->mNode);
+	//mySH->transShader(mm.bg[2]->mNode);
+	//mySH->aOShader(mm.bg[2]->mNode);
+	mySH->transpShader(mm.bg[2]->mNode);
+
 	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/relleno.osg", "relleno" ) );
 	mySH->IlluminationShader(mm.bg[3]->mNode);
+	mySH->transpShader(mm.bg[3]->mNode);
 	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg", "obstaculo" ) );
 	mySH->IlluminationShader(mm.bg[4]->mNode);
+	mySH->transpShader(mm.bg[4]->mNode);
 	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_2.osg", "obstaculo" ) );
 	mySH->IlluminationShader(mm.bg[5]->mNode);
+	mySH->transpShader(mm.bg[5]->mNode);
 	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg", "obstaculo" ) );
 	mySH->IlluminationShader(mm.bg[6]->mNode);
+	mySH->transpShader(mm.bg[6]->mNode);
 
 	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg", "ao_detail" ) );
 	mySH->IlluminationShader(mm.bg[7]->mNode);
+	mySH->illuShader(mm.bg[7]->mNode);
+	mySH->BumpMappingShader(mm.bg[7]->mNode);
+
 	mm.bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg", "ao" ) );
 	mySH->IlluminationShader(mm.bg[8]->mNode);
+	mySH->illuShader2(mm.bg[8]->mNode);
+	mySH->BumpMappingShader(mm.bg[8]->mNode);
 	
 	mm.en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 1.0f ) );
 
