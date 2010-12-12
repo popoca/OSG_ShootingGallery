@@ -15,10 +15,7 @@ public:
 
 	ShaderHandler();
 
-	~ShaderHandler()
-	{
-	
-	}
+	~ShaderHandler();
 
 	void BumpMappingShader(osg::Node* node);
 	void TextureShader(osg::Node* node);

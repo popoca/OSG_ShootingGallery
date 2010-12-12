@@ -40,6 +40,8 @@ ShaderHandler::ShaderHandler()
 	_fragmentList[2]->loadShaderSourceFromFile( "../shaders/flw.frag" );
 }
 
+ShaderHandler::~ShaderHandler(){};
+
 void ShaderHandler::BumpMappingShader(osg::Node* node)
 {
 	osg::ref_ptr<osg::StateSet> nodeState = node->getOrCreateStateSet();

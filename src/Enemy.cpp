@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include <string.h>
 
 Enemy::Enemy( const char* file, const char* file2, const char* name, float speed, bool hasSpawned, bool isMoving )
 : BasicModel( file, name ), speed( speed )

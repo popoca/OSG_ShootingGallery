@@ -42,6 +42,8 @@ int main( int argc, char** argv )
  //   vcam->setViewport(new osg::Viewport(0,0, traits->width,traits->height));
 	//vcam->setProjectionMatrixAsPerspective(60.0f, 1.0f, 1.0f, 500.0f);
 
+	viewer.addEventHandler(myGS->myIH->getKeyboardHandler());
+	viewer.addEventHandler(myGS->myIH->getMouseHandler());
 	osgGA::TrackballManipulator* tb = new osgGA::TrackballManipulator;
 
 	viewer.setCameraManipulator( tb );
