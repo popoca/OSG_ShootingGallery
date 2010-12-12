@@ -8,6 +8,9 @@
 #include <osgUtil/IntersectionVisitor>
 #include <osgUtil/LineSegmentIntersector>
 #include <osg/Group>
+#include <osgViewer/Viewer>
+#include <osgViewer/ViewerEventHandlers>
+#include <iostream>
 
 class MouseEventHandler : public osgGA::GUIEventHandler {
  
@@ -18,10 +21,9 @@ class MouseEventHandler : public osgGA::GUIEventHandler {
 
      MouseEventHandler();
     ~MouseEventHandler();
-    void setRootNode(osg::Group *rootNode);
+	void setRootNode( osg::ref_ptr< osg::Group > rootNode );
     
-    
- 	osg::Group* mRootNode;
+	osg::ref_ptr< osg::Group > mRootNode;
 
     virtual bool handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter& aa);
 };

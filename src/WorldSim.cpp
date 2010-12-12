@@ -18,7 +18,7 @@ WorldSim::WorldSim()
 	start = false;
 
 	root = new osg::Group;
-	myIH = new InputHandler(root);
+	myIH = new InputHandler( root );
 
 	mySH= new ShaderHandler();
 

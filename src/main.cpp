@@ -20,7 +20,7 @@ int main( int argc, char** argv )
 	/* Initialize viewer */
 	osg::ref_ptr<WorldSim> myGS = new WorldSim();
 	osgViewer::Viewer viewer;
-	 osg::ref_ptr<osg::Camera> vcam = viewer.getCamera();
+	osg::ref_ptr<osg::Camera> vcam = viewer.getCamera();
 	
 
 	//// Configuracion de los rasgos del contexto grafico
@@ -41,11 +41,11 @@ int main( int argc, char** argv )
  //   vcam->setViewport(new osg::Viewport(0,0, traits->width,traits->height));
 	//vcam->setProjectionMatrixAsPerspective(60.0f, 1.0f, 1.0f, 500.0f);
 
-	viewer.addEventHandler(myGS->myIH->getKeyboardHandler());
-	viewer.addEventHandler(myGS->myIH->getMouseHandler());
+	viewer.addEventHandler( myGS->myIH->myKBH );
+	viewer.addEventHandler( myGS->myIH->myMSH );
 	osgGA::TrackballManipulator* tb = new osgGA::TrackballManipulator;
 	viewer.setCameraManipulator( tb );
-	viewer.setSceneData( myGS->getRootNode().get());
+	viewer.setSceneData( myGS->getRootNode().get() );
 
 
 	/* Realize the viewer */

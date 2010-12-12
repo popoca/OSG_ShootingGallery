@@ -9,6 +9,7 @@ BasicModel::BasicModel( const char* file, const char* name )
 	{
 		mState = mNode->getOrCreateStateSet();
 		mNode->setName( name );
+		mNode->addDescription( name );
 		// Se activa la prueba de culling para las caras posteriores
 		mCull = new osg::CullFace();
 		mCull->setMode( osg::CullFace::BACK );

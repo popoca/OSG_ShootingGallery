@@ -3,12 +3,12 @@
 #include "InputHandler.h"
 #include <osg/Group>
 
-InputHandler::InputHandler(osg::Group *rootNode)
+InputHandler::InputHandler( osg::ref_ptr< osg::Group > rootNode )
 {
 	printf("Not created");
 	myMSH = new MouseEventHandler();
 	myKBH = new MyKeyboardEventHandler();
-	myMSH->setRootNode(rootNode);
+	myMSH->setRootNode( rootNode );
 	
 }
 

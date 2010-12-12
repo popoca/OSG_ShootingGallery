@@ -1,10 +1,12 @@
-
-#ifndef 	_INPUTH_
+#ifndef _INPUTH_
 #define _INPUTH_
 
 #include "MouseEventHandler.h"
 #include "MyKeyboardEventHandler.h"
 #include <osg/Group>
+#include <osg/MatrixTransform>
+#include <osg/PositionAttitudeTransform>
+#include <osg/Matrix>
 
 class InputHandler
 {
@@ -12,7 +14,7 @@ class InputHandler
 	
 	public:	
 	
-	InputHandler(osg::Group* rootNode);
+	InputHandler( osg::ref_ptr< osg::Group > rootNode );
 	~InputHandler();
 	osg::Vec3f camera;
 	
