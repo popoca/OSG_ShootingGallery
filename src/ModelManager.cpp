@@ -6,7 +6,7 @@ ModelManager::ModelManager( osg::ref_ptr< osg::Group > rt )
 : root( rt )
 {
 	bg.reserve( 9 );
-	en.reserve( 5 );
+	//en.reserve( 5 );
 }
 
 ModelManager::~ModelManager()
@@ -25,7 +25,7 @@ void ModelManager::setUpScene()
 	if( bg.empty() )
 		cout << "Escenario cargado" << endl;
 
-	for( int i = 0; i < (int)en.size(); i++ )
+	/*for( int i = 0; i < (int)en.size(); i++ )
 	{
 		root->addChild( en[i]->mPat.get() );
 	}
@@ -34,5 +34,5 @@ void ModelManager::setUpScene()
 
 	if( en.empty() )
 		cout << "Enemigos cargados" << endl;
-
+	*/
 }

@@ -2,7 +2,7 @@
 #ifndef 	_INPUTH_
 #define _INPUTH_
 
-#include "MouseEventHandler.h"
+#include "PickerHandler.h"
 #include "MyKeyboardEventHandler.h"
 #include <osg/Group>
 
@@ -12,15 +12,15 @@ class InputHandler
 	
 	public:	
 	
-	InputHandler(osg::Group* rootNode);
+	InputHandler(osgText::Text* updateText);
 	~InputHandler();
-	osg::Vec3f camera;
 	
 	MyKeyboardEventHandler* myKBH;
-	MouseEventHandler* myMSH;
+	PickHandler *myPKH;
+	osgText::Text* updateText;
 	
 	MyKeyboardEventHandler* getKeyboardHandler();
-	MouseEventHandler* getMouseHandler();
+	PickHandler* getPickHandler();
 	
 };
 

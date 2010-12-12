@@ -18,39 +18,22 @@ int main( int argc, char** argv )
 	static osg::Timer_t old_tick, new_tick;
 	static double delta;
 
+	/* Needed stuff */
+	osg::ref_ptr<osgText::Text> updateText = new osgText::Text;
+
 	/* Initialize viewer */
-	osg::ref_ptr<WorldSim> myGS = new WorldSim();
+	osg::ref_ptr<osgViewer::View> view = new osgViewer::View;
+	view->setUpViewAcrossAllScreens();
+	osg::ref_ptr<WorldSim> myGS = new WorldSim(updateText);
+	view->setSceneData(myGS->getRootNode());
+	view->setUpViewAcrossAllScreens();
 	osgViewer::Viewer viewer;
-	 osg::ref_ptr<osg::Camera> vcam = viewer.getCamera();
-	
-
-	//// Configuracion de los rasgos del contexto grafico
-	//osg::ref_ptr<osg::GraphicsContext::Traits> traits = new osg::GraphicsContext::Traits;
- //   traits->x = 200;
- //   traits->y = 200;
- //   traits->width = 600;
- //   traits->height = 600;
- //   traits->windowDecoration = true;
-	//traits->supportsResize = true;
-	//traits->doubleBuffer = true;
- //   traits->sharedContext = 0;
- //   traits->sampleBuffers = true;
-	//traits->samples=8;
-
- //   osg::ref_ptr<osg::GraphicsContext> gc = osg::GraphicsContext::createGraphicsContext(traits.get());
- //   vcam->setGraphicsContext(gc.get());
- //   vcam->setViewport(new osg::Viewport(0,0, traits->width,traits->height));
-	//vcam->setProjectionMatrixAsPerspective(60.0f, 1.0f, 1.0f, 500.0f);
-
-	viewer.addEventHandler(myGS->myIH->getKeyboardHandler());
-	viewer.addEventHandler(myGS->myIH->getMouseHandler());
 	osgGA::TrackballManipulator* tb = new osgGA::TrackballManipulator;
-
 	viewer.setCameraManipulator( tb );
-
 	viewer.setSceneData( myGS->getRootNode().get());
-
-
+	viewer.addEventHandler(myGS->myIH->getKeyboardHandler());
+	viewer.addEventHandler(myGS->myIH->myPKH);
+	
 	/* Realize the viewer */
     viewer.realize();
 

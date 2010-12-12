@@ -3,21 +3,21 @@
 #include "InputHandler.h"
 #include <osg/Group>
 
-InputHandler::InputHandler(osg::Group *rootNode)
+InputHandler::InputHandler(osgText::Text* _updateText)
 {
+	updateText = _updateText;
 	printf("Not created");
-	myMSH = new MouseEventHandler();
+	myPKH = new PickHandler(updateText);
 	myKBH = new MyKeyboardEventHandler();
-	myMSH->setRootNode(rootNode);
-	
+	//myMSH->setRootNode(rootNode);
 }
 
 MyKeyboardEventHandler* InputHandler::getKeyboardHandler()
 {
 	return myKBH; 
 }
-MouseEventHandler* InputHandler::getMouseHandler()
+PickHandler* InputHandler::getPickHandler()
 {
-	return myMSH;
+	return myPKH;
 }
 
