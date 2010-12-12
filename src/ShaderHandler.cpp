@@ -130,7 +130,6 @@ void ShaderHandler::transpShader(osg::Node* node)
 	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
 	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 	node->accept(*(fnv.get()));
-	//std::cout<<fnv->foundNodeList.size()<<std::endl;
 
 	std::vector<osg::Node*>::iterator giter;
 	for(giter = fnv->foundNodeList.begin(); giter != fnv->foundNodeList.end(); giter++)
@@ -143,6 +142,7 @@ void ShaderHandler::transpShader(osg::Node* node)
 			tmpstate->setMode( GL_BLEND, osg::StateAttribute::ON );
 			tmpstate->setRenderingHint( osg::StateSet::TRANSPARENT_BIN );
 
+			//--------Para activa el otro tipo de transparencia
 			//osg::Depth* depth = new osg::Depth;
 			//depth->setWriteMask( false );
 
@@ -184,7 +184,6 @@ void ShaderHandler::aOShader(osg::Node* node)
 	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
 	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 	node->accept(*(fnv.get()));
-	//std::cout<<fnv->foundNodeList.size()<<std::endl;
 
 	std::vector<osg::Node*>::iterator giter;
 	for(giter = fnv->foundNodeList.begin(); giter != fnv->foundNodeList.end(); giter++)
@@ -230,7 +229,6 @@ void ShaderHandler::illuShader(osg::Node* node)
 	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
 	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 	node->accept(*(fnv.get()));
-	//std::cout<<fnv->foundNodeList.size()<<std::endl;
 
 	std::vector<osg::Node*>::iterator giter;
 	for(giter = fnv->foundNodeList.begin(); giter != fnv->foundNodeList.end(); giter++)
@@ -241,18 +239,19 @@ void ShaderHandler::illuShader(osg::Node* node)
 			osg::StateSet *tmpstate = tmpgeode->getDrawable(i)->getOrCreateStateSet();
 			tmpstate->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 
-			/*tmpstate->setTextureAttributeAndModes(0,detalle,osg::StateAttribute::ON);
+			//-----Para activar detail que no funciona bien
+			tmpstate->setTextureAttributeAndModes(3,detalle,osg::StateAttribute::ON);
 			// Set the texture texture environment for texture 0 to the 
 			//  texture envirnoment we declared above:
-			tmpstate->setTextureAttribute(0,blendTexEnv);
+			tmpstate->setTextureAttribute(3,blendTexEnv);
 
 
 			osg::TexEnv* decalTexEnv = new osg::TexEnv();
 			decalTexEnv->setMode(osg::TexEnv::DECAL);
 
 
-			tmpstate->setTextureAttributeAndModes(0,detalle,osg::StateAttribute::ON);
-			tmpstate->setTextureAttribute(1,decalTexEnv);*/
+			tmpstate->setTextureAttributeAndModes(3,detalle,osg::StateAttribute::ON);
+			tmpstate->setTextureAttribute(1,decalTexEnv);
 
 
 
@@ -285,7 +284,6 @@ void ShaderHandler::illuShader2(osg::Node* node)
 	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
 	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 	node->accept(*(fnv.get()));
-	//std::cout<<fnv->foundNodeList.size()<<std::endl;
 
 	std::vector<osg::Node*>::iterator giter;
 	for(giter = fnv->foundNodeList.begin(); giter != fnv->foundNodeList.end(); giter++)
