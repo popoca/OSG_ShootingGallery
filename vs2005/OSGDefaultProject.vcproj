@@ -202,11 +202,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\MouseEventHandler.cpp"
+				RelativePath="..\src\MyKeyboardEventHandler.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\src\MyKeyboardEventHandler.cpp"
+				RelativePath="..\src\PickerHandler.cpp"
 				>
 			</File>
 			<File
@@ -248,11 +248,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\MouseEventHandler.h"
+				RelativePath="..\src\MyKeyboardEventHandler.h"
 				>
 			</File>
 			<File
-				RelativePath="..\src\MyKeyboardEventHandler.h"
+				RelativePath="..\src\PickerHandler.h"
 				>
 			</File>
 			<File

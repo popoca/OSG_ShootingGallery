@@ -25,10 +25,10 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	 // Creacion y configuracion de la luz
 	osg::Light* myLight = new osg::Light;
     myLight->setLightNum(0);
-	myLight->setPosition(osg::Vec4(0.0,0.0,1300.0,1.0));
-    myLight->setAmbient(osg::Vec4(0.85f,0.85f,0.85f,1.0f));
-    myLight->setDiffuse(osg::Vec4(0.85f,0.85f,0.85f,1.0f));
-	myLight->setSpecular(osg::Vec4(0.85f,0.85f,0.85f,1.0f));
+	myLight->setPosition(osg::Vec4(0.0,0.0,1500.0,1.0));
+    myLight->setAmbient(osg::Vec4(0.75f,0.75f,0.75f,1.0f));
+    myLight->setDiffuse(osg::Vec4(0.75f,0.75f,0.75f,1.0f));
+	myLight->setSpecular(osg::Vec4(0.75f,0.75f,0.75f,1.0f));
 	myLight->setDirection(osg::Vec3(-1.0,-1.0,-1.0));
     myLight->setConstantAttenuation(1.0f);
     myLight->setLinearAttenuation(2.0f/40.0f);
