@@ -1,5 +1,6 @@
 #include "ShaderHandler.h"
 #include "FindNodeVisitor.h"
+#include <osg/Depth>
 
 ShaderHandler::ShaderHandler()
 {
@@ -134,6 +135,15 @@ void ShaderHandler::transpShader(osg::Node* node)
 			tmpstate->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 			tmpstate->setMode( GL_BLEND, osg::StateAttribute::ON );
 			tmpstate->setRenderingHint( osg::StateSet::TRANSPARENT_BIN );
+
+			//osg::Depth* depth = new osg::Depth;
+			//depth->setWriteMask( false );
+
+			//tmpstate->setAttributeAndModes( depth, osg::StateAttribute::ON );
+
+			//// Disable conflicting modes.
+			//tmpstate->setMode( GL_LIGHTING, osg::StateAttribute::OFF );
+
 		
 
 			//osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
