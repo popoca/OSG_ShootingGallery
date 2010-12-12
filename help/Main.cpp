@@ -20,10 +20,7 @@ int main(int argc, char *argv[])
 {
 
 	osg::ref_ptr<GameSim> mgs = new GameSim();
-
-
 	osgViewer::Viewer viewer;
-
 	 osg::ref_ptr<osg::Camera> vcam = viewer.getCamera();
 
 	//osg::ref_ptr<osg::GraphicsContext::Traits> traits = new
@@ -53,14 +50,9 @@ int main(int argc, char *argv[])
 	 //vcam->setProjectionMatrixAsPerspective(40.0f, 1.3333, 1.0, 10000.0);
 
 	 viewer.setSceneData( mgs->getRootNode().get());
-
 	 viewer.addEventHandler(mgs->getMyInputHandler());
-
 	 viewer.setUpViewInWindow(100,100, 800, 600);
-	
      viewer.realize();
-    
-	
 
 	old_tick = osg::Timer::instance()->getStartTick();
 
