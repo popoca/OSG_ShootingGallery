@@ -190,6 +190,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\src\ShaderHandler.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\src\WorldSim.cpp"
 				>
 			</File>
@@ -209,6 +213,10 @@
 			</File>
 			<File
 				RelativePath="..\src\ModelManager.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\ShaderHandler.h"
 				>
 			</File>
 			<File

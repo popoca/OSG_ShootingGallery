@@ -1,5 +1,8 @@
 #ifndef _WORLDSIM_
 #define _WORLDSIM_
+
+#include "ShaderHandler.h"
+
 #include <osg/MatrixTransform>
 #include <osg/PositionAttitudeTransform>
 #include <osg/Matrix>
@@ -34,6 +37,7 @@ public:
 private:
 
 	 osg::ref_ptr<osg::Group> root;
+	 osg::ref_ptr<ShaderHandler> mySH;
 	 bool start;
 };
 

@@ -1,5 +1,5 @@
 #include "ShaderHandler.h"
-
+#include "FindNodeVisitor.h"
 
 ShaderHandler::ShaderHandler()
 {
@@ -12,8 +12,8 @@ ShaderHandler::ShaderHandler()
 	_shadersList[0]->addShader(_vertexList[0]);
 	_shadersList[0]->addShader(_fragmentList[0]);
 	_shadersList[0]->setName( "BumpMappingShader" );
-	_vertexList[0]->loadShaderSourceFromFile( "shaders/ppillu.vert" );
-	_fragmentList[0]->loadShaderSourceFromFile( "shaders/ppillu.frag" );
+	_vertexList[0]->loadShaderSourceFromFile( "../shaders/ppillu.vert" );
+	_fragmentList[0]->loadShaderSourceFromFile( "../shaders/ppillu.frag" );
 
 	_shadersList.resize(2);
 	_shadersList[1] = new osg::Program();
@@ -24,8 +24,8 @@ ShaderHandler::ShaderHandler()
 	_shadersList[1]->addShader(_vertexList[1]);
 	_shadersList[1]->addShader(_fragmentList[1]);
 	_shadersList[1]->setName( "IlluminationShader" );
-	_vertexList[1]->loadShaderSourceFromFile( "shaders/illu.vert" );
-	_fragmentList[1]->loadShaderSourceFromFile( "shaders/illu.frag" );
+	_vertexList[1]->loadShaderSourceFromFile( "../shaders/illu.vert" );
+	_fragmentList[1]->loadShaderSourceFromFile( "../shaders/illu.frag" );
 
 	_shadersList.resize(3);
 	_shadersList[2] = new osg::Program();
@@ -36,8 +36,8 @@ ShaderHandler::ShaderHandler()
 	_shadersList[2]->addShader(_vertexList[2]);
 	_shadersList[2]->addShader(_fragmentList[2]);
 	_shadersList[2]->setName( "TextureShader" );
-	_vertexList[2]->loadShaderSourceFromFile( "shaders/flw.vert" );
-	_fragmentList[2]->loadShaderSourceFromFile( "shaders/flw.frag" );
+	_vertexList[2]->loadShaderSourceFromFile( "../shaders/flw.vert" );
+	_fragmentList[2]->loadShaderSourceFromFile( "../shaders/flw.frag" );
 }
 
 void ShaderHandler::BumpMappingShader(osg::Node* node)
@@ -61,6 +61,7 @@ void ShaderHandler::BumpMappingShader(osg::Node* node)
 		{
 			osg::StateSet *tmpstate = tmpgeode->getDrawable(i)->getOrCreateStateSet();
 			tmpstate->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
+		
 		//}
 
 			osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
