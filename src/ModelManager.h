@@ -39,7 +39,7 @@ public:
 	// Una lista de BasicModels para el escenario
 	vector< osg::ref_ptr< BasicModel > > bg;
 	// Una lista de Enemies para los enemigos
-	
+	vector< osg::ref_ptr< Enemy > > en;
 
 };
 

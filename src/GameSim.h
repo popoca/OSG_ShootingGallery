@@ -11,15 +11,12 @@ class GameSim: public osg::Referenced
 
 public:
 
+	// Constructor 
 	GameSim();
+	// Desctructor
+	~GameSim();
 
-	~GameSim()
-	{
-	
-	}
-
-	
-
+	// GameStates
 	bool startGame(){
 		if(!start)
 		{
@@ -28,12 +25,8 @@ public:
 		return start;
 	}
 
-	osg::ref_ptr<osg::Group> getRootNode()
-	{
-		return root;
-	}
 
-	
+	osg::ref_ptr<osg::Group> getRootNode() { return root; }
 
 private:
 
