@@ -7,7 +7,6 @@ BasicModel::BasicModel( const char* file, const char* name )
 	mNode = osgDB::readNodeFile( file );
 	if( mNode )
 	{
-		mNode->setName( file );
 		mState = mNode->getOrCreateStateSet();
 		mNode->setName( name );
 		// Se activa la prueba de culling para las caras posteriores
@@ -16,8 +15,12 @@ BasicModel::BasicModel( const char* file, const char* name )
 		// Se define la funcion de profundidad
 		mDepth = new osg::Depth();
 		mDepth->setFunction( osg::Depth::LEQUAL );
-		mMat = new osg::MatrixTransform();
-		mMat->addChild( mNode.get() );
+		// Agreguemos todo al StateSet
+		mState->setAttribute( mCull );
+		mState->setAttribute( mDepth );
+		// Declaramos nuestro PAT
+		mPat = new osg::PositionAttitudeTransform();
+		mPat->addChild( mNode.get() );
 	}
 	cout << "Cargando modelo: " << file << endl;
 }

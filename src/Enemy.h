@@ -17,6 +17,7 @@
 #include <string>
 #include <iostream>
 #include "BasicModel.h"
+#include "EnemyController.h"
 
 using namespace std;
 
@@ -25,7 +26,7 @@ class Enemy : public BasicModel
 public:
 
 	// Constructor toma una referencia a un string
-	Enemy( const char* file, const char* name, float speed, bool hasSpawned = false, bool isMoving = false );
+	Enemy( const char* file, const char* name, const char* file2, float speed, bool hasSpawned = false, bool isMoving = false );
 	~Enemy();
 
 // protected:
@@ -37,7 +38,9 @@ public:
 	// Una bandera para moverse
 	bool isMoving;
 	// Un Modelo para la explosion
-	osg::ref_ptr< osg::Node > mNode;
+	osg::ref_ptr< osg::Node > mNodeXplode;
+	// Una matriz de transformacion para la explosion
+	osg::ref_ptr< osg::PositionAttitudeTransform > mPatXplode;
 	// Vectores de posicion, axis, escala
 	osg::Vec3 position, axis, scale;
 	// Una matriz para hacer las transformaciones

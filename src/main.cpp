@@ -15,7 +15,7 @@
 int main( int argc, char** argv )
 {
 	/* Timer */
-	static osg::Timer_t old_tick, new_tick; 
+	static osg::Timer_t old_tick, new_tick;
 	static double delta;
 
 	/* Initialize viewer */

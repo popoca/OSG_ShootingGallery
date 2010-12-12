@@ -32,7 +32,7 @@ public:
 	// Una lista de Modelos
 	osg::ref_ptr< osg::Node > mNode;
 	// Una matriz de transformacion
-	osg::ref_ptr< osg::MatrixTransform > mMat;
+	osg::ref_ptr< osg::PositionAttitudeTransform > mPat;
 	// Un StateSet
 	osg::ref_ptr< osg::StateSet > mState;
 	// Un cullFace

@@ -14,6 +14,7 @@
 #include <osg/CullFace>
 #include <osg/Depth>
 #include <osg/MatrixTransform>
+#include <osg/Matrix>
 #include <string>
 #include <iostream>
 
@@ -22,8 +23,9 @@ class EnemyController : public osg::NodeCallback
 public:
 
    //Constructor
-   EnemyController();
+   EnemyController( float delta );
    ~EnemyController();
+   void update( float delta );
 
    // Reimplementacion del metodo operator, metodo que se invoca cada
    // vez que se recorre y actualiza el grafo de escena, Nota se
@@ -32,7 +34,8 @@ public:
 
 private: 
    float accAngle;
-   float ymov;
+   float x;
+   float delta;
    bool reverse;
 };
 
