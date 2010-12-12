@@ -1,20 +1,23 @@
-#ifndef _GAMESIM_
-#define _GAMESIM_
+#ifndef _WORLDSIM_
+#define _WORLDSIM_
 #include <osg/MatrixTransform>
 #include <osg/PositionAttitudeTransform>
 #include <osg/Matrix>
 #include <osg/Group>
 #include <cstdlib>
 
-class GameSim: public osg::Referenced
+class WorldSim: public osg::Referenced
 {
 
 public:
 
 	// Constructor 
-	GameSim();
+	WorldSim();
 	// Desctructor
-	~GameSim();
+	~WorldSim()
+	{
+	
+	}
 
 	// GameStates
 	bool startGame(){

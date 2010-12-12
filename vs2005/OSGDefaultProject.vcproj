@@ -178,15 +178,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\GameSim.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\src\main.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\src\ModelManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\WorldSim.cpp"
 				>
 			</File>
 		</Filter>
@@ -200,11 +200,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\GameSim.h"
+				RelativePath="..\src\ModelManager.h"
 				>
 			</File>
 			<File
-				RelativePath="..\src\ModelManager.h"
+				RelativePath="..\src\WorldSim.h"
 				>
 			</File>
 		</Filter>

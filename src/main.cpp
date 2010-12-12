@@ -1,23 +1,13 @@
-#include "GameSim.h"
+#include "WorldSim.h"
 
-#include <osg/Node>
-#include <osg/Group>
-#include <osg/Geode>
-#include <osg/Geometry>
-#include <osg/Texture2D> 
-#include <osgDB/ReadFile> 
 #include <osgViewer/Viewer>
 #include <osgViewer/ViewerEventHandlers>
 #include <osgViewer/CompositeViewer>
-#include <osg/PositionAttitudeTransform>
+#include <osgGA/GUIEventHandler>
 #include <osgGA/TrackballManipulator>
-#include <osg/CullFace>
-#include <osg/Depth>
-#include <osg/MatrixTransform>
-#include <osg/ShapeDrawable>
-#include <string>
-#include <vector>
 #include <osg/Camera>
+#include <osg/Timer>
+#include <osg/io_utils>
 
 
 //#include "MouseEventHandler.h"
@@ -29,7 +19,7 @@ int main( int argc, char** argv )
 	static double delta;
 
 	/* Initialize viewer */
-	osg::ref_ptr<GameSim> myGS = new GameSim();
+	osg::ref_ptr<WorldSim> myGS = new WorldSim();
 	osgViewer::Viewer viewer;
 	 osg::ref_ptr<osg::Camera> vcam = viewer.getCamera();
 	

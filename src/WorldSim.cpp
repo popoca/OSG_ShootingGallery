@@ -1,4 +1,4 @@
-#include "GameSim.h"
+#include "WorldSim.h"
 #include "ModelManager.h"
 
 #include <osg/AlphaFunc>
@@ -13,7 +13,7 @@
 #include <osg/FrontFace>
 #include <iostream>
 
-GameSim::GameSim()
+WorldSim::WorldSim()
 {
 	start = false;
 
