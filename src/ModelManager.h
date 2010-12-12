@@ -34,6 +34,7 @@ public:
 	~ModelManager();
 	// Metodos para agregar todo a root
 	void setUpScene();
+	void updateScene();
 
 	// Esta clase tiene una referencia a root
 	osg::ref_ptr< osg::Group > root;

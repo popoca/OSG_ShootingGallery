@@ -36,3 +36,8 @@ void ModelManager::setUpScene()
 		cout << "Enemigos cargados" << endl;
 
 }
+
+void ModelManager::updateScene()
+{
+
+}

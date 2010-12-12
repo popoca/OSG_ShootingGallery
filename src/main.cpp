@@ -6,10 +6,13 @@
 #include <osg/Camera>
 #include <osg/Timer>
 #include <osg/io_utils>
+#include <iostream>
 
 #include "WorldSim.h"
 
 //#include "MouseEventHandler.h"
+
+using namespace std;
 
 int main( int argc, char** argv )
 {
@@ -53,12 +56,21 @@ int main( int argc, char** argv )
 
 	// Inicializa old_tick
 	old_tick = osg::Timer::instance()->getStartTick();
+	
+	/* Para obtener las coords de la camara */
+	osg::Vec3f center, eye, up;
 
     while( !viewer.done() )
     {
 		/* tick, tick, tick... */
 		new_tick = osg::Timer::instance()->tick();
         delta = osg::Timer::instance()->delta_s( old_tick, new_tick );
+
+		viewer.getCamera()->getViewMatrixAsLookAt( eye, center, up );
+
+		cout << "Camera pos: " << center.x() << ", " <<
+			center.y() << ", " <<
+			center.z() << endl;
 
 		/* frame */
         viewer.frame();
