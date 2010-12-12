@@ -18,7 +18,7 @@
 #include <iostream>
 #include <algorithm>
 #include "BasicModel.h"
-//#include "Enemy.h"
+#include "Enemy.h"
 
 using namespace std;
 
@@ -41,7 +41,7 @@ public:
 	// Una lista de BasicModels para el escenario
 	vector< osg::ref_ptr< BasicModel > > bg;
 	// Una lista de Enemies para los enemigos
-	//vector< osg::ref_ptr< Enemy > > en;
+	vector< osg::ref_ptr< Enemy > > en;
 
 };
 

@@ -14,7 +14,7 @@ Enemy::Enemy( const char* file, const char* file2, const char* name, float speed
 	}
 	cout << "Cargando modelo: " << file2 << endl;
 
-	if( !strcmp( mNode->getName(), "buitre" ) )
+	if( !strcmp( name, "buitre" ) )
 	{
 		mPat->setUpdateCallback( new EnemyController( 1.0f ) );
 		cout << "AI cargada para " << name << endl;

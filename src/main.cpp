@@ -55,9 +55,9 @@ int main( int argc, char** argv )
 
 		viewer.getCamera()->getViewMatrixAsLookAt( eye, center, up );
 
-		cout << "Camera pos: " << center.x() << ", " <<
+		/*cout << "Camera pos: " << center.x() << ", " <<
 			center.y() << ", " <<
-			center.z() << endl;
+			center.z() << endl;*/
 
 		/* frame */
         viewer.frame();

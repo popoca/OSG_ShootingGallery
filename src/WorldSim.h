@@ -39,7 +39,7 @@ public:
 private:
 
 	 osg::ref_ptr<osg::Group> root;
-	 //osg::ref_ptr<ShaderHandler> mySH;
+	 osg::ref_ptr<ShaderHandler> mySH;
 	 bool start;
 };
 
