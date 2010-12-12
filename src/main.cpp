@@ -1,5 +1,3 @@
-#include "WorldSim.h"
-
 #include <osgViewer/Viewer>
 #include <osgViewer/ViewerEventHandlers>
 #include <osgViewer/CompositeViewer>
@@ -9,6 +7,7 @@
 #include <osg/Timer>
 #include <osg/io_utils>
 
+#include "WorldSim.h"
 
 //#include "MouseEventHandler.h"
 
@@ -43,9 +42,7 @@ int main( int argc, char** argv )
 	//vcam->setProjectionMatrixAsPerspective(60.0f, 1.0f, 1.0f, 500.0f);
 
 	osgGA::TrackballManipulator* tb = new osgGA::TrackballManipulator;
-
 	viewer.setCameraManipulator( tb );
-
 	viewer.setSceneData( myGS->getRootNode().get());
 
 
@@ -57,7 +54,6 @@ int main( int argc, char** argv )
 
     while( !viewer.done() )
     {
-
 		/* tick, tick, tick... */
 		new_tick = osg::Timer::instance()->tick();
         delta = osg::Timer::instance()->delta_s( old_tick, new_tick );
