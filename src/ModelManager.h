@@ -34,7 +34,7 @@ public:
 	~ModelManager();
 	// Metodos para agregar todo a root
 	void setUpScene();
-	void updateScene();
+	void updateScene( double delta );
 
 	// Esta clase tiene una referencia a root
 	osg::ref_ptr< osg::Group > root;
@@ -42,6 +42,9 @@ public:
 	vector< osg::ref_ptr< BasicModel > > bg;
 	// Una lista de Enemies para los enemigos
 	vector< osg::ref_ptr< Enemy > > en;
+
+	// timer para el spawn
+	double currTime;
 
 	bool init;
 

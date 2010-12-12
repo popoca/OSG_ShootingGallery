@@ -1,8 +1,8 @@
 #include "Enemy.h"
 #include <cstring>
 
-Enemy::Enemy( const char* file, const char* file2, const char* name, float speed, bool hasSpawned, bool isMoving )
-: BasicModel( file, name ), speed( speed )
+Enemy::Enemy( const char* file, const char* file2, const char* name, double spawnTime, float speed, bool hasSpawned, bool isMoving )
+: BasicModel( file, name ), speed( speed ), spawnTime( spawnTime )
 {
 	mNodeXplode = osgDB::readNodeFile( file2 );
 	if( mNode )

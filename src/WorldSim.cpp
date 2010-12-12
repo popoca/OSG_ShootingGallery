@@ -30,7 +30,6 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	mm->bg.push_back( new BasicModel( "../content/bg/sin_shader/sin_shader.osg", "casa" ) );
 	mm->bg.push_back( new BasicModel( "../content/npcs/cielo/cielo.osg", "cielo" ) );
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/pasto.osg", "pasto" ) );
-	//mySH->transShader(mm->bg[2]->mNode);
 	//mySH->aOShader(mm->bg[2]->mNode);
 	mySH->transpShader(mm->bg[2]->mNode);
 
@@ -87,10 +86,9 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	osg::StateSet *rootState = new osg::StateSet();
 	root->setStateSet(rootState);
 
-
 }
 	
-void WorldSim::update()
+void WorldSim::update( float delta )
 {
 	switch( currState )
 	{
@@ -98,22 +96,22 @@ void WorldSim::update()
 
 		// do stuff
 
-		break;
+		//break;
 
 	case Level1:
 
 		if( !hasLoaded )
 		{
 			
-			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 1.0f ) );
-			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 1.0f ) );
-			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 1.0f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, 1.0f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 20.0, 1.0f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 50.0, 1.0f ) );
 
 			hasLoaded = true;
 
 		}
 		else
-			mm->updateScene();
+			mm->updateScene( delta );
 
 		break;
 

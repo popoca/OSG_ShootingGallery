@@ -24,16 +24,6 @@ public:
 	{
 	
 	}
-	
-	// GameStates
-	bool startGame(){
-		if(!start)
-		{
-			start = true;
-		}
-		return start;
-	}
-
 
 	osg::ref_ptr<osg::Group> getRootNode() { return root; }
 
@@ -42,7 +32,7 @@ public:
 	GameState currState;
 
 	/* metodo para actualizar la escena dependiendo del estado actual */
-	void update();
+	void update( float delta );
 	bool hasLoaded;
 
 private:

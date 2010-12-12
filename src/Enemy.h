@@ -26,7 +26,7 @@ class Enemy : public BasicModel
 public:
 
 	// Constructor toma una referencia a un string
-	Enemy( const char* file, const char* name, const char* file2, float speed, bool hasSpawned = false, bool isMoving = false );
+	Enemy( const char* file, const char* name, const char* file2, double spawnTime, float speed, bool hasSpawned = false, bool isMoving = false );
 	~Enemy();
 	// metodo para cargar la IA
 	void loadIA();
@@ -47,7 +47,8 @@ public:
 	osg::Vec3 position, axis, scale;
 	// Una matriz para hacer las transformaciones
 	osg::Matrix matrix;
-
+	// Tiempo en el que aparecera el enemigo en el sceneGraph
+	double spawnTime;
 };
 
 #endif
