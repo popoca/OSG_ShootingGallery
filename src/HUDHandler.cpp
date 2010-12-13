@@ -4,19 +4,22 @@ using namespace std;
 
 HUDHandler::HUDHandler(osg::ref_ptr<osg::Group> rootNode)
 {
-	showing = false;
 	SCORE = 0;
 	MAX = 5;
 	currentBullets = MAX;
 	root = rootNode;
-	init_text();
-
 	init_images();
+	init_text();
+	initDisplayMessage();
 	init_general();
 	HUDGeode->addDrawable(scoreText);
-		initDisplayMessage();
-	//achievePork();
-	//achieveBird();
+	osg::Geode* cursor_geode = buildCursor();
+	patCursor = new osg::PositionAttitudeTransform();
+	patCursor->addChild(cursor_geode);
+	HUDModelViewMatrix->addChild(patCursor);
+	patCursor->setPosition(osg::Vec3d(100.0f,100.0f,-1.0f));
+	osg::Geode* bullet_geode = buildBullets();
+	HUDModelViewMatrix->addChild(bullet_geode);
 	
 }
 
@@ -40,31 +43,35 @@ void HUDHandler::initDisplayMessage()
 	messageText->setFont("../content/font/font.ttf");
 	messageText->setPosition( osg::Vec3(200,400,0) );
 	messageText->setColor( osg::Vec4(255, 255, 255, 1) );
-	messageText->setText("");
-	HUDGeode->addDrawable(messageText);
+
+	
 }
 void HUDHandler::showMessage(const char* message)
 {
-	if(!showing)
-		messageText->setText(message);
+	messageText->setText(message);
+	HUDGeode->addDrawable(messageText);
 }
 
 void HUDHandler::quitMessage()
 {
-	if(showing)
-	{
-		messageText->setText("");
-		showing = false;
-	}
+	HUDGeode->removeDrawable(messageText);
 }
 
 
 void HUDHandler::init_images()
 {
-	bullet1 = osgDB::readImageFile("../content/bullet.tga");
-	bullet2 = osgDB::readImageFile("../content/bullet2.tga");
+	bullet = osgDB::readImageFile("../content/bullet.tga");
+	bullet1 = osgDB::readImageFile("../content/bullets1.tga");
+	bullet2 = osgDB::readImageFile("../content/bullets2.tga");
+	bullet3 = osgDB::readImageFile("../content/bullets3.tga");
+	bullet4 = osgDB::readImageFile("../content/bullets4.tga");
+	bullet5 = osgDB::readImageFile("../content/bullets5.tga");
+	bullet6 = osgDB::readImageFile("../content/bullets6.tga");
 	cursor = osgDB::readImageFile("../content/crosshair.tga");
+	transparent = osgDB::readImageFile("../content/bullet2.tga");
+	current_bullet_image = bullet;
 }
+
 void HUDHandler::init_general()
 {
 
@@ -80,63 +87,152 @@ void HUDHandler::init_general()
 	
 	HUDProjectionMatrix->addChild(HUDModelViewMatrix);
 	HUDModelViewMatrix->addChild( HUDGeode );
-	
-	HUDBackgroundGeometry = new osg::Geometry();
-	HUDBackgroundVertices = new osg::Vec3Array;
-    HUDBackgroundVertices->push_back( osg::Vec3( 0,    0,-1) );
-    HUDBackgroundVertices->push_back( osg::Vec3(1024,  0,-1) );
-    HUDBackgroundVertices->push_back( osg::Vec3(1024,0,-1) );
-    HUDBackgroundVertices->push_back( osg::Vec3(   0,0,-1) );
-	HUDBackgroundIndices = new osg::DrawElementsUInt(osg::PrimitiveSet::POLYGON, 0);
-    HUDBackgroundIndices->push_back(0);
-    HUDBackgroundIndices->push_back(1);
-    HUDBackgroundIndices->push_back(2);
-    HUDBackgroundIndices->push_back(3);
-    
-	HUDcolors = new osg::Vec4Array;
-	HUDcolors->push_back(osg::Vec4(0.8f,0.8f,0.8f,0.8f));
-	texcoords = new osg::Vec2Array(4);
-	
-    (*texcoords)[0].set(0.0f,0.0f);
-    (*texcoords)[1].set(1.0f,0.0f);
-    (*texcoords)[2].set(1.0f,1.0f);
-    (*texcoords)[3].set(0.0f,1.0f);
-    
-      
-    
-    HUDBackgroundGeometry->setTexCoordArray(0,texcoords);
-	HUDTexture = new osg::Texture2D;
-	
-	
-	
-	HUDTexture->setDataVariance(osg::Object::DYNAMIC);
-	HUDTexture->setImage(bullet2);
-	
-	HUDnormals = new osg::Vec3Array;
-    HUDnormals->push_back(osg::Vec3(0.0f,0.0f,1.0f));
-    HUDBackgroundGeometry->setNormalArray(HUDnormals);
-    HUDBackgroundGeometry->setNormalBinding(osg::Geometry::BIND_OVERALL);
-    HUDBackgroundGeometry->addPrimitiveSet(HUDBackgroundIndices);
-    HUDBackgroundGeometry->setVertexArray(HUDBackgroundVertices);
-    HUDBackgroundGeometry->setColorArray(HUDcolors);
-    HUDBackgroundGeometry->setColorBinding(osg::Geometry::BIND_OVERALL);
-	HUDGeode->addDrawable(HUDBackgroundGeometry);
-	HUDStateSet = new osg::StateSet();
-    HUDStateSet->setTextureAttributeAndModes(0,HUDTexture,osg::StateAttribute::ON);
-    HUDStateSet->setMode(GL_BLEND,osg::StateAttribute::ON);
-    HUDStateSet->setMode(GL_DEPTH_TEST,osg::StateAttribute::OFF);
-    HUDStateSet->setRenderingHint( osg::StateSet::TRANSPARENT_BIN );
-    HUDStateSet->setRenderBinDetails( 11, "RenderBin");
-	
+
+	//Hasta aqui se define la matriz de vista
 }
-void HUDHandler::setupBulletsHUD()
+
+osg::Geode* HUDHandler::buildBullets()
 {
-	
+	osg::Geode* bulletBuilt = new osg::Geode();
+	 
+	       // Set up geometry for the HUD and add it to the HUD
+       osg::Geometry* mHUDBackgroundGeometry = new osg::Geometry();
+
+       osg::Vec3Array* mHUDBackgroundVertices = new osg::Vec3Array;
+       mHUDBackgroundVertices->push_back( osg::Vec3( 0,    0,-1) );
+       mHUDBackgroundVertices->push_back( osg::Vec3(110,  0,-1) );
+       mHUDBackgroundVertices->push_back( osg::Vec3(110,128,-1) );
+       mHUDBackgroundVertices->push_back( osg::Vec3(   0,128,-1) );
+
+       osg::DrawElementsUInt* mHUDBackgroundIndices =
+          new osg::DrawElementsUInt(osg::PrimitiveSet::POLYGON, 0);
+       mHUDBackgroundIndices->push_back(0);
+       mHUDBackgroundIndices->push_back(1);
+       mHUDBackgroundIndices->push_back(2);
+       mHUDBackgroundIndices->push_back(3);
+
+       osg::Vec4Array* mHUDcolors = new osg::Vec4Array;
+       mHUDcolors->push_back(osg::Vec4(6.0f,6.0f,6.0f,10.0f));
+
+       osg::Vec2Array* mtexcoords = new osg::Vec2Array(4);
+       (*mtexcoords)[0].set(0.0f,0.0f);
+       (*mtexcoords)[1].set(1.0f,0.0f);
+       (*mtexcoords)[2].set(1.0f,1.0f);
+       (*mtexcoords)[3].set(0.0f,1.0f);
+
+       mHUDBackgroundGeometry->setTexCoordArray(0,mtexcoords);
+       osg::Texture2D* mHUDTexture = new osg::Texture2D;
+       mHUDTexture->setDataVariance(osg::Object::DYNAMIC);
+       mHUDTexture->setImage(current_bullet_image);
+       osg::Vec3Array* mHUDnormals = new osg::Vec3Array;
+       mHUDnormals->push_back(osg::Vec3(0.0f,0.0f,1.0f));
+       mHUDBackgroundGeometry->setNormalArray(mHUDnormals);
+       mHUDBackgroundGeometry->setNormalBinding(osg::Geometry::BIND_OVERALL);
+       mHUDBackgroundGeometry->addPrimitiveSet(mHUDBackgroundIndices);
+       mHUDBackgroundGeometry->setVertexArray(mHUDBackgroundVertices);
+       mHUDBackgroundGeometry->setColorArray(mHUDcolors);
+       mHUDBackgroundGeometry->setColorBinding(osg::Geometry::BIND_OVERALL);
+
+		bulletBuilt->addDrawable(mHUDBackgroundGeometry);
+		
+		 // Create and set up a state set using the texture from above:
+       osg::StateSet* mHUDStateSet = new osg::StateSet();
+       bulletBuilt->setStateSet(mHUDStateSet);
+       mHUDStateSet->
+          setTextureAttributeAndModes(0,mHUDTexture,osg::StateAttribute::ON);
+
+       // For this state set, turn blending on (so alpha texture looks right)
+       mHUDStateSet->setMode(GL_BLEND,osg::StateAttribute::ON);
+
+       // Disable depth testing so geometry is draw regardless of depth values
+       // of geometry already draw.
+       mHUDStateSet->setMode(GL_DEPTH_TEST,osg::StateAttribute::OFF);
+       mHUDStateSet->setRenderingHint( osg::StateSet::TRANSPARENT_BIN );
+
+       // Need to make sure this geometry is draw last. RenderBins are handled
+       // in numerical order so set bin number to 11
+       mHUDStateSet->setRenderBinDetails( 11, "RenderBin");
+       
+       return bulletBuilt;
 }
+
+
+
+osg::Geode* HUDHandler::buildCursor()
+{
+	osg::Geode* bulletBuilt = new osg::Geode();
+	 
+	       // Set up geometry for the HUD and add it to the HUD
+       osg::Geometry* mHUDBackgroundGeometry = new osg::Geometry();
+
+       osg::Vec3Array* mHUDBackgroundVertices = new osg::Vec3Array;
+       mHUDBackgroundVertices->push_back( osg::Vec3( 0,    0,-1) );
+       mHUDBackgroundVertices->push_back( osg::Vec3(110,  0,-1) );
+       mHUDBackgroundVertices->push_back( osg::Vec3(110,128,-1) );
+       mHUDBackgroundVertices->push_back( osg::Vec3(   0,128,-1) );
+
+       osg::DrawElementsUInt* mHUDBackgroundIndices =
+          new osg::DrawElementsUInt(osg::PrimitiveSet::POLYGON, 0);
+       mHUDBackgroundIndices->push_back(0);
+       mHUDBackgroundIndices->push_back(1);
+       mHUDBackgroundIndices->push_back(2);
+       mHUDBackgroundIndices->push_back(3);
+
+       osg::Vec4Array* mHUDcolors = new osg::Vec4Array;
+       mHUDcolors->push_back(osg::Vec4(0.6f,0.6f,0.6f,6.0f));
+
+       osg::Vec2Array* mtexcoords = new osg::Vec2Array(4);
+       (*mtexcoords)[0].set(0.0f,0.0f);
+       (*mtexcoords)[1].set(1.0f,0.0f);
+       (*mtexcoords)[2].set(1.0f,1.0f);
+       (*mtexcoords)[3].set(0.0f,1.0f);
+
+       mHUDBackgroundGeometry->setTexCoordArray(0,mtexcoords);
+       osg::Texture2D* mHUDTexture = new osg::Texture2D;
+       mHUDTexture->setDataVariance(osg::Object::DYNAMIC);
+       mHUDTexture->setImage(cursor);
+       osg::Vec3Array* mHUDnormals = new osg::Vec3Array;
+       mHUDnormals->push_back(osg::Vec3(0.0f,0.0f,1.0f));
+       mHUDBackgroundGeometry->setNormalArray(mHUDnormals);
+       mHUDBackgroundGeometry->setNormalBinding(osg::Geometry::BIND_OVERALL);
+       mHUDBackgroundGeometry->addPrimitiveSet(mHUDBackgroundIndices);
+       mHUDBackgroundGeometry->setVertexArray(mHUDBackgroundVertices);
+       mHUDBackgroundGeometry->setColorArray(mHUDcolors);
+       mHUDBackgroundGeometry->setColorBinding(osg::Geometry::BIND_OVERALL);
+
+		bulletBuilt->addDrawable(mHUDBackgroundGeometry);
+		
+		 // Create and set up a state set using the texture from above:
+       osg::StateSet* mHUDStateSet = new osg::StateSet();
+       bulletBuilt->setStateSet(mHUDStateSet);
+       mHUDStateSet->
+          setTextureAttributeAndModes(0,mHUDTexture,osg::StateAttribute::ON);
+
+       // For this state set, turn blending on (so alpha texture looks right)
+       mHUDStateSet->setMode(GL_BLEND,osg::StateAttribute::ON);
+
+       // Disable depth testing so geometry is draw regardless of depth values
+       // of geometry already draw.
+       mHUDStateSet->setMode(GL_DEPTH_TEST,osg::StateAttribute::OFF);
+       mHUDStateSet->setRenderingHint( osg::StateSet::TRANSPARENT_BIN );
+
+       // Need to make sure this geometry is draw last. RenderBins are handled
+       // in numerical order so set bin number to 11
+       mHUDStateSet->setRenderBinDetails( 11, "RenderBin");
+       
+       return bulletBuilt;
+}
+
+
 void HUDHandler::shoot()
 {
 	if(currentBullets == 0)
 		reload();
+}
+
+void HUDHandler::setCursorPosition(double x, double y)
+{
+	patCursor->setPosition(osg::Vec3d(x,y,-1.0));
 }
 
 void HUDHandler::reload(/*Time variable here*/)

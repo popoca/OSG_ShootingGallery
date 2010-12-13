@@ -12,19 +12,24 @@ PickHandler::~PickHandler()
 	
 }
 
-
 bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter& aa)
 {
+	myHH->setCursorPosition((ea.getX()/ea.getWindowWidth())*1024,(ea.getY()/ea.getWindowHeight())*860);
     switch(ea.getEventType())
     {
+    	
 	case(osgGA::GUIEventAdapter::LEFT_MOUSE_BUTTON):
         {
-        	printf("Mouse Pressed\n");
+        	printf("Shooting\n");
             osgViewer::View* view = dynamic_cast<osgViewer::View*>(&aa);
             if (view) pick(view,ea);
             return false;
-        }    
-        /*case(osgGA::GUIEventAdapter::KEYDOWN):
+        }   
+     case(osgGA::GUIEventAdapter::RIGHT_MOUSE_BUTTON):
+     {
+     		printf("Reloading\n");
+	 } 
+        case(osgGA::GUIEventAdapter::KEYDOWN):
         {
             if (ea.getKey()=='c')
             {        
@@ -35,7 +40,7 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapte
                 if (view) pick(view,*event);
             }
             return false;
-        }    */
+        }    
         default:
             return false;
     }
@@ -44,6 +49,7 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapte
 void PickHandler::pick(osgViewer::View* view, const osgGA::GUIEventAdapter& ea)
 {
 	printf("Llamando a pick\n");
+
     osgUtil::LineSegmentIntersector::Intersections intersections;
 
     float x = ea.getX();

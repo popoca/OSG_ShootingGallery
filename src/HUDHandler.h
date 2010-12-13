@@ -21,8 +21,10 @@
 #include <string>
 #include <stdio.h>
 #include <stdlib.h>
+#include <osg/PositionAttitudeTransform>
 
 using namespace std;
+
 class HUDHandler
 {
 private:
@@ -42,7 +44,6 @@ public:
 	osg::Vec3Array* HUDnormals;
 	osg::StateSet* HUDStateSet;
 	osg::MatrixTransform* HUDModelViewMatrix;
-	bool showing;
 	
 	HUDHandler(osg::ref_ptr<osg::Group> root);
 	~HUDHandler();
@@ -62,13 +63,29 @@ public:
 	void initDisplayMessage();
 	void showMessage(const char* message);
 	void quitMessage();
+	osg::Geode* buildCursor();
+	osg::Geode* buildBullets();
+	void setCursorPosition(double x, double y);
+	
 	
 	void moveCursor(double x, double y);
+	
+	osg::Image* bullet;
 	osg::Image* bullet1;
 	osg::Image* bullet2;
+	osg::Image* bullet3;
+	osg::Image* bullet4;
+	osg::Image* bullet5;
+	osg::Image* bullet6;
+	osg::Image* transparent;
+	osg::Image* current_bullet_image;
+	
 	osg::Image* cursor;
 	osgText::Text* scoreText;
 	osgText::Text* messageText;
+	osg::Drawable* bulletImage;
+	osg::PositionAttitudeTransform* patCursor;
+	
 
 };
 
