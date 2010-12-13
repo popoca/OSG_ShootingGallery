@@ -34,7 +34,7 @@
 class PickHandler : public osgGA::GUIEventHandler {
 public: 
 
-    PickHandler(osgText::Text* updateText);
+    PickHandler(osgText::Text* updateText, HUDHandler* _myHH);
     ~PickHandler();
     
     bool handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter& aa);
