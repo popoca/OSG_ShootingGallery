@@ -3,6 +3,7 @@
 using namespace std;
 
 HUDHandler::HUDHandler(osg::ref_ptr<osg::Group> rootNode)
+: showing( false )
 {
 	SCORE = 0;
 	MAX = 5;
@@ -48,13 +49,20 @@ void HUDHandler::initDisplayMessage()
 }
 void HUDHandler::showMessage(const char* message)
 {
-	messageText->setText(message);
-	HUDGeode->addDrawable(messageText);
+	if(!showing)
+	{
+		messageText->setText(message);
+		HUDGeode->addDrawable(messageText);
+	}
 }
 
 void HUDHandler::quitMessage()
 {
-	HUDGeode->removeDrawable(messageText);
+	if(showing)
+	{
+		messageText->setText("");
+		showing = false;
+	}
 }
 
 

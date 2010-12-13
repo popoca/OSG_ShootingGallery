@@ -44,6 +44,7 @@ public:
 	osg::Vec3Array* HUDnormals;
 	osg::StateSet* HUDStateSet;
 	osg::MatrixTransform* HUDModelViewMatrix;
+	bool showing;
 	
 	HUDHandler(osg::ref_ptr<osg::Group> root);
 	~HUDHandler();
