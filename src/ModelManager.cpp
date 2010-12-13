@@ -41,19 +41,31 @@ void ModelManager::updateScene( double delta )
 			en[i]->hasSpawned = true;
 		}
 
+		// si le damos a un enemigo
 		if( !strcmp( en[i]->mNode->getName().c_str(), "X" ) )
 		{
-
-			en[i]->mPat->replaceChild( en[i]->mNode, en[i]->mNodeXplode );
-			if( en[i]->eraseTime >= 0 )
+			// y no estamos explotando
+			if( !en[i]->fluxing )
 			{
-				en[i]->eraseTime -= 0.1f;
+				// cambia el modelo por el de la explosion
+				en[i]->mPat->replaceChild( en[i]->mNode, en[i]->mNodeXplode );
+				// 88mph
+				en[i]->fluxCapacitor();
+				en[i]->fluxing = true;
 			}
 			else
 			{
-				en[i]->mPat->removeChild( en[i]->mNodeXplode );
-				//mPat->addChild( mNodeXplode.get() );
-				en.erase( en.begin() + i );
+				if( en[i]->eraseTime >= 0 )
+				{
+					en[i]->eraseTime -= 0.1f;
+				}
+				else
+				{
+					en[i]->unfluxCapacitor();
+					en[i]->mPat->removeChild( en[i]->mNodeXplode );
+					en[i]->mPat->removeChild( en[i]->mNode );
+					en.erase( en.begin() + i );
+				}
 			}
 		}
 	}
