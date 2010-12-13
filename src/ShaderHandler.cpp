@@ -140,15 +140,15 @@ void ShaderHandler::transpShader(osg::Node* node)
 			tmpstate->setRenderingHint( osg::StateSet::TRANSPARENT_BIN );
 
 			//--------Para activa el otro tipo de transparencia
-			//osg::Depth* depth = new osg::Depth;
-			//depth->setWriteMask( false );
+			osg::Depth* depth = new osg::Depth;
+			depth->setWriteMask( false );
 
-			//tmpstate->setAttributeAndModes( depth, osg::StateAttribute::ON );
+			tmpstate->setAttributeAndModes( depth, osg::StateAttribute::ON );
 
-			//// Disable conflicting modes.
-			//tmpstate->setMode( GL_LIGHTING, osg::StateAttribute::OFF );
+			// Disable conflicting modes.
+			tmpstate->setMode( GL_LIGHTING, osg::StateAttribute::OFF );
 
-			//osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
+			osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
 
 			osg::Material *material = new osg::Material();
 			material->setAmbient(osg::Material::FRONT_AND_BACK, osg::Vec4(0.9f, 0.9f, 0.9f, 1.0f));
