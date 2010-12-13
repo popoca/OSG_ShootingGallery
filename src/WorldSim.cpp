@@ -96,8 +96,15 @@ void WorldSim::update( float delta )
 	case Start:
 
 		// do stuff
+		myHH->showMessage("Get Ready!\nPress any key");
+		if( myIH->myKBH->enter_pressed )
+		{
+			myHH->quitMessage();
+			currState = Level1;
+			myIH->myKBH->enter_pressed = false;
+		}
 
-		//break;
+		break;
 
 	case Level1:
 

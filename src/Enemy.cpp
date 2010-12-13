@@ -48,7 +48,7 @@ void Enemy::fluxCapacitor()
 	// Since the particle system is derived from the class Drawable, we can create
     // add it to the scene as a child of a geode
 	osg::ref_ptr< osg::Geode > geode = new osg::Geode(); 
-	// mPat->addChild(geode);
+	mPat->addChild(geode);
     geode->addDrawable( dustParticleSystem );
 
     // Add an 'updater' to help per-frame management
@@ -57,7 +57,7 @@ void Enemy::fluxCapacitor()
     // Associate this updater with our particle system 
     dustSystemUpdater->addParticleSystem(dustParticleSystem);
     // add the updater node to the scene graph
-    // mPat->addChild(dustSystemUpdater);
+    mPat->addChild(dustSystemUpdater);
 
     // Create a particle to be used by our particle system and define a few
     // of its properties
@@ -130,13 +130,7 @@ void Enemy::fluxCapacitor()
     moveDustInAir->addOperator(airFriction);
 
     // Finally, add the program to the scene 
-    //mPat->addChild(moveDustInAir);
-
-
-	mPat->addChild( geode );
-	mPat->addChild( dustSystemUpdater );
-	mPat->addChild( modelTransform );
-	mPat->addChild( moveDustInAir );
+    mPat->addChild(moveDustInAir);
 
 }
 

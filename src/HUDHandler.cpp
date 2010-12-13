@@ -15,8 +15,7 @@ HUDHandler::HUDHandler(osg::ref_ptr<osg::Group> rootNode)
 	HUDGeode->addDrawable(scoreText);
 	//achievePork();
 	//achieveBird();
-	//showMessage("Level Cleared!\nPress any key");
-	//showMessage("Get Ready!\nPress any key");
+	
 }
 
 HUDHandler::~HUDHandler(){}
@@ -39,7 +38,6 @@ void HUDHandler::initDisplayMessage()
 	messageText->setFont("../content/font/font.ttf");
 	messageText->setPosition( osg::Vec3(200,400,0) );
 	messageText->setColor( osg::Vec4(255, 255, 255, 1) );
-
 	
 }
 void HUDHandler::showMessage(const char* message)

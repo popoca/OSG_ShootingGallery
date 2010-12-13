@@ -24,7 +24,7 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapte
             if (view) pick(view,ea);
             return false;
         }    
-        case(osgGA::GUIEventAdapter::KEYDOWN):
+        /*case(osgGA::GUIEventAdapter::KEYDOWN):
         {
             if (ea.getKey()=='c')
             {        
@@ -35,7 +35,7 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapte
                 if (view) pick(view,*event);
             }
             return false;
-        }    
+        }    */
         default:
             return false;
     }
