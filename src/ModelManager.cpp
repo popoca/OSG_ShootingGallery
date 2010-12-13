@@ -3,7 +3,7 @@
 using namespace std;
 
 ModelManager::ModelManager( osg::ref_ptr< osg::Group > rt )
-: root( rt ), init( false ), currTime( 0 )
+: root( rt ), end( false ), currTime( 0 )
 {
 	bg.reserve( 9 );
 	en.reserve( 5 );
@@ -50,10 +50,11 @@ void ModelManager::updateScene( double delta )
 		}
 	}
 
-	if( en.empty() )
+	if( en.empty() && !end )
 	{
 		cout << "Todos los enemigos han sido eliminados" << endl;
 		currTime = 0;
+		end = true;
 	}
 
 }

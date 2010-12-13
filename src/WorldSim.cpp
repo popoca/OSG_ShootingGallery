@@ -105,8 +105,8 @@ void WorldSim::update( float delta )
 		{
 			
 			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, 1.0f ) );
-			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 20.0, 1.0f ) );
-			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 50.0, 1.0f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 20.0, 1.0f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 40.0, 1.0f ) );
 
 			hasLoaded = true;
 

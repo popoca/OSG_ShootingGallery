@@ -16,6 +16,7 @@
 #include <osg/MatrixTransform>
 #include <osg/Matrix>
 #include <string>
+#include <cmath>
 #include <iostream>
 
 using namespace std;
@@ -43,6 +44,7 @@ private:
 	string name;
 	float accAngle;
 	float x;
+	float y;
 	bool reverse;
 
 };

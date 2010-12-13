@@ -46,7 +46,7 @@ public:
 	// timer para el spawn
 	double currTime;
 
-	bool init;
+	bool end;
 
 };
 

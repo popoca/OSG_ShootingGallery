@@ -1,9 +1,10 @@
 #include "EnemyController.h"
+#define Pi 3.1416
 
 using namespace std;
 
 EnemyController::EnemyController( float delta, osg::Vec3f pos, const char* name )
-: accAngle( 0.0f ), x( 0.0f ), reverse( false ), delta( delta ), pos( pos ), name( name )
+: accAngle( 0.0f ), x( 0.0f ), y( 0.0f ), reverse( false ), delta( delta ), pos( pos ), name( name )
 {
 }
 
@@ -15,46 +16,136 @@ void EnemyController::operator()( osg::Node* node, osg::NodeVisitor* nv )
 {
 	osg::ref_ptr< osg::PositionAttitudeTransform > tData = dynamic_cast<osg::PositionAttitudeTransform*> (node);
 
-	if(tData != NULL)
+	/* AI para el conejo */
+	if(tData != NULL )
     {
-		if( !reverse )
+		if( !strcmp( name.c_str(), "conejo" ) ) /* si el nodo es un conejo */
 		{
-			if( accAngle < 3.1415f )
+			if( !reverse )
 			{
-				if( x > 0.0f )
+				if( accAngle < 3.1416f )
 				{
-					tData->setPosition(osg::Vec3f( x, 0.0f, 10.0f ));
-					x -= ( 2.0f * (float)delta );
-				 }
-				 else
-				 {
-					tData->setAttitude( osg::Quat(accAngle, osg::Vec3( 0.0f, 0.0f, 1.0f)) );
-					accAngle += ( 1.0f * (float)delta);
-				 }
-			}
-			else
+					if( x > 0.0f )
+					{
+						tData->setPosition(osg::Vec3f( -50.0f + x, 0.0f, 10.0f ));
+						x -= ( 2.0f * (float)delta );
+					 }
+					 else
+					 {
+						tData->setAttitude( osg::Quat(accAngle, osg::Vec3( 0.0f, 0.0f, 1.0f)) );
+						accAngle += ( 1.0f * (float)delta);
+					 }
+				}
+				else
+				{
+					reverse = true;
+				}
+			 }
+			 else
+			 {
+				if( accAngle > 0.0f )
+				{
+					if( x < 500.0f )
+					 {
+						tData->setPosition(osg::Vec3f( -50.0f + x, 0.0f, 10.0f ));
+						x += ( 2.0f * (float)delta );
+					 }
+					 else
+					 {
+						tData->setAttitude( osg::Quat(accAngle, osg::Vec3( 0.0f, 0.0f, 1.0f)) );
+						accAngle -= ( 1.0f * (float)delta );
+					 }
+				}
+				else
+					reverse = false;
+			 }
+		}
+		if( !strcmp( name.c_str(), "cerdito" ) ) /* si el nodo es un cerdito */
+		{
+			if( !reverse )
 			{
-				reverse = true;
-			}
-		 }
-		 else
-		 {
-			if( accAngle > 0.0f )
+				if( accAngle < 3.1416f )
+				{
+					if( x > 0.0f )
+					{
+						tData->setPosition(osg::Vec3f( -50.0f + x, 0.0f, 10.0f ));
+						x -= ( 2.0f * (float)delta );
+					 }
+					 else
+					 {
+						tData->setAttitude( osg::Quat(accAngle, osg::Vec3( 0.0f, 0.0f, 1.0f)) );
+						accAngle += ( 1.0f * (float)delta);
+					 }
+				}
+				else
+				{
+					reverse = true;
+				}
+			 }
+			 else
+			 {
+				if( accAngle > 0.0f )
+				{
+					if( x < 50.0f )
+					 {
+						tData->setPosition(osg::Vec3f( -50.0f + x, 0.0f, 10.0f ));
+						x += ( 2.0f * (float)delta );
+					 }
+					 else
+					 {
+						tData->setAttitude( osg::Quat(accAngle, osg::Vec3( 0.0f, 0.0f, 1.0f)) );
+						accAngle -= ( 1.0f * (float)delta );
+					 }
+				}
+				else
+					reverse = false;
+			 }
+		}
+		if( !strcmp( name.c_str(), "buitre" ) ) /* si el nodo es un buitre */
+		{
+			if( !reverse )
 			{
-				if( x < 500.0f )
-				 {
-					tData->setPosition(osg::Vec3f( x, 0.0f, 10.0f ));
-					x += ( 2.0f * (float)delta );
-				 }
-				 else
-				 {
-					tData->setAttitude( osg::Quat(accAngle, osg::Vec3( 0.0f, 0.0f, 1.0f)) );
-					accAngle -= ( 1.0f * (float)delta );
-				 }
-			}
-			else
-				reverse = false;
-		 }
-      }
+				if( accAngle < 3.1416f )
+				{
+					if( x > 0.0f )
+					{
+						tData->setPosition(osg::Vec3f( -400.0f + x, 0.0f, 140.0f + y * 100.0f * (float) delta ));
+						x -= ( 2.0f * (float)delta );
+						y = sinf( x * ( Pi / 180.0f ) );
+					 }
+					 else
+					 {
+						tData->setAttitude( osg::Quat(accAngle, osg::Vec3( 0.0f, 0.0f, 1.0f)) );
+						accAngle += ( 1.0f * (float)delta);
+					 }
+				}
+				else
+				{
+					reverse = true;
+				}
+			 }
+			 else
+			 {
+				if( accAngle > 0.0f )
+				{
+					if( x < 700.0f )
+					 {
+						tData->setPosition(osg::Vec3f( -400.0f + x, 0.0f, 140.0f + y * 100.0f * (float) delta ));
+						x += ( 2.0f * (float)delta );
+						y = sinf( x * ( Pi / 180.0f ) );
+					 }
+					 else
+					 {
+						tData->setAttitude( osg::Quat(accAngle, osg::Vec3( 0.0f, 0.0f, 1.0f)) );
+						accAngle -= ( 1.0f * (float)delta );
+					 }
+				}
+				else
+					reverse = false;
+			 }
+		}
+		
+	}
       traverse(node, nv); 
+
 }
