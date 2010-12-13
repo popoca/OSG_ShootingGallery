@@ -47,14 +47,18 @@ void ModelManager::updateScene( double delta )
 			// y no estamos explotando
 			if( !en[i]->fluxing )
 			{
-				// cambia el modelo por el de la explosion
-				en[i]->mPat->replaceChild( en[i]->mNode, en[i]->mNodeXplode );
 				// 88mph
 				en[i]->fluxCapacitor();
+				// cambia el modelo por el de la explosion
+				en[i]->mPat->replaceChild( en[i]->mNode, en[i]->mNodeXplode );
 				en[i]->fluxing = true;
 			}
 			else
 			{
+				if ( en[i]->eraseTime < 3.5 )
+				{
+					en[i]->mPat->removeUpdateCallback( en[i]->mPat->getUpdateCallback() );
+				}
 				if( en[i]->eraseTime >= 0 )
 				{
 					en[i]->eraseTime -= 0.1f;
@@ -63,6 +67,7 @@ void ModelManager::updateScene( double delta )
 				{
 					en[i]->unfluxCapacitor();
 					en[i]->mPat->removeChild( en[i]->mNodeXplode );
+					root->removeChild( en[i]->mPat.get() );
 					en.erase( en.begin() + i );
 				}
 			}

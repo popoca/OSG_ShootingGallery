@@ -126,6 +126,7 @@ void WorldSim::update( float delta )
 
 		if( mm->end )
 		{
+			mm->en.clear();
 			hasLoaded = false;
 			myHH->showMessage("Level Cleared!\nPress any key!");
 			myHH->showing = true;
@@ -133,6 +134,7 @@ void WorldSim::update( float delta )
 			{
 					myHH->quitMessage();
 					myIH->myKBH->enter_pressed = false;
+					mm->end = false;
 					currState = Level2;
 			}
 		}
@@ -147,8 +149,10 @@ void WorldSim::update( float delta )
 			mm->end = false;
 			
 			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 1.3f ) );
-			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 10.0, delta, 1.3f ) );
-			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 20.0, delta, 1.3f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 5.0, delta, 1.3f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 10.0, delta, 1.3f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 15.0, delta, 1.3f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 20.0, delta, 1.3f ) );
 
 			hasLoaded = true;
 
@@ -158,6 +162,7 @@ void WorldSim::update( float delta )
 
 		if( mm->end )
 		{
+			mm->en.clear();
 			hasLoaded = false;
 			myHH->showMessage("Level Cleared!\nPress any key!");
 			myHH->showing = true;
@@ -165,6 +170,7 @@ void WorldSim::update( float delta )
 			{
 					myHH->quitMessage();
 					myIH->myKBH->enter_pressed = false;
+					mm->end = false;
 					currState = Level3;
 			}
 		}
@@ -179,8 +185,10 @@ void WorldSim::update( float delta )
 			mm->end = false;
 			
 			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 1.6f ) );
-			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 10.0, delta, 1.6f ) );
-			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 20.0, delta, 1.6f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 5.0, delta, 1.6f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 10.0, delta, 1.6f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 15.0, delta, 1.6f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 20.0, delta, 1.6f ) );
 
 			hasLoaded = true;
 
@@ -190,6 +198,7 @@ void WorldSim::update( float delta )
 
 		if( mm->end )
 		{
+			mm->en.clear();
 			hasLoaded = false;
 			myHH->showMessage("Level Cleared!\nPress any key!");
 			myHH->showing = true;
@@ -197,6 +206,7 @@ void WorldSim::update( float delta )
 			{
 					myHH->quitMessage();
 					myIH->myKBH->enter_pressed = false;
+					mm->end = false;
 					currState = Level4;
 			}
 		}
@@ -221,6 +231,7 @@ void WorldSim::update( float delta )
 
 		if( mm->end )
 		{
+			mm->en.clear();
 			hasLoaded = false;
 			myHH->showMessage("Level Cleared!\nPress any key!");
 			myHH->showing = true;
@@ -228,6 +239,7 @@ void WorldSim::update( float delta )
 			{
 					myHH->quitMessage();
 					myIH->myKBH->enter_pressed = false;
+					mm->end = false;
 					currState = Level5;
 			}
 		}
@@ -252,6 +264,7 @@ void WorldSim::update( float delta )
 
 		if( mm->end )
 		{
+			mm->en.clear();
 			hasLoaded = false;
 			myHH->showMessage("Level Cleared!\nPress any key!");
 			myHH->showing = true;
@@ -259,6 +272,7 @@ void WorldSim::update( float delta )
 			{
 					myHH->quitMessage();
 					myIH->myKBH->enter_pressed = false;
+					mm->end = false;
 					currState = GameOver;
 			}
 		}
@@ -271,9 +285,11 @@ void WorldSim::update( float delta )
 		myHH->showing = true;
 		if( myIH->myKBH->enter_pressed )
 		{
-				myHH->quitMessage();
-				myIH->myKBH->enter_pressed = false;
-				currState = Level1;
+			mm->en.clear();
+			myHH->quitMessage();
+			myIH->myKBH->enter_pressed = false;
+			mm->end = false;
+			currState = Level1;
 		}
 
 		break;
