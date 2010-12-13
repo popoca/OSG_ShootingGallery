@@ -58,12 +58,18 @@ public:
 	osg::Geode* getGeode();
 	void updateScore();
 	int currentBullets;
+	void initDisplayMessage();
+	void showMessage(const char* message);
+	void quitMessage();
 	
 	void moveCursor(double x, double y);
 	osg::Image* bullet1;
 	osg::Image* bullet2;
 	osg::Image* cursor;
 	osgText::Text* scoreText;
+	osgText::Text* messageText;
+	
+	
 
 };
 
