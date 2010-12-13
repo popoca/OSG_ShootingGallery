@@ -23,6 +23,8 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	
 	mySH= new ShaderHandler();
 	
+	myIH->myKBH->getHH(myHH);
+
 	cout << "Iniciando el grafo de escena..." << endl;
 
 	/* Una prueba del manejador de modelos */
@@ -97,11 +99,11 @@ void WorldSim::update( float delta )
 
 		// do stuff
 		myHH->showMessage("Get Ready!\nPress any key");
+		myHH->showing = true;
 		if( myIH->myKBH->enter_pressed )
 		{
-			myHH->quitMessage();
-			currState = Level1;
-			myIH->myKBH->enter_pressed = false;
+				myHH->quitMessage();
+				currState = Level1;
 		}
 
 		break;

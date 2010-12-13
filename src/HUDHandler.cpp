@@ -4,15 +4,17 @@ using namespace std;
 
 HUDHandler::HUDHandler(osg::ref_ptr<osg::Group> rootNode)
 {
+	showing = false;
 	SCORE = 0;
 	MAX = 5;
 	currentBullets = MAX;
 	root = rootNode;
 	init_text();
-	initDisplayMessage();
+
 	init_images();
 	init_general();
 	HUDGeode->addDrawable(scoreText);
+		initDisplayMessage();
 	//achievePork();
 	//achieveBird();
 	
@@ -38,17 +40,22 @@ void HUDHandler::initDisplayMessage()
 	messageText->setFont("../content/font/font.ttf");
 	messageText->setPosition( osg::Vec3(200,400,0) );
 	messageText->setColor( osg::Vec4(255, 255, 255, 1) );
-	
+	messageText->setText("");
+	HUDGeode->addDrawable(messageText);
 }
 void HUDHandler::showMessage(const char* message)
 {
-	messageText->setText(message);
-	HUDGeode->addDrawable(messageText);
+	if(!showing)
+		messageText->setText(message);
 }
 
 void HUDHandler::quitMessage()
 {
-	HUDGeode->removeDrawable(messageText);
+	if(showing)
+	{
+		messageText->setText("");
+		showing = false;
+	}
 }
 
 
@@ -64,8 +71,6 @@ void HUDHandler::init_general()
 	HUDGeode = new osg::Geode();
 	HUDProjectionMatrix = new osg::Projection;
 	HUDProjectionMatrix->setMatrix(osg::Matrix::ortho2D(0,1024,0,860));
-	
-
 	
 	HUDModelViewMatrix = new osg::MatrixTransform;
 	HUDModelViewMatrix->setMatrix(osg::Matrix::identity());
