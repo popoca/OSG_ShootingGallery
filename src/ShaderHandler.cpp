@@ -85,7 +85,6 @@ void ShaderHandler::BumpMappingShader(osg::Node* node)
 	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
 	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 	node->accept(*(fnv.get()));
-	//std::cout<<fnv->foundNodeList.size()<<std::endl;
 
 	std::vector<osg::Node*>::iterator giter;
 	for(giter = fnv->foundNodeList.begin(); giter != fnv->foundNodeList.end(); giter++)
@@ -95,8 +94,6 @@ void ShaderHandler::BumpMappingShader(osg::Node* node)
 		{
 			osg::StateSet *tmpstate = tmpgeode->getDrawable(i)->getOrCreateStateSet();
 			tmpstate->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
-		
-		//}
 
 			osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
 
@@ -128,7 +125,7 @@ void ShaderHandler::transpShader(osg::Node* node)
 
 
 	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
-	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
+	nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 	node->accept(*(fnv.get()));
 
 	std::vector<osg::Node*>::iterator giter;
@@ -150,8 +147,6 @@ void ShaderHandler::transpShader(osg::Node* node)
 
 			//// Disable conflicting modes.
 			//tmpstate->setMode( GL_LIGHTING, osg::StateAttribute::OFF );
-
-		
 
 			//osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
 
@@ -193,8 +188,6 @@ void ShaderHandler::aOShader(osg::Node* node)
 		{
 			osg::StateSet *tmpstate = tmpgeode->getDrawable(i)->getOrCreateStateSet();
 			tmpstate->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
-		
-		//}
 
 			osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
 
@@ -213,7 +206,7 @@ void ShaderHandler::illuShader(osg::Node* node)
 {
 	osg::ref_ptr<osg::StateSet> nodeState = node->getOrCreateStateSet();
 
-	nodeState->addUniform( new osg::Uniform( "colorMap", 0 ) );
+	nodeState->addUniform( new osg::Uniform( "colorMap", 3 ) );
 	nodeState->addUniform( new osg::Uniform( "ambientO", 2 ) );
 	osg::Texture2D* detalle = new osg::Texture2D;
 	detalle->setDataVariance(osg::Object::DYNAMIC); 
@@ -253,10 +246,7 @@ void ShaderHandler::illuShader(osg::Node* node)
 			tmpstate->setTextureAttributeAndModes(3,detalle,osg::StateAttribute::ON);
 			tmpstate->setTextureAttribute(1,decalTexEnv);
 
-
-
 		
-
 			osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
 
 			osg::Material *material = new osg::Material();
