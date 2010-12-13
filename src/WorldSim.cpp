@@ -103,6 +103,7 @@ void WorldSim::update( float delta )
 		if( myIH->myKBH->enter_pressed )
 		{
 				myHH->quitMessage();
+				myIH->myKBH->enter_pressed = false;
 				currState = Level1;
 		}
 
@@ -126,7 +127,14 @@ void WorldSim::update( float delta )
 		if( mm->end )
 		{
 			hasLoaded = false;
-			currState = Level2;
+			myHH->showMessage("Level Cleared!\nPress any key!");
+			myHH->showing = true;
+			if( myIH->myKBH->enter_pressed )
+			{
+					myHH->quitMessage();
+					myIH->myKBH->enter_pressed = false;
+					currState = Level2;
+			}
 		}
 
 		break;
@@ -151,7 +159,14 @@ void WorldSim::update( float delta )
 		if( mm->end )
 		{
 			hasLoaded = false;
-			currState = Level3;
+			myHH->showMessage("Level Cleared!\nPress any key!");
+			myHH->showing = true;
+			if( myIH->myKBH->enter_pressed )
+			{
+					myHH->quitMessage();
+					myIH->myKBH->enter_pressed = false;
+					currState = Level3;
+			}
 		}
 
 		break;
@@ -176,7 +191,14 @@ void WorldSim::update( float delta )
 		if( mm->end )
 		{
 			hasLoaded = false;
-			currState = Level4;
+			myHH->showMessage("Level Cleared!\nPress any key!");
+			myHH->showing = true;
+			if( myIH->myKBH->enter_pressed )
+			{
+					myHH->quitMessage();
+					myIH->myKBH->enter_pressed = false;
+					currState = Level4;
+			}
 		}
 
 		break;
@@ -200,7 +222,14 @@ void WorldSim::update( float delta )
 		if( mm->end )
 		{
 			hasLoaded = false;
-			currState = Level5;
+			myHH->showMessage("Level Cleared!\nPress any key!");
+			myHH->showing = true;
+			if( myIH->myKBH->enter_pressed )
+			{
+					myHH->quitMessage();
+					myIH->myKBH->enter_pressed = false;
+					currState = Level5;
+			}
 		}
 
 		break;
@@ -222,11 +251,31 @@ void WorldSim::update( float delta )
 			mm->updateScene( delta );
 
 		if( mm->end )
-			currState = Level1;
+		{
+			hasLoaded = false;
+			myHH->showMessage("Level Cleared!\nPress any key!");
+			myHH->showing = true;
+			if( myIH->myKBH->enter_pressed )
+			{
+					myHH->quitMessage();
+					myIH->myKBH->enter_pressed = false;
+					currState = GameOver;
+			}
+		}
 
 		break;
 
 	case GameOver:
+
+		myHH->showMessage("Congratulations!\nPress any key");
+		myHH->showing = true;
+		if( myIH->myKBH->enter_pressed )
+		{
+				myHH->quitMessage();
+				myIH->myKBH->enter_pressed = false;
+				currState = Level1;
+		}
+
 		break;
 	}
 }

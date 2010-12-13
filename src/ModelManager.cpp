@@ -63,7 +63,6 @@ void ModelManager::updateScene( double delta )
 				{
 					en[i]->unfluxCapacitor();
 					en[i]->mPat->removeChild( en[i]->mNodeXplode );
-					en[i]->mPat->removeChild( en[i]->mNode );
 					en.erase( en.begin() + i );
 				}
 			}
