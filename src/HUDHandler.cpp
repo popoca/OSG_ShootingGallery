@@ -9,11 +9,14 @@ HUDHandler::HUDHandler(osg::ref_ptr<osg::Group> rootNode)
 	currentBullets = MAX;
 	root = rootNode;
 	init_text();
+	initDisplayMessage();
 	init_images();
 	init_general();
 	HUDGeode->addDrawable(scoreText);
 	//achievePork();
 	//achieveBird();
+	//showMessage("Level Cleared!\nPress any key");
+	//showMessage("Get Ready!\nPress any key");
 }
 
 HUDHandler::~HUDHandler(){}
@@ -26,7 +29,30 @@ void HUDHandler::init_text()
 	scoreText->setText("SCORE\t0");
 	scoreText->setPosition( osg::Vec3(700,800,0) );
 	scoreText->setColor( osg::Vec4(255, 255, 255, 1) );
+	
 }
+
+void HUDHandler::initDisplayMessage()
+{
+	messageText = new osgText::Text();
+	messageText->setCharacterSize(45);
+	messageText->setFont("../content/font/font.ttf");
+	messageText->setPosition( osg::Vec3(200,400,0) );
+	messageText->setColor( osg::Vec4(255, 255, 255, 1) );
+
+	
+}
+void HUDHandler::showMessage(const char* message)
+{
+	messageText->setText(message);
+	HUDGeode->addDrawable(messageText);
+}
+
+void HUDHandler::quitMessage()
+{
+	HUDGeode->removeDrawable(messageText);
+}
+
 
 void HUDHandler::init_images()
 {
@@ -82,8 +108,6 @@ void HUDHandler::init_general()
 	
 	HUDTexture->setDataVariance(osg::Object::DYNAMIC);
 	HUDTexture->setImage(bullet2);
-	
-	printf("\nMARK\n");
 	
 	HUDnormals = new osg::Vec3Array;
     HUDnormals->push_back(osg::Vec3(0.0f,0.0f,1.0f));
