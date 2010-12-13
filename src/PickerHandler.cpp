@@ -1,9 +1,10 @@
 #include "PickerHandler.h"
 
 using namespace std;
-PickHandler::PickHandler( osgText::Text* updateText )
+PickHandler::PickHandler( osgText::Text* updateText, HUDHandler* _myHH )
 {
 	_updateText = updateText;
+	myHH = _myHH;
 }
 
 PickHandler::~PickHandler()
@@ -76,16 +77,19 @@ void PickHandler::pick(osgViewer::View* view, const osgGA::GUIEventAdapter& ea)
 					//hitr->nodePath.pop_back();
 					if( !strcmp( parent->getName().c_str(), "buitre") )
 					{
+						myHH->achieveBird();
 						parent->setName("X");
 						break;
 					}
 					if( !strcmp( parent->getName().c_str(), "cerdito") )
 					{
+						myHH->achievePork();
 						parent->setName("X");
 						break;
 					}
 					if( !strcmp( parent->getName().c_str(), "conejo") )
 					{
+						myHH->achieveRabbit();
 						parent->setName("X");
 						break;
 					}

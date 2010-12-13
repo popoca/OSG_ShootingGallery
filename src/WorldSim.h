@@ -4,6 +4,7 @@
 #include "ShaderHandler.h"
 #include "InputHandler.h"
 #include "ModelManager.h"
+#include "HUDHandler.h"
 
 #include <osg/MatrixTransform>
 #include <osg/PositionAttitudeTransform>
@@ -17,6 +18,8 @@ class WorldSim: public osg::Referenced
 public:
 	
 	InputHandler* myIH;
+	HUDHandler* myHH;
+	
 	// Constructor 
 	WorldSim(osg::ref_ptr<osgText::Text> _updateText);
 	// Desctructor

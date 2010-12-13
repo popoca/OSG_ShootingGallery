@@ -4,6 +4,7 @@
 
 #include "PickerHandler.h"
 #include "MyKeyboardEventHandler.h"
+#include "HUDHandler.h"
 #include <osg/Group>
 
 class InputHandler
@@ -12,7 +13,7 @@ class InputHandler
 	
 	public:	
 	
-	InputHandler(osgText::Text* updateText);
+	InputHandler(osgText::Text* updateText, HUDHandler* _myHH);
 	~InputHandler();
 	
 	MyKeyboardEventHandler* myKBH;

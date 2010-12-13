@@ -12,8 +12,8 @@ HUDHandler::HUDHandler(osg::ref_ptr<osg::Group> rootNode)
 	init_images();
 	init_general();
 	HUDGeode->addDrawable(scoreText);
-	achievePork();
-	achieveBird();
+	//achievePork();
+	//achieveBird();
 }
 
 HUDHandler::~HUDHandler(){}

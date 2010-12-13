@@ -29,6 +29,7 @@
 #include <sstream>
 #include <iostream>
 #include <string>
+#include "HUDHandler.h"
 
 class PickHandler : public osgGA::GUIEventHandler {
 public: 
@@ -44,7 +45,7 @@ public:
     {
         if (_updateText.get()) _updateText->setText(name);
     }
-    
+    HUDHandler* myHH;
 protected:
 
     osg::ref_ptr<osgText::Text>  _updateText;

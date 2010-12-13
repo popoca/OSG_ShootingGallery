@@ -18,8 +18,9 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	start = false;
 
 	root = new osg::Group;
-	myIH = new InputHandler(_updateText);
-
+	myHH = new HUDHandler(root);
+	myIH = new InputHandler(_updateText,myHH);
+	
 	mySH= new ShaderHandler();
 	
 	cout << "Iniciando el grafo de escena..." << endl;
