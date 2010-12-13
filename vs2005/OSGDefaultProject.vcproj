@@ -190,6 +190,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\src\HUDHandler.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\src\InputHandler.cpp"
 				>
 			</File>
@@ -237,6 +241,10 @@
 			</File>
 			<File
 				RelativePath="..\src\FindNodeVisitor.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\HUDHandler.h"
 				>
 			</File>
 			<File
