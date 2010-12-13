@@ -28,8 +28,13 @@ int main( int argc, char** argv )
 	view->setSceneData(myGS->getRootNode());
 	view->setUpViewAcrossAllScreens();
 	osgViewer::Viewer viewer;
-	osgGA::TrackballManipulator* tb = new osgGA::TrackballManipulator;
-	viewer.setCameraManipulator( tb );
+	//osgGA::TrackballManipulator* tb = new osgGA::TrackballManipulator;
+	//viewer.setCameraManipulator( tb );
+	osg::Vec3 *eye = new osg::Vec3f(16.1683,-898.822,121.376);
+	osg::Vec3 *center = new osg::Vec3f(16.1782,-897.822,121.368);
+	osg::Vec3 *up = new osg::Vec3f(-0.0170962,0.00822059,0.99982);
+	viewer.getCamera()->setViewMatrixAsLookAt(*eye, *center, *up);
+
 	viewer.setSceneData( myGS->getRootNode().get());
 	viewer.addEventHandler(myGS->myIH->getKeyboardHandler());
 	viewer.addEventHandler(myGS->myIH->myPKH);
@@ -41,7 +46,7 @@ int main( int argc, char** argv )
 	old_tick = osg::Timer::instance()->getStartTick();
 	
 	/* Para obtener las coords de la camara */
-	osg::Vec3f center, eye, up;
+//	osg::Vec3f center, eye, up;
 
     while( !viewer.done() )
     {
@@ -50,11 +55,15 @@ int main( int argc, char** argv )
 		new_tick = osg::Timer::instance()->tick();
         delta = osg::Timer::instance()->delta_s( old_tick, new_tick );
 
-		viewer.getCamera()->getViewMatrixAsLookAt( eye, center, up );
+//		viewer.getCamera()->getViewMatrixAsLookAt( eye, center, up );
 
-		/*cout << "Camera pos: " << center.x() << ", " <<
+		/*cout << "Camera pos: " << eye.x() << ", " <<
+			eye.y() << ", " <<
+			eye.z() << ", " << center.x() << ", " <<
 			center.y() << ", " <<
-			center.z() << endl;*/
+			center.z() << ", " << up.x() << ", " <<
+			up.y() << ", " <<
+			up.z() << endl;*/
 
 		myGS->update( delta );
 
