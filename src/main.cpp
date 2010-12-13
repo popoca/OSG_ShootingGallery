@@ -10,9 +10,6 @@
 #include <osg/io_utils>
 #include <iostream>
 
-
-//#include "MouseEventHandler.h"
-
 using namespace std;
 
 int main( int argc, char** argv )

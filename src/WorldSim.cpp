@@ -32,8 +32,8 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/pasto.osg", "pasto" ) );
 	//mySH->aOShader(mm->bg[2]->mNode);
 	mySH->transpShader(mm->bg[2]->mNode);
-
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/relleno.osg", "relleno" ) );
+	mySH->aOShader(mm->bg[3]->mNode);
 	mySH->transpShader(mm->bg[3]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg", "obstaculo" ) );
 	mySH->transpShader(mm->bg[4]->mNode);
@@ -56,12 +56,12 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	// Creacion y configuracion de la luz
 	osg::Light* myLight = new osg::Light;
     myLight->setLightNum(0);
-	myLight->setPosition(osg::Vec4(0.0,0.0,1500.0,1.0));
-    myLight->setAmbient(osg::Vec4(0.75f,0.75f,0.75f,1.0f));
-    myLight->setDiffuse(osg::Vec4(0.75f,0.75f,0.75f,1.0f));
-	myLight->setSpecular(osg::Vec4(0.75f,0.75f,0.75f,1.0f));
+	myLight->setPosition(osg::Vec4(0.0,0.0,2500.0,1.0));
+    myLight->setAmbient(osg::Vec4(0.25f,0.85f,0.25f,1.0f));
+    myLight->setDiffuse(osg::Vec4(0.75f,0.85f,0.75f,1.0f));
+	myLight->setSpecular(osg::Vec4(0.75f,0.85f,0.75f,1.0f));
 	myLight->setDirection(osg::Vec3(-1.0,-1.0,-1.0));
-    myLight->setConstantAttenuation(1.0f);
+    myLight->setConstantAttenuation(9.0f);
     myLight->setLinearAttenuation(2.0f/100.0f);
     myLight->setQuadraticAttenuation(2.0f/osg::square(100.0f));
 

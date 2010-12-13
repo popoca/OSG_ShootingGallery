@@ -2,6 +2,12 @@
 #include "FindNodeVisitor.h"
 #include <osg/Depth>
 #include <osg/TexEnv>
+#include <osg/Texture2D>
+#include <osgDB/ReadFile>
+#include <osgDB/FileUtils>
+#include <osgViewer/Viewer>
+#include <osg/TexGen>
+#include <osg/StateSet>
 
 ShaderHandler::ShaderHandler()
 {
@@ -79,7 +85,6 @@ void ShaderHandler::BumpMappingShader(osg::Node* node)
 	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
 	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 	node->accept(*(fnv.get()));
-	//std::cout<<fnv->foundNodeList.size()<<std::endl;
 
 	std::vector<osg::Node*>::iterator giter;
 	for(giter = fnv->foundNodeList.begin(); giter != fnv->foundNodeList.end(); giter++)
@@ -89,8 +94,6 @@ void ShaderHandler::BumpMappingShader(osg::Node* node)
 		{
 			osg::StateSet *tmpstate = tmpgeode->getDrawable(i)->getOrCreateStateSet();
 			tmpstate->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
-		
-		//}
 
 			osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
 
@@ -122,9 +125,8 @@ void ShaderHandler::transpShader(osg::Node* node)
 
 
 	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
-	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
+	nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 	node->accept(*(fnv.get()));
-	//std::cout<<fnv->foundNodeList.size()<<std::endl;
 
 	std::vector<osg::Node*>::iterator giter;
 	for(giter = fnv->foundNodeList.begin(); giter != fnv->foundNodeList.end(); giter++)
@@ -137,6 +139,7 @@ void ShaderHandler::transpShader(osg::Node* node)
 			tmpstate->setMode( GL_BLEND, osg::StateAttribute::ON );
 			tmpstate->setRenderingHint( osg::StateSet::TRANSPARENT_BIN );
 
+			//--------Para activa el otro tipo de transparencia
 			//osg::Depth* depth = new osg::Depth;
 			//depth->setWriteMask( false );
 
@@ -144,8 +147,6 @@ void ShaderHandler::transpShader(osg::Node* node)
 
 			//// Disable conflicting modes.
 			//tmpstate->setMode( GL_LIGHTING, osg::StateAttribute::OFF );
-
-		
 
 			//osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
 
@@ -170,7 +171,7 @@ void ShaderHandler::aOShader(osg::Node* node)
 	//nodeState->addUniform( new osg::Uniform("Environment", 3) );
 	nodeState->addUniform( new osg::Uniform( "colorMap", 1 ) );
 	//nodeState->addUniform( new osg::Uniform( "ambientO", 1 ) );
-	nodeState->addUniform( new osg::Uniform( "normalMap", 3 ) );
+	nodeState->addUniform( new osg::Uniform( "normalMap", 7 ) );
 	//osg::Uniform* tsUniform   = new osg::Uniform( "time_scale", 4.0f );
 	//osg::Uniform* t2piUniform   = new osg::Uniform( "time_0_2PI", 0.0f );
  
@@ -178,7 +179,6 @@ void ShaderHandler::aOShader(osg::Node* node)
 	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
 	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 	node->accept(*(fnv.get()));
-	//std::cout<<fnv->foundNodeList.size()<<std::endl;
 
 	std::vector<osg::Node*>::iterator giter;
 	for(giter = fnv->foundNodeList.begin(); giter != fnv->foundNodeList.end(); giter++)
@@ -188,8 +188,6 @@ void ShaderHandler::aOShader(osg::Node* node)
 		{
 			osg::StateSet *tmpstate = tmpgeode->getDrawable(i)->getOrCreateStateSet();
 			tmpstate->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
-		
-		//}
 
 			osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
 
@@ -208,14 +206,22 @@ void ShaderHandler::illuShader(osg::Node* node)
 {
 	osg::ref_ptr<osg::StateSet> nodeState = node->getOrCreateStateSet();
 
-	nodeState->addUniform( new osg::Uniform( "colorMap", 0 ) );
+	nodeState->addUniform( new osg::Uniform( "colorMap", 3 ) );
 	nodeState->addUniform( new osg::Uniform( "ambientO", 2 ) );
-
+	osg::Texture2D* detalle = new osg::Texture2D;
+	detalle->setDataVariance(osg::Object::DYNAMIC); 
+    osg::Image* cbi = osgDB::readImageFile("../content/bg/shader_dif_normal_ao_detail/images/pisoDetailCompleteMap.tga"); 
+	detalle->setImage(cbi);
+   
+	// Declare a TexEnv instance, set the mode to 'BLEND'
+    osg::TexEnv* blendTexEnv = new osg::TexEnv;
+    blendTexEnv->setMode(osg::TexEnv::BLEND);
+    osg::TexEnv* decalTexEnv = new osg::TexEnv();
+    decalTexEnv->setMode(osg::TexEnv::DECAL);
 
 	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
 	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 	node->accept(*(fnv.get()));
-	//std::cout<<fnv->foundNodeList.size()<<std::endl;
 
 	std::vector<osg::Node*>::iterator giter;
 	for(giter = fnv->foundNodeList.begin(); giter != fnv->foundNodeList.end(); giter++)
@@ -226,22 +232,28 @@ void ShaderHandler::illuShader(osg::Node* node)
 			osg::StateSet *tmpstate = tmpgeode->getDrawable(i)->getOrCreateStateSet();
 			tmpstate->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 
-			//osg::TexEnv* decalTexEnv = new osg::TexEnv();
-			//tmpstate->setMode(osg::TexEnv::DECAL, osg::StateAttribute::ON);
+			//-----Para activar detail que no funciona bien
+			tmpstate->setTextureAttributeAndModes(3,detalle,osg::StateAttribute::ON);
+			// Set the texture texture environment for texture 0 to the 
+			//  texture envirnoment we declared above:
+			tmpstate->setTextureAttribute(3,blendTexEnv);
 
-			//tmpstate->setTextureAttributeAndModes
-			//(0,KLN89FaceTexture,osg::StateAttribute::ON);
-			//tmpstate->setTextureAttribute(0,decalTexEnv);
+
+			osg::TexEnv* decalTexEnv = new osg::TexEnv();
+			decalTexEnv->setMode(osg::TexEnv::DECAL);
+
+
+			tmpstate->setTextureAttributeAndModes(3,detalle,osg::StateAttribute::ON);
+			tmpstate->setTextureAttribute(1,decalTexEnv);
 
 		
-
-			//osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
+			osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
 
 			osg::Material *material = new osg::Material();
-			material->setAmbient(osg::Material::FRONT_AND_BACK, osg::Vec4(0.9f, 0.9f, 0.9f, 1.0f));
+			material->setAmbient(osg::Material::FRONT_AND_BACK, osg::Vec4(1.0f, 1.0f, 1.0f, 1.0f));
 			material->setDiffuse(osg::Material::FRONT_AND_BACK, osg::Vec4(0.9f, 0.9f, 0.9f, 1.0f));
-			material->setSpecular(osg::Material::FRONT_AND_BACK, osg::Vec4(0.2f, 0.2f, 0.2f, 1.0f));
-			material->setShininess(osg::Material::FRONT_AND_BACK, 60.0f);
+			material->setSpecular(osg::Material::FRONT_AND_BACK, osg::Vec4(0.9f, 0.9f, 0.9f, 1.0f));
+			material->setShininess(osg::Material::FRONT_AND_BACK, 120.0f);
 			tmpstate->setAttribute(material, osg::StateAttribute::ON);
 
 		}
@@ -262,7 +274,6 @@ void ShaderHandler::illuShader2(osg::Node* node)
 	osg::ref_ptr<FindNodeVisitor> fnv = new FindNodeVisitor("Geode");
 	//nodeState->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
 	node->accept(*(fnv.get()));
-	//std::cout<<fnv->foundNodeList.size()<<std::endl;
 
 	std::vector<osg::Node*>::iterator giter;
 	for(giter = fnv->foundNodeList.begin(); giter != fnv->foundNodeList.end(); giter++)
