@@ -18,6 +18,20 @@
 #include <iostream>
 #include "BasicModel.h"
 #include "EnemyController.h"
+#include <osgParticle/Particle>
+#include <osgParticle/ParticleSystem>
+#include <osgParticle/ParticleSystemUpdater>
+#include <osgParticle/ModularEmitter>
+#include <osgParticle/RandomRateCounter>
+#include <osgParticle/PointPlacer>
+#include <osgParticle/RadialShooter>
+#include <osgParticle/MultiSegmentPlacer>
+#include <osgParticle/ModularProgram>
+#include <osgParticle/AccelOperator>
+#include <osgParticle/FluidFrictionOperator>
+#include <osg/PositionAttitudeTransform>
+#include <cstring>
+#include <osg/ShapeDrawable>
 
 using namespace std;
 

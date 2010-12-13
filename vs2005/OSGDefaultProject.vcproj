@@ -59,7 +59,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="osgd.lib osgGAd.lib osgDBd.lib osgViewerd.lib osgTextd.lib osgUtild.lib OpenThreadsd.lib"
+				AdditionalDependencies="osgd.lib osgGAd.lib osgDBd.lib osgViewerd.lib osgTextd.lib osgUtild.lib OpenThreadsd.lib osgParticled.lib"
 				AdditionalLibraryDirectories="$(OSG_LIB_PATH)"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
@@ -190,6 +190,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\src\HUDHandler.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\src\InputHandler.cpp"
 				>
 			</File>
@@ -237,6 +241,10 @@
 			</File>
 			<File
 				RelativePath="..\src\FindNodeVisitor.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\HUDHandler.h"
 				>
 			</File>
 			<File
