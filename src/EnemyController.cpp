@@ -128,7 +128,7 @@ void EnemyController::operator()( osg::Node* node, osg::NodeVisitor* nv )
 			 {
 				if( accAngle > 0.0f )
 				{
-					if( x < 700.0f )
+					if( x < 900.0f )
 					 {
 						tData->setPosition(osg::Vec3f( -400.0f + x, 0.0f, 140.0f + y * 100.0f * (float) delta ));
 						x += ( 2.0f * (float)delta );

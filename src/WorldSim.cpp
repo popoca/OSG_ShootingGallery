@@ -104,9 +104,9 @@ void WorldSim::update( float delta )
 		if( !hasLoaded )
 		{
 			
-			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, 1.0f ) );
-			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 20.0, 1.0f ) );
-			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 40.0, 1.0f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 1.0f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 10.0, delta, 1.0f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 20.0, delta, 1.0f ) );
 
 			hasLoaded = true;
 
@@ -114,18 +114,107 @@ void WorldSim::update( float delta )
 		else
 			mm->updateScene( delta );
 
+		if( mm->end )
+		{
+			hasLoaded = false;
+			currState = Level2;
+		}
+
 		break;
 
 	case Level2:
+
+		if( !hasLoaded )
+		{
+
+			mm->end = false;
+			
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 1.3f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 10.0, delta, 1.3f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 20.0, delta, 1.3f ) );
+
+			hasLoaded = true;
+
+		}
+		else
+			mm->updateScene( delta );
+
+		if( mm->end )
+		{
+			hasLoaded = false;
+			currState = Level3;
+		}
+
 		break;
 
 	case Level3:
+
+		if( !hasLoaded )
+		{
+
+			mm->end = false;
+			
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 1.6f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 10.0, delta, 1.6f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 20.0, delta, 1.6f ) );
+
+			hasLoaded = true;
+
+		}
+		else
+			mm->updateScene( delta );
+
+		if( mm->end )
+		{
+			hasLoaded = false;
+			currState = Level4;
+		}
+
 		break;
 
 	case Level4:
+
+		if( !hasLoaded )
+		{
+			mm->end = false;
+			
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 1.9f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 10.0, delta, 1.9f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 20.0, delta, 1.9f ) );
+
+			hasLoaded = true;
+
+		}
+		else
+			mm->updateScene( delta );
+
+		if( mm->end )
+		{
+			hasLoaded = false;
+			currState = Level5;
+		}
+
 		break;
 
 	case Level5:
+
+		if( !hasLoaded )
+		{
+			mm->end = false;
+			
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 2.2f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 10.0, delta, 2.2f ) );
+			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 20.0, delta, 2.2f ) );
+
+			hasLoaded = true;
+
+		}
+		else
+			mm->updateScene( delta );
+
+		if( mm->end )
+			currState = Level1;
+
 		break;
 
 	case GameOver:

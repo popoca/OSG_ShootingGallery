@@ -28,7 +28,7 @@ public:
    //Constructor
 	EnemyController( float delta, osg::Vec3f pos, const char* name );
    ~EnemyController();
-   void update( float delta );
+   void update();
 
    // Reimplementacion del metodo operator, metodo que se invoca cada
    // vez que se recorre y actualiza el grafo de escena, Nota se
@@ -37,6 +37,7 @@ public:
 
    // delta de tiempo
    float delta;
+   float speed;
 
 private:
 

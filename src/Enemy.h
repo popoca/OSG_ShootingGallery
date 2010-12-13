@@ -26,15 +26,17 @@ class Enemy : public BasicModel
 public:
 
 	// Constructor toma una referencia a un string
-	Enemy( const char* file, const char* name, const char* file2, double spawnTime, float speed, bool hasSpawned = false, bool isMoving = false );
+	Enemy( const char* file, const char* name, const char* file2, double spawnTime, float delta, float speed, bool hasSpawned = false, bool isMoving = false );
 	~Enemy();
-	// metodo para cargar la IA
-	void loadIA();
+	// metodo para actualizarse
+	void update();
 
 // protected:
 
 	// Un enemigo tiene velocidad
 	float speed;
+	// Una delta de tiempo para contar
+	float delta;
 	// Una bandera para ser visible
 	bool hasSpawned;
 	// Una bandera para moverse
@@ -47,6 +49,9 @@ public:
 	osg::Matrix matrix;
 	// Tiempo en el que aparecera el enemigo en el sceneGraph
 	double spawnTime;
+	// Tiempo en el que desaparecera el enemigo del sceneGraph
+	double eraseTime;
+
 };
 
 #endif

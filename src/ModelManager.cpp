@@ -45,8 +45,16 @@ void ModelManager::updateScene( double delta )
 		{
 
 			en[i]->mPat->replaceChild( en[i]->mNode, en[i]->mNodeXplode );
-			//mPat->addChild( mNodeXplode.get() );
-			//en.erase( en.begin() + i );
+			if( en[i]->eraseTime >= 0 )
+			{
+				en[i]->eraseTime -= 0.1f;
+			}
+			else
+			{
+				en[i]->mPat->removeChild( en[i]->mNodeXplode );
+				//mPat->addChild( mNodeXplode.get() );
+				en.erase( en.begin() + i );
+			}
 		}
 	}
 
