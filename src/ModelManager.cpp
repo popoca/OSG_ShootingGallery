@@ -28,26 +28,32 @@ void ModelManager::setUpScene()
 
 void ModelManager::updateScene( double delta )
 {
-	if( !init )
+	// Aumenta el tiempo actual
+	currTime += delta;
+
+	// Para cada enemigo
+	for( int i = 0; i < (int)en.size(); i++ )
 	{
-		currTime += delta;
-
-		for( int i = 0; i < (int)en.size(); i++ )
+		// si no ha spawneado, y ya es hora de spawnear
+		if( currTime > en[i]->spawnTime && !en[i]->hasSpawned )
 		{
-			if( currTime > en[i]->spawnTime )
-			{
-				root->addChild( en[i]->mPat.get() );
-				en.erase( en.begin() + i );
-			}
+			root->addChild( en[i]->mPat.get() );
+			en[i]->hasSpawned = true;
 		}
 
-		if( en.empty() )
+		if( !strcmp( en[i]->mNode->getName().c_str(), "X" ) )
 		{
-			cout << "Todos los enemigos han sido eliminados" << endl;
-			currTime = 0;
-			init = true;
-		}
 
+			en[i]->mPat->replaceChild( en[i]->mNode, en[i]->mNodeXplode );
+			//mPat->addChild( mNodeXplode.get() );
+			en.erase( en.begin() + i );
+		}
+	}
+
+	if( en.empty() )
+	{
+		cout << "Todos los enemigos han sido eliminados" << endl;
+		currTime = 0;
 	}
 
 }

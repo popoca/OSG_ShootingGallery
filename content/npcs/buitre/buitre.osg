@@ -1,6 +1,6 @@
 MatrixTransform {
   DataVariance STATIC
-  name "Scene Root"
+  name "buitre Root"
   nodeMask 0xff
   cullingActive TRUE
   StateSet {
@@ -20,7 +20,7 @@ MatrixTransform {
   num_children 8
   MatrixTransform {
     DataVariance STATIC
-    name "Object020"
+    name "buitre020"
     nodeMask 0xff
     cullingActive TRUE
     referenceFrame RELATIVE
@@ -33,7 +33,7 @@ MatrixTransform {
     num_children 1
     MatrixTransform {
       DataVariance STATIC
-      name "Object020-OFFSET"
+      name "buitre020-OFFSET"
       nodeMask 0xff
       cullingActive TRUE
       referenceFrame RELATIVE
@@ -47,7 +47,7 @@ MatrixTransform {
       Geode {
         UniqueID Geode_1
         DataVariance STATIC
-        name "Object020-GEODE"
+        name "buitre020-GEODE"
         nodeMask 0xff
         cullingActive TRUE
         num_drawables 1
@@ -462,7 +462,7 @@ MatrixTransform {
   }
   MatrixTransform {
     DataVariance STATIC
-    name "Object021"
+    name "buitre021"
     nodeMask 0xff
     cullingActive TRUE
     referenceFrame RELATIVE
@@ -475,7 +475,7 @@ MatrixTransform {
     num_children 1
     MatrixTransform {
       DataVariance STATIC
-      name "Object021-OFFSET"
+      name "buitre021-OFFSET"
       nodeMask 0xff
       cullingActive TRUE
       referenceFrame RELATIVE
@@ -489,7 +489,7 @@ MatrixTransform {
       Geode {
         UniqueID Geode_5
         DataVariance STATIC
-        name "Object021-GEODE"
+        name "buitre021-GEODE"
         nodeMask 0xff
         cullingActive TRUE
         num_drawables 1
@@ -858,7 +858,7 @@ MatrixTransform {
   }
   MatrixTransform {
     DataVariance STATIC
-    name "Object022"
+    name "buitre022"
     nodeMask 0xff
     cullingActive TRUE
     referenceFrame RELATIVE
@@ -871,7 +871,7 @@ MatrixTransform {
     num_children 1
     MatrixTransform {
       DataVariance STATIC
-      name "Object022-OFFSET"
+      name "buitre022-OFFSET"
       nodeMask 0xff
       cullingActive TRUE
       referenceFrame RELATIVE
@@ -885,7 +885,7 @@ MatrixTransform {
       Geode {
         UniqueID Geode_6
         DataVariance STATIC
-        name "Object022-GEODE"
+        name "buitre022-GEODE"
         nodeMask 0xff
         cullingActive TRUE
         num_drawables 1
@@ -1182,7 +1182,7 @@ MatrixTransform {
   }
   MatrixTransform {
     DataVariance STATIC
-    name "Object023"
+    name "buitre023"
     nodeMask 0xff
     cullingActive TRUE
     referenceFrame RELATIVE
@@ -1195,7 +1195,7 @@ MatrixTransform {
     num_children 1
     MatrixTransform {
       DataVariance STATIC
-      name "Object023-OFFSET"
+      name "buitre023-OFFSET"
       nodeMask 0xff
       cullingActive TRUE
       referenceFrame RELATIVE
@@ -1209,7 +1209,7 @@ MatrixTransform {
       Geode {
         UniqueID Geode_7
         DataVariance STATIC
-        name "Object023-GEODE"
+        name "buitre023-GEODE"
         nodeMask 0xff
         cullingActive TRUE
         num_drawables 1
@@ -1386,7 +1386,7 @@ MatrixTransform {
   }
   MatrixTransform {
     DataVariance STATIC
-    name "Object024"
+    name "buitre024"
     nodeMask 0xff
     cullingActive TRUE
     referenceFrame RELATIVE
@@ -1399,7 +1399,7 @@ MatrixTransform {
     num_children 1
     MatrixTransform {
       DataVariance STATIC
-      name "Object024-OFFSET"
+      name "buitre024-OFFSET"
       nodeMask 0xff
       cullingActive TRUE
       referenceFrame RELATIVE
@@ -1413,7 +1413,7 @@ MatrixTransform {
       Geode {
         UniqueID Geode_8
         DataVariance STATIC
-        name "Object024-GEODE"
+        name "buitre024-GEODE"
         nodeMask 0xff
         cullingActive TRUE
         num_drawables 1
@@ -1598,7 +1598,7 @@ MatrixTransform {
   }
   MatrixTransform {
     DataVariance STATIC
-    name "Object025"
+    name "buitre025"
     nodeMask 0xff
     cullingActive TRUE
     referenceFrame RELATIVE
@@ -1611,7 +1611,7 @@ MatrixTransform {
     num_children 1
     MatrixTransform {
       DataVariance STATIC
-      name "Object025-OFFSET"
+      name "buitre025-OFFSET"
       nodeMask 0xff
       cullingActive TRUE
       referenceFrame RELATIVE
@@ -1625,7 +1625,7 @@ MatrixTransform {
       Geode {
         UniqueID Geode_9
         DataVariance STATIC
-        name "Object025-GEODE"
+        name "buitre025-GEODE"
         nodeMask 0xff
         cullingActive TRUE
         num_drawables 1
@@ -1959,7 +1959,7 @@ MatrixTransform {
   }
   MatrixTransform {
     DataVariance STATIC
-    name "Object026"
+    name "buitre026"
     nodeMask 0xff
     cullingActive TRUE
     referenceFrame RELATIVE
@@ -1972,7 +1972,7 @@ MatrixTransform {
     num_children 1
     MatrixTransform {
       DataVariance STATIC
-      name "Object026-OFFSET"
+      name "buitre026-OFFSET"
       nodeMask 0xff
       cullingActive TRUE
       referenceFrame RELATIVE
@@ -1986,7 +1986,7 @@ MatrixTransform {
       Geode {
         UniqueID Geode_10
         DataVariance STATIC
-        name "Object026-GEODE"
+        name "buitre026-GEODE"
         nodeMask 0xff
         cullingActive TRUE
         num_drawables 1

@@ -41,8 +41,6 @@ public:
 	bool isMoving;
 	// Un Modelo para la explosion
 	osg::ref_ptr< osg::Node > mNodeXplode;
-	// Una matriz de transformacion para la explosion
-	osg::ref_ptr< osg::PositionAttitudeTransform > mPatXplode;
 	// Vectores de posicion, axis, escala
 	osg::Vec3 position, axis, scale;
 	// Una matriz para hacer las transformaciones

@@ -1,4 +1,3 @@
-
 #include "PickerHandler.h"
 
 using namespace std;
@@ -17,7 +16,7 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapte
 {
     switch(ea.getEventType())
     {
-        case(osgGA::GUIEventAdapter::PUSH):
+	case(osgGA::GUIEventAdapter::LEFT_MOUSE_BUTTON):
         {
         	printf("Mouse Pressed\n");
             osgViewer::View* view = dynamic_cast<osgViewer::View*>(&aa);
@@ -46,47 +45,69 @@ void PickHandler::pick(osgViewer::View* view, const osgGA::GUIEventAdapter& ea)
 	printf("Llamando a pick\n");
     osgUtil::LineSegmentIntersector::Intersections intersections;
 
-    std::string gdlist="";
     float x = ea.getX();
     float y = ea.getY();
 
-    osg::ref_ptr< osgUtil::LineSegmentIntersector > picker = new osgUtil::LineSegmentIntersector(osgUtil::Intersector::WINDOW, x, y);
-    osgUtil::IntersectionVisitor iv(picker.get());
+	osg::ref_ptr< osg::Group > parent;
+
+    osg::ref_ptr< osgUtil::LineSegmentIntersector > picker = new osgUtil::LineSegmentIntersector( osgUtil::Intersector::WINDOW, x, y );
+    osgUtil::IntersectionVisitor iv( picker.get() );
     view->getCamera()->accept(iv);
     //printf("%d\n",view->getSceneData()->getNumChildren());
-    if (picker->containsIntersections())
+    if ( picker->containsIntersections() )
     {
-    	printf("Found Intersections\n");
-    	
-        intersections = picker->getIntersections();
+    	printf( "Found Intersections\n" );
+		intersections = picker->getIntersections();
     //if (view->computeIntersections(x,y,intersections))
     //{
-		printf("Computing intersections\n");
-        for(osgUtil::LineSegmentIntersector::Intersections::iterator hitr = intersections.begin();
+		printf( "Computing intersections\n" );
+		osgUtil::LineSegmentIntersector::Intersections::iterator hitr = intersections.begin();
+        /*for( osgUtil::LineSegmentIntersector::Intersections::iterator hitr = intersections.begin();
             hitr != intersections.end();
-            ++hitr)
+            ++hitr )*/
         {
-            std::ostringstream os;
-            if (!hitr->nodePath.empty() && !(hitr->nodePath.back()->getName().empty()))
+			
+            // std::ostringstream os;
+			if ( !hitr->nodePath.empty() && !( hitr->nodePath.back()->getName().empty()) )
             {
-                // the geodes are identified by name.
-                 cout <<"Object \""<<hitr->nodePath.back()->getName()<<"\""<<std::endl;
+				for( parent = hitr->nodePath.back()->getParent(0) ; parent->getNumParents() > 0; parent = parent->getParent(0) )
+				{
+					cout << "Finding parent..." << parent->className() << " " << parent->getName() << endl;
+					//hitr->nodePath.pop_back();
+					if( !strcmp( parent->getName().c_str(), "buitre") )
+					{
+						parent->setName("X");
+						break;
+					}
+					if( !strcmp( parent->getName().c_str(), "cerdito") )
+					{
+						parent->setName("X");
+						break;
+					}
+					if( !strcmp( parent->getName().c_str(), "conejo") )
+					{
+						parent->setName("X");
+						break;
+					}
+				}
+
+				cout << "Nodo obtenido: " << parent->getName() << endl;
+				cout << "Object \"" << hitr->nodePath.back()->className() << "\"" << std::endl;
             }
-            else if (hitr->drawable.valid())
+            else if ( hitr->drawable.valid() )
             {
-                cout<<"Object \""<<hitr->drawable->className()<<"\""<<std::endl;
+                cout<<"Object \""<< hitr->drawable->className() <<"\""<<std::endl;
             }
 
-            os<<"        local coords vertex("<< hitr->getLocalIntersectPoint()<<")"<<"  normal("<<hitr->getLocalIntersectNormal()<<")"<<std::endl;
-            os<<"        world coords vertex("<< hitr->getWorldIntersectPoint()<<")"<<"  normal("<<hitr->getWorldIntersectNormal()<<")"<<std::endl;
+            //os<<"        local coords vertex("<< hitr->getLocalIntersectPoint()<<")"<<"  normal("<<hitr->getLocalIntersectNormal()<<")"<<std::endl;
+            //os<<"        world coords vertex("<< hitr->getWorldIntersectPoint()<<")"<<"  normal("<<hitr->getWorldIntersectNormal()<<")"<<std::endl;
             const osgUtil::LineSegmentIntersector::Intersection::IndexList& vil = hitr->indexList;
             for(unsigned int i=0;i<vil.size();++i)
             {
                 cout <<"        vertex indices ["<<i<<"] = "<<vil[i]<<std::endl;
             }
             
-            gdlist += os.str();
+            //gdlist += os.str();
         }
     }
-    setLabel(gdlist);
 }

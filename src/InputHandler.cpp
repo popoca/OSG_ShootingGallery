@@ -7,7 +7,7 @@ InputHandler::InputHandler(osgText::Text* _updateText)
 {
 	updateText = _updateText;
 	//printf("Not created");
-	myPKH = new PickHandler(updateText);
+	myPKH = new PickHandler( updateText );
 	myKBH = new MyKeyboardEventHandler();
 	//myMSH->setRootNode(rootNode);
 }

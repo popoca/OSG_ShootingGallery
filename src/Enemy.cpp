@@ -2,15 +2,14 @@
 #include <cstring>
 
 Enemy::Enemy( const char* file, const char* file2, const char* name, double spawnTime, float speed, bool hasSpawned, bool isMoving )
-: BasicModel( file, name ), speed( speed ), spawnTime( spawnTime )
+: BasicModel( file, name ), speed( speed ), spawnTime( spawnTime ), hasSpawned( false )
 {
 	mNodeXplode = osgDB::readNodeFile( file2 );
 	if( mNode )
 	{
 		mNodeXplode->setName( name );
 		mState = mNodeXplode->getOrCreateStateSet();
-		mPatXplode = new osg::PositionAttitudeTransform();
-		mPatXplode->addChild( mNodeXplode.get() );
+		// mPat->addChild( mNodeXplode.get() );
 	}
 
 	if( !strcmp( mNode->getName().c_str(), "buitre" ) )

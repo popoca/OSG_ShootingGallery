@@ -28,6 +28,7 @@
 #include <osgText/Text>
 #include <sstream>
 #include <iostream>
+#include <string>
 
 class PickHandler : public osgGA::GUIEventHandler {
 public: 
