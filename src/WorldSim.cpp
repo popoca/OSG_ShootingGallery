@@ -36,19 +36,19 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/pasto.osg", "pasto" ) );
 	
-	mySH->difShader(mm->bg[2]->mNode);
+	//mySH->difShader(mm->bg[2]->mNode);
 	mySH->transAOShader(mm->bg[2]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/relleno.osg", "relleno" ) );
-	mySH->difShader(mm->bg[3]->mNode);
+	//mySH->difShader(mm->bg[3]->mNode);
 	mySH->transAOShader(mm->bg[3]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg", "obstaculo" ) );
-	mySH->difShader(mm->bg[4]->mNode);
+	//mySH->difShader(mm->bg[4]->mNode);
 	mySH->transAOShader(mm->bg[4]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_2.osg", "obstaculo" ) );
-	mySH->difShader(mm->bg[5]->mNode);
+	//mySH->difShader(mm->bg[5]->mNode);
 	mySH->transAOShader(mm->bg[5]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg", "obstaculo" ) );
-	mySH->difShader(mm->bg[6]->mNode);
+	//mySH->difShader(mm->bg[6]->mNode);
 	mySH->transAOShader(mm->bg[6]->mNode);
 
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg", "ao_detail" ) );
