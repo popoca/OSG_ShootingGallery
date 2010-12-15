@@ -32,7 +32,7 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapte
 		 {
 				printf("X: %f,Y: %f\n",ea.getX(),ea.getY());
 				printf("Reloading\n");
-				myHH->reload();
+				myHH->reload(1);
 				return false;
 		 } 
 			case(osgGA::GUIEventAdapter::KEYDOWN):

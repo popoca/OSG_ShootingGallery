@@ -7,6 +7,9 @@ HUDHandler::HUDHandler(osg::ref_ptr<osg::Group> rootNode)
 {
 	SCORE = 0;
 	MAX = 5;
+	currtime = 0.0f;
+	reloadTime = 0.0f;
+	reloadLimit = 0.0f;
 	currentBullets = MAX;
 	root = rootNode;
 	init_images();
@@ -16,6 +19,7 @@ HUDHandler::HUDHandler(osg::ref_ptr<osg::Group> rootNode)
 	HUDGeode->addDrawable(scoreText);
 	initCursor();
 	initBullets();
+	reloading = false;
 }
 
 HUDHandler::~HUDHandler(){}
@@ -30,7 +34,24 @@ void HUDHandler::init_text()
 	scoreText->setColor( osg::Vec4(255, 255, 255, 1) );
 	
 }
-
+void HUDHandler::update(float delta)
+{
+	if(reloading)
+	{
+		reloadTime += delta;
+		if(reloadTime>=reloadLimit)
+		{
+			reloadTime = 0.0f;
+			printf("Gun reloaded, return to kill innocent animals...\n");
+			currentBullets = MAX;
+			for( int i = 0; i < MAX+1 ; i++ )
+				patBullet1[i]->setScale(osg::Vec3f(1.0f,1.0f,1.0f));
+			reloading = false;
+		}
+		else
+			printf("Reloading gun please wait...\n");
+	}
+}
 void HUDHandler::initDisplayMessage()
 {
 	messageText = new osgText::Text();
@@ -247,11 +268,14 @@ osg::Geode* HUDHandler::buildCursor()
 
 void HUDHandler::shoot()
 {
-	patBullet1[currentBullets]->setScale(osg::Vec3f(0.0f,0.0f,0.0f));
-	if(currentBullets == 0)
-		reload();
-	else
-		currentBullets--;
+	if(!reloading)
+	{
+		patBullet1[currentBullets]->setScale(osg::Vec3f(0.0f,0.0f,0.0f));
+		if(currentBullets == 0)
+			reload(0);
+		else
+			currentBullets--;
+	}
 }
 
 void HUDHandler::setCursorPosition(double x, double y)
@@ -259,16 +283,20 @@ void HUDHandler::setCursorPosition(double x, double y)
 	patCursor->setPosition(osg::Vec3d(x,y,-1.0));
 }
 
-void HUDHandler::reload(/*Time variable here*/)
+void HUDHandler::reload(int type)
 {
-	/*
-	 * 	Time stuff here
-	 */
-	currentBullets = MAX;
-	for(int i = 0 ; i < 6 ; i++)
+
+	if(!reloading)
 	{
-		patBullet1[i]->setScale(osg::Vec3f(1.0f,1.0f,1.0f));
+		reloadTime = 0.0f;
+		reloading = true;
+		if(type == 0)
+			reloadLimit = 1.5;
+		else
+			reloadLimit = 0.5;
 	}
+	else
+		printf("Already reloading...\n");
 	
 }
 void HUDHandler::achieveBird()

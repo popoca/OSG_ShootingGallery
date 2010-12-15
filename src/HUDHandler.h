@@ -44,16 +44,18 @@ public:
 	osg::Vec3Array* HUDnormals;
 	osg::StateSet* HUDStateSet;
 	osg::MatrixTransform* HUDModelViewMatrix;
-	bool showing;
+	bool showing,reloading;
+	float currtime,reloadTime,reloadLimit;
 	
 	HUDHandler(osg::ref_ptr<osg::Group> root);
 	~HUDHandler();
 	
+	void update(float delta);
 	void init_text();
 	void init_images();
 	void init_general();
 	void shoot();
-	void reload();
+	void reload(int type);
 	void achievePork();
 	void achieveBird();
 	void achieveRabbit();
@@ -67,25 +69,20 @@ public:
 	osg::Geode* buildCursor();
 	osg::PositionAttitudeTransform* buildBullets();
 	void setCursorPosition(double x, double y);
+	void initBullets();
+	void initCursor();
 	
 	
 	void moveCursor(double x, double y);
 	
 	osg::Image* bullet;
-	osg::Image* bullet1;
-	osg::Image* bullet2;
-	osg::Image* bullet3;
-	osg::Image* bullet4;
-	osg::Image* bullet5;
-	osg::Image* bullet6;
-	osg::Image* transparent;
-	osg::Image* current_bullet_image;
-	
 	osg::Image* cursor;
 	osgText::Text* scoreText;
 	osgText::Text* messageText;
 	osg::Drawable* bulletImage;
 	osg::PositionAttitudeTransform* patCursor;
+	osg::PositionAttitudeTransform* patBullet1[6];
+
 	
 
 };

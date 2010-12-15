@@ -93,6 +93,7 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	
 void WorldSim::update( float delta )
 {
+	myHH->update(delta);
 	switch( currState )
 	{
 	case Start:
