@@ -23,6 +23,7 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapte
 				case(osgGA::GUIEventAdapter::LEFT_MOUSE_BUTTON):
 			{
 				printf("Shooting\n");
+				myHH->shoot();
 				osgViewer::View* view = dynamic_cast<osgViewer::View*>(&aa);
 				if (view) pick(view,ea);
 				return false;
@@ -31,6 +32,7 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapte
 		 {
 				printf("X: %f,Y: %f\n",ea.getX(),ea.getY());
 				printf("Reloading\n");
+				myHH->reload();
 				return false;
 		 } 
 			case(osgGA::GUIEventAdapter::KEYDOWN):

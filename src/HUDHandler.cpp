@@ -14,14 +14,8 @@ HUDHandler::HUDHandler(osg::ref_ptr<osg::Group> rootNode)
 	initDisplayMessage();
 	init_general();
 	HUDGeode->addDrawable(scoreText);
-	osg::Geode* cursor_geode = buildCursor();
-	patCursor = new osg::PositionAttitudeTransform();
-	patCursor->addChild(cursor_geode);
-	HUDModelViewMatrix->addChild(patCursor);
-	patCursor->setPosition(osg::Vec3d(100.0f,100.0f,-1.0f));
-	osg::PositionAttitudeTransform* bullet_transform = buildBullets();
-	HUDModelViewMatrix->addChild(bullet_transform);
-	
+	initCursor();
+	initBullets();
 }
 
 HUDHandler::~HUDHandler(){}
@@ -69,15 +63,7 @@ void HUDHandler::quitMessage()
 void HUDHandler::init_images()
 {
 	bullet = osgDB::readImageFile("../content/bullet.tga");
-	bullet1 = osgDB::readImageFile("../content/bullets1.tga");
-	bullet2 = osgDB::readImageFile("../content/bullets2.tga");
-	bullet3 = osgDB::readImageFile("../content/bullets3.tga");
-	bullet4 = osgDB::readImageFile("../content/bullets4.tga");
-	bullet5 = osgDB::readImageFile("../content/bullets5.tga");
-	bullet6 = osgDB::readImageFile("../content/bullets6.tga");
 	cursor = osgDB::readImageFile("../content/crosshair.tga");
-	transparent = osgDB::readImageFile("../content/bullet2.tga");
-	current_bullet_image = bullet;
 }
 
 void HUDHandler::init_general()
@@ -97,6 +83,30 @@ void HUDHandler::init_general()
 	HUDModelViewMatrix->addChild( HUDGeode );
 
 	//Hasta aqui se define la matriz de vista
+}
+void HUDHandler::initBullets()
+{
+	
+	for(int i = 0 ; i < 6; i++)
+	{
+		patBullet1[i] = buildBullets();
+		patBullet1[i]->setPosition(osg::Vec3f(i*26+5,720.0f,-1.0f));
+		HUDModelViewMatrix->addChild(patBullet1[i]);
+	}
+	//Para hacerlas desaparecer las voy a escalar 
+	/*
+	patBullet1[0]->setScale(osg::Vec3f(0.0f,0.0f,0.0f));
+	patBullet1[0]->setScale(osg::Vec3f(1.0f,1.0f,1.0f));
+	*/ 
+	
+}
+void HUDHandler::initCursor()
+{
+	osg::Geode* cursor_geode = buildCursor();
+	patCursor = new osg::PositionAttitudeTransform();
+	patCursor->addChild(cursor_geode);
+	HUDModelViewMatrix->addChild(patCursor);
+	patCursor->setPosition(osg::Vec3d(100.0f,100.0f,-1.0f));
 }
 
 osg::PositionAttitudeTransform* HUDHandler::buildBullets()
@@ -133,7 +143,7 @@ osg::PositionAttitudeTransform* HUDHandler::buildBullets()
        mHUDBackgroundGeometry->setTexCoordArray(0,mtexcoords);
        osg::Texture2D* mHUDTexture = new osg::Texture2D;
        mHUDTexture->setDataVariance(osg::Object::DYNAMIC);
-       mHUDTexture->setImage(current_bullet_image);
+       mHUDTexture->setImage(bullet);
        osg::Vec3Array* mHUDnormals = new osg::Vec3Array;
        mHUDnormals->push_back(osg::Vec3(0.0f,0.0f,1.0f));
        mHUDBackgroundGeometry->setNormalArray(mHUDnormals);
@@ -237,8 +247,11 @@ osg::Geode* HUDHandler::buildCursor()
 
 void HUDHandler::shoot()
 {
+	patBullet1[currentBullets]->setScale(osg::Vec3f(0.0f,0.0f,0.0f));
 	if(currentBullets == 0)
 		reload();
+	else
+		currentBullets--;
 }
 
 void HUDHandler::setCursorPosition(double x, double y)
@@ -252,6 +265,10 @@ void HUDHandler::reload(/*Time variable here*/)
 	 * 	Time stuff here
 	 */
 	currentBullets = MAX;
+	for(int i = 0 ; i < 6 ; i++)
+	{
+		patBullet1[i]->setScale(osg::Vec3f(1.0f,1.0f,1.0f));
+	}
 	
 }
 void HUDHandler::achieveBird()
