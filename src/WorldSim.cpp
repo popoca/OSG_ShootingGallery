@@ -35,33 +35,28 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	mm->bg.push_back( new BasicModel( "../content/npcs/cielo/cielo.osg", "cielo" ) );
 
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/pasto.osg", "pasto" ) );
-	
-	//mySH->difShader(mm->bg[2]->mNode);
 	mySH->transAOShader(mm->bg[2]->mNode);
+	//mySH->difShader(mm->bg[2]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/relleno.osg", "relleno" ) );
-	//mySH->difShader(mm->bg[3]->mNode);
 	mySH->transAOShader(mm->bg[3]->mNode);
+	//mySH->difShader(mm->bg[3]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg", "obstaculo" ) );
-	//mySH->difShader(mm->bg[4]->mNode);
 	mySH->transAOShader(mm->bg[4]->mNode);
+	//mySH->difShader(mm->bg[4]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_2.osg", "obstaculo" ) );
-	//mySH->difShader(mm->bg[5]->mNode);
 	mySH->transAOShader(mm->bg[5]->mNode);
+	//mySH->difShader(mm->bg[5]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg", "obstaculo" ) );
-	//mySH->difShader(mm->bg[6]->mNode);
 	mySH->transAOShader(mm->bg[6]->mNode);
+	//mySH->difShader(mm->bg[6]->mNode);
+	
 
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg", "ao_detail" ) );
-	//mySH->illuShader2(mm->bg[7]->mNode);
 	mySH->BumpMappingShader(mm->bg[7]->mNode);
-	//mySH->difShader(mm->bg[7]->mNode);
-	//mySH->transAOShader(mm->bg[7]->mNode);
+
 
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg", "ao" ) );
-	//mySH->illuShader2(mm->bg[8]->mNode);
 	mySH->BumpMappingShader(mm->bg[8]->mNode);
-	//mySH->difShader(mm->bg[8]->mNode);
-	//mySH->transAOShader(mm->bg[8]->mNode);
 
 	/* Inicializa el escenario */
 	mm->setUpScene();
@@ -69,8 +64,8 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	// Creacion y configuracion de la luz
 	osg::Light* myLight = new osg::Light;
     myLight->setLightNum(0);
-	myLight->setPosition(osg::Vec4(0.0,0.0,2500.0,1.0));
-    myLight->setAmbient(osg::Vec4(0.15f,0.75f,0.15f,1.0f));
+	myLight->setPosition(osg::Vec4(0.0,1500.0,5000.0,20.0));
+    myLight->setAmbient(osg::Vec4(0.65f,0.75f,0.65f,1.0f));
     myLight->setDiffuse(osg::Vec4(0.75f,0.85f,0.75f,1.0f));
 	myLight->setSpecular(osg::Vec4(0.75f,0.85f,0.75f,1.0f));
 	myLight->setDirection(osg::Vec3(-1.0,-1.0,-1.0));
