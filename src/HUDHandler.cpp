@@ -19,8 +19,8 @@ HUDHandler::HUDHandler(osg::ref_ptr<osg::Group> rootNode)
 	patCursor->addChild(cursor_geode);
 	HUDModelViewMatrix->addChild(patCursor);
 	patCursor->setPosition(osg::Vec3d(100.0f,100.0f,-1.0f));
-	osg::Geode* bullet_geode = buildBullets();
-	HUDModelViewMatrix->addChild(bullet_geode);
+	osg::PositionAttitudeTransform* bullet_transform = buildBullets();
+	HUDModelViewMatrix->addChild(bullet_transform);
 	
 }
 
@@ -99,8 +99,10 @@ void HUDHandler::init_general()
 	//Hasta aqui se define la matriz de vista
 }
 
-osg::Geode* HUDHandler::buildBullets()
+osg::PositionAttitudeTransform* HUDHandler::buildBullets()
 {
+	osg::PositionAttitudeTransform* patBullet = new osg::PositionAttitudeTransform;
+	
 	osg::Geode* bulletBuilt = new osg::Geode();
 	 
 	       // Set up geometry for the HUD and add it to the HUD
@@ -108,8 +110,8 @@ osg::Geode* HUDHandler::buildBullets()
 
        osg::Vec3Array* mHUDBackgroundVertices = new osg::Vec3Array;
        mHUDBackgroundVertices->push_back( osg::Vec3( 0,    0,-1) );
-       mHUDBackgroundVertices->push_back( osg::Vec3(110,  0,-1) );
-       mHUDBackgroundVertices->push_back( osg::Vec3(110,128,-1) );
+       mHUDBackgroundVertices->push_back( osg::Vec3(32,  0,-1) );
+       mHUDBackgroundVertices->push_back( osg::Vec3(32,128,-1) );
        mHUDBackgroundVertices->push_back( osg::Vec3(   0,128,-1) );
 
        osg::DrawElementsUInt* mHUDBackgroundIndices =
@@ -161,13 +163,15 @@ osg::Geode* HUDHandler::buildBullets()
        // in numerical order so set bin number to 11
        mHUDStateSet->setRenderBinDetails( 11, "RenderBin");
        
-       return bulletBuilt;
+       patBullet->addChild(bulletBuilt);
+       return patBullet;
 }
 
 
 
 osg::Geode* HUDHandler::buildCursor()
 {
+
 	osg::Geode* bulletBuilt = new osg::Geode();
 	 
 	       // Set up geometry for the HUD and add it to the HUD
@@ -227,7 +231,6 @@ osg::Geode* HUDHandler::buildCursor()
        // Need to make sure this geometry is draw last. RenderBins are handled
        // in numerical order so set bin number to 11
        mHUDStateSet->setRenderBinDetails( 11, "RenderBin");
-       
        return bulletBuilt;
 }
 
