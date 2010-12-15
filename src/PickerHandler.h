@@ -28,6 +28,7 @@
 #include <osgText/Text>
 #include <sstream>
 #include <iostream>
+#include <osgViewer/GraphicsWindow>
 #include <string>
 #include "HUDHandler.h"
 
