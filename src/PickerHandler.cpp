@@ -15,35 +15,42 @@ PickHandler::~PickHandler()
 bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter& aa)
 {
 	myHH->setCursorPosition((ea.getX()/ea.getWindowWidth())*1024,(ea.getY()/ea.getWindowHeight())*860);
-    switch(ea.getEventType())
+    
+    if(ea.getEventType() == osgGA::GUIEventAdapter::PUSH)
     {
-    	
-	case(osgGA::GUIEventAdapter::LEFT_MOUSE_BUTTON):
-        {
-        	printf("Shooting\n");
-            osgViewer::View* view = dynamic_cast<osgViewer::View*>(&aa);
-            if (view) pick(view,ea);
-            return false;
-        }   
-     case(osgGA::GUIEventAdapter::RIGHT_MOUSE_BUTTON):
-     {
-     		printf("Reloading\n");
-	 } 
-        case(osgGA::GUIEventAdapter::KEYDOWN):
-        {
-            if (ea.getKey()=='c')
-            {        
-                osgViewer::View* view = dynamic_cast<osgViewer::View*>(&aa);
-                osg::ref_ptr<osgGA::GUIEventAdapter> event = new osgGA::GUIEventAdapter(ea);
-                event->setX((ea.getXmin()+ea.getXmax())*0.5);
-                event->setY((ea.getYmin()+ea.getYmax())*0.5);
-                if (view) pick(view,*event);
-            }
-            return false;
-        }    
-        default:
-            return false;
-    }
+		switch(ea.getButtonMask())
+		{
+				case(osgGA::GUIEventAdapter::LEFT_MOUSE_BUTTON):
+			{
+				printf("Shooting\n");
+				osgViewer::View* view = dynamic_cast<osgViewer::View*>(&aa);
+				if (view) pick(view,ea);
+				return false;
+			}   
+		 case(osgGA::GUIEventAdapter::RIGHT_MOUSE_BUTTON):
+		 {
+				printf("X: %f,Y: %f\n",ea.getX(),ea.getY());
+				printf("Reloading\n");
+				return false;
+		 } 
+			case(osgGA::GUIEventAdapter::KEYDOWN):
+			{
+				if (ea.getKey()=='c')
+				{        
+					osgViewer::View* view = dynamic_cast<osgViewer::View*>(&aa);
+					osg::ref_ptr<osgGA::GUIEventAdapter> event = new osgGA::GUIEventAdapter(ea);
+					event->setX((ea.getXmin()+ea.getXmax())*0.5);
+					event->setY((ea.getYmin()+ea.getYmax())*0.5);
+					if (view) pick(view,*event);
+				}
+				return false;
+			}    
+			default:
+				return false;
+		}
+	}
+	else
+		return false;
 }
 
 void PickHandler::pick(osgViewer::View* view, const osgGA::GUIEventAdapter& ea)

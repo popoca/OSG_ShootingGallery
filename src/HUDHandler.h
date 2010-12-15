@@ -65,7 +65,7 @@ public:
 	void showMessage(const char* message);
 	void quitMessage();
 	osg::Geode* buildCursor();
-	osg::Geode* buildBullets();
+	osg::PositionAttitudeTransform* buildBullets();
 	void setCursorPosition(double x, double y);
 	
 	
