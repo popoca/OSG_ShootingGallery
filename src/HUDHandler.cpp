@@ -43,7 +43,7 @@ void HUDHandler::initDisplayMessage()
 	messageText->setCharacterSize(45);
 	messageText->setFont("../content/font/font.ttf");
 	messageText->setPosition( osg::Vec3(200,400,0) );
-	messageText->setColor( osg::Vec4(255, 255, 255, 1) );
+	messageText->setColor( osg::Vec4(0, 0, 0, 1) );
 
 	
 }
