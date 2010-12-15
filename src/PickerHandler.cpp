@@ -28,6 +28,7 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapte
      case(osgGA::GUIEventAdapter::RIGHT_MOUSE_BUTTON):
      {
      		printf("Reloading\n");
+			break;
 	 } 
         case(osgGA::GUIEventAdapter::KEYDOWN):
         {
