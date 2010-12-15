@@ -18,8 +18,8 @@ public:
 	~ShaderHandler();
 
 	void BumpMappingShader(osg::Node* node);
-	void transpShader(osg::Node* node);
-	void aOShader(osg::Node* node);
+	void transAOShader(osg::Node* node);
+	void difShader(osg::Node* node);
 	void illuShader(osg::Node* node);
 	void illuShader2(osg::Node* node);
 
