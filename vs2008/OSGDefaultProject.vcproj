@@ -209,6 +209,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\src\ParticleSystem.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\src\PickerHandler.cpp"
 				>
 			</File>
@@ -256,6 +260,10 @@
 			</File>
 			<File
 				RelativePath="..\src\MyKeyboardEventHandler.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\ParticleSystem.h"
 				>
 			</File>
 			<File
