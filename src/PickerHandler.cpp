@@ -14,7 +14,9 @@ PickHandler::~PickHandler()
 
 bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter& aa)
 {
-	myHH->setCursorPosition((ea.getX()/ea.getWindowWidth())*1024,(ea.getY()/ea.getWindowHeight())*860);
+	//ea.setCursor(osgViewer::GraphicsWindow::CrosshairCursor);
+	
+	myHH->setCursorPosition((ea.getX()/ea.getXmax())*1024-55,(ea.getY()/ea.getYmax())*860-64);
     
     if(ea.getEventType() == osgGA::GUIEventAdapter::PUSH)
     {
