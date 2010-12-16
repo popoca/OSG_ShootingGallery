@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(OSG_INCLUDE_PATH)"
+				AdditionalIncludeDirectories="&quot;$(OSG_INCLUDE_PATH)&quot;"
 				PreprocessorDefinitions="WIN32;_WIN32;_DEBUG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"

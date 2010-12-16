@@ -21,9 +21,7 @@ Thumbs.db
 *.log
 *.sdf
 *.opensdf
-[Bb]in
 [Dd]ebug*/
-*.lib
 *.sbr
 obj/
 [Rr]elease*/
