@@ -41,6 +41,13 @@ int main( int argc, char** argv )
 	
 	/* Realize the viewer */
     viewer.realize();
+    osgViewer::Viewer::Windows windows;
+    viewer.getWindows(windows,true);
+    if(windows[0])
+    {
+    	windows[0]->setCursor(osgViewer::GraphicsWindow::CrosshairCursor);
+    }
+    
 
 	// Inicializa old_tick
 	old_tick = osg::Timer::instance()->getStartTick();
