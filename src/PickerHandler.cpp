@@ -16,6 +16,8 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapte
 {
 	//ea.setCursor(osgViewer::GraphicsWindow::CrosshairCursor);
 	
+	
+	
 	myHH->setCursorPosition((ea.getX()/ea.getXmax())*1024-55,(ea.getY()/ea.getYmax())*860-64);
     
     if(ea.getEventType() == osgGA::GUIEventAdapter::PUSH)
@@ -24,10 +26,16 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapte
 		{
 				case(osgGA::GUIEventAdapter::LEFT_MOUSE_BUTTON):
 			{
-				printf("Shooting\n");
-				myHH->shoot();
-				osgViewer::View* view = dynamic_cast<osgViewer::View*>(&aa);
-				if (view) pick(view,ea);
+				
+				if(!myHH->reloading)
+				{
+					printf("Shooting\n");
+					myHH->shoot();
+					osgViewer::View* view = dynamic_cast<osgViewer::View*>(&aa);
+					if (view) pick(view,ea);
+				}
+				else
+					printf("Gun not reloaded, you can't shoot!\n");
 				return false;
 			}   
 		 case(osgGA::GUIEventAdapter::RIGHT_MOUSE_BUTTON):
