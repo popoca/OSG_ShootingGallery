@@ -49,11 +49,12 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg", "obstaculo" ) );
 	mySH->transAOShader(mm->bg[6]->mNode);
 	//mySH->difShader(mm->bg[6]->mNode);
-	
+
 
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg", "ao_detail" ) );
 	mySH->difShader(mm->bg[7]->mNode);
 	mySH->BumpMappingShader(mm->bg[7]->mNode);
+	//mySH->detailShader(mm->bg[7]->mNode);
 
 
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg", "ao" ) );
