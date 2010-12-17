@@ -19,7 +19,7 @@ Enemy::Enemy( const char* file, const char* file2, const char* name, double spaw
 
 	if( !strcmp (mNode->getName().c_str(), "buitre2" ))
 	{
-		mPat->setUpdateCallback( new EnemyController( speed, osg::Vec3f( -10.0f, 0.0f, 0.0f ), "buitre" ) );
+		mPat->setUpdateCallback( new EnemyController( speed, osg::Vec3f( -10.0f, 0.0f, 0.0f ), "buitre2" ) );
 		cout << "AI cargada para " << mNode->getName() << endl;
 	}
 
@@ -31,7 +31,7 @@ Enemy::Enemy( const char* file, const char* file2, const char* name, double spaw
 
 	if( !strcmp (mNode->getName().c_str(), "cerdito2" )) 
 	{
-		mPat->setUpdateCallback( new EnemyController( speed, osg::Vec3f( -10.0f, 0.0f, 0.0f ), "cerdito" ) );
+		mPat->setUpdateCallback( new EnemyController( speed, osg::Vec3f( -10.0f, 0.0f, 0.0f ), "cerdito2" ) );
 		cout << "AI cargada para " << mNode->getName() << endl;
 	}
 
@@ -43,7 +43,7 @@ Enemy::Enemy( const char* file, const char* file2, const char* name, double spaw
 
 	if( !strcmp (mNode->getName().c_str(), "conejo2" ))
 	{
-		mPat->setUpdateCallback( new EnemyController( speed, osg::Vec3f( -20.0f, 0.0f, 0.0f ), "conejo" ) );
+		mPat->setUpdateCallback( new EnemyController( speed, osg::Vec3f( -20.0f, 0.0f, 0.0f ), "conejo2" ) );
 		cout << "AI cargada para " << mNode->getName() << endl;
 	}
 
