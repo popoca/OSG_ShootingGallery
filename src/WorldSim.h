@@ -6,6 +6,7 @@
 #include "ModelManager.h"
 #include "HUDHandler.h"
 #include "ParticleSystem.h"
+#include "SoundHandler.h"
 
 #include <osg/MatrixTransform>
 #include <osg/PositionAttitudeTransform>
@@ -21,9 +22,10 @@ public:
 	InputHandler* myIH;
 	HUDHandler* myHH;
 	ParticleSystem* pSys;
+	SoundHandler* sHandle;
 	
 	// Constructor 
-	WorldSim(osg::ref_ptr<osgText::Text> _updateText);
+	WorldSim(osg::ref_ptr<osgText::Text> _updateText, osg::ref_ptr< osgViewer::View > view );
 	// Desctructor
 	~WorldSim()
 	{

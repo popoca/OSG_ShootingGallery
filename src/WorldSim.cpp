@@ -12,7 +12,7 @@
 
 #include "WorldSim.h"
 
-WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
+WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText, osg::ref_ptr< osgViewer::View > view )
 : currState( Start ), hasLoaded( false )
 {
 	start = false;
@@ -20,6 +20,7 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	root = new osg::Group;
 	myHH = new HUDHandler(root);
 	myIH = new InputHandler(_updateText,myHH);
+	sHandle = new SoundHandler( root, view );
 	pSys = new ParticleSystem( root );
 	
 	mySH= new ShaderHandler();
@@ -52,14 +53,14 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 
 
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg", "ao_detail" ) );
-	mySH->difShader(mm->bg[7]->mNode);
+	//mySH->difShader(mm->bg[7]->mNode);
 	//mySH->detailShader(mm->bg[7]->mNode);
 	mySH->BumpMappingShader(mm->bg[7]->mNode);
 	
 
 
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg", "ao" ) );
-	mySH->difShader(mm->bg[8]->mNode);
+	//mySH->difShader(mm->bg[8]->mNode);
 	mySH->aoShader(mm->bg[8]->mNode);
 	//mySH->bumpMap2Shader(mm->bg[8]->mNode);
 
@@ -98,6 +99,8 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText)
 	// Estado del nodo raiz
 	osg::StateSet *rootState = new osg::StateSet();
 	root->setStateSet(rootState);
+
+	sHandle->createAmbientSound( "../content/sounds/ambientacion.wav", "AmbientSound" );
 
 }
 	
