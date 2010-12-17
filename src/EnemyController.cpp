@@ -236,7 +236,7 @@ void EnemyController::operator()( osg::Node* node, osg::NodeVisitor* nv )
 				{
 					if( x > 0.0f )
 					{
-						tData->setPosition(osg::Vec3f( -400.0f + x, 0.0f, 190.0f + y * 100.0f * (float) delta ));
+						tData->setPosition(osg::Vec3f( -400.0f + x, 500.0f, 190.0f + y * 100.0f * (float) delta ));
 						x -= ( 2.0f * (float)delta );
 						y = sinf( x * ( Pi / 180.0f ) );
 					 }
@@ -257,7 +257,7 @@ void EnemyController::operator()( osg::Node* node, osg::NodeVisitor* nv )
 				{
 					if( x < 900.0f )
 					 {
-						tData->setPosition(osg::Vec3f( -400.0f + x, 0.0f, 190.0f + y * 100.0f * (float) delta ));
+						tData->setPosition(osg::Vec3f( -400.0f + x, 500.0f, 190.0f + y * 100.0f * (float) delta ));
 						x += ( 2.0f * (float)delta );
 						y = sinf( x * ( Pi / 180.0f ) );
 					 }
