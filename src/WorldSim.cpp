@@ -212,7 +212,7 @@ void WorldSim::update( float delta )
 		else
 			mm->updateScene( delta );
 
-		if( mm->end && myHH->SCORE >= 35 )
+		if( mm->end && myHH->SCORE >= 55 )
 		{
 			if( !playing )
 			{
@@ -233,7 +233,7 @@ void WorldSim::update( float delta )
 					playing = false;
 			}
 		}
-		else if( mm->end && myHH->SCORE < 35 )
+		else if( mm->end && myHH->SCORE < 55 )
 		{
 			currState = GameOver;
 		}
@@ -262,7 +262,7 @@ void WorldSim::update( float delta )
 		else
 			mm->updateScene( delta );
 
-		if( mm->end && myHH->SCORE >= 55  )
+		if( mm->end && myHH->SCORE >= 75  )
 		{
 			if( !playing )
 			{
@@ -283,7 +283,7 @@ void WorldSim::update( float delta )
 					playing = false;
 			}
 		}
-		else if( mm->end && myHH->SCORE < 55 )
+		else if( mm->end && myHH->SCORE < 75 )
 		{
 			currState = GameOver;
 		}
@@ -312,7 +312,7 @@ void WorldSim::update( float delta )
 		else
 			mm->updateScene( delta );
 
-		if( mm->end && myHH->SCORE >= 65 )
+		if( mm->end && myHH->SCORE >= 85 )
 		{
 			if( !playing )
 			{
@@ -333,7 +333,7 @@ void WorldSim::update( float delta )
 					playing = false;
 			}
 		}
-		else if( mm->end && myHH->SCORE < 65 )
+		else if( mm->end && myHH->SCORE < 85 )
 		{
 			currState = GameOver;
 		}
@@ -364,7 +364,7 @@ void WorldSim::update( float delta )
 		else
 			mm->updateScene( delta );
 
-		if( mm->end && myHH->SCORE >= 75 )
+		if( mm->end && myHH->SCORE >= 100 )
 		{
 			if( !playing )
 			{
@@ -385,7 +385,7 @@ void WorldSim::update( float delta )
 					playing = false;
 			}
 		}
-		else if( mm->end && myHH->SCORE < 75 )
+		else if( mm->end && myHH->SCORE < 100 )
 		{
 			currState = GameOver;
 		}
