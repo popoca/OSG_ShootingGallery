@@ -21,7 +21,7 @@ public:
 	void difShader(osg::Node* node);
 	void BumpMappingShader(osg::Node* node);
 	void aoShader(osg::Node* node);
-	void detailShader(osg::Node* node);
+	void bumpMap2Shader(osg::Node* node);
 
 private:
 
