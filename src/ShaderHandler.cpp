@@ -11,7 +11,7 @@
 
 ShaderHandler::ShaderHandler()
 {
-	
+	//cambiando code?
 	_shadersList.resize(1);
 	_shadersList[0] = new osg::Program();
 	_vertexList.resize(1);
