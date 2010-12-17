@@ -264,6 +264,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\src\ParticleSystem.h"
+				>
+			</File>
+			<File
 				RelativePath="..\src\PickerHandler.h"
 				>
 			</File>
