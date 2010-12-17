@@ -1,38 +1,53 @@
 #include "SoundHandler.h"
 
 // Constructor
-SoundHandler::SoundHandler(osg::Group* root)
+SoundHandler::SoundHandler(osg::ref_ptr< osg::Group > root, osgViewer::Viewer viewer )
 {
 	// Se inicializa la instancias del manejador de sonidos de osgAL
 	// con 16 canales de audio y se configura el modelo de atenuacion
-	osgAL::SoundManager::instance()->init(16);
-	osgAL::SoundManager::instance()->getEnvironment()->setDistanceModel(openalpp::InverseDistance);
-	//osgAL::SoundManager::instance()->getEnvironment()->setDistanceModel(openalpp::InverseDistanceClamped);
-	osgAL::SoundManager::instance()->getEnvironment()->setDopplerFactor(1);
+	osgAudio::SoundManager::instance()->init( 16, true );
+    osgAudio::SoundManager::instance()->getEnvironment()->setDistanceModel(osgAudio::InverseDistance);
+    osgAudio::SoundManager::instance()->getEnvironment()->setDopplerFactor(1);
 
+	// Create ONE (only one, otherwise the transformation of the listener and update for SoundManager will be
+    // called several times, which is not catastrophic, but unnecessary) 
+    // SoundRoot that will make sure the listener is updated and
+    // to keep the internal state of the SoundManager updated
+    // This could also be done manually, this is just a handy way of doing it.
+    osg::ref_ptr<osgAudio::SoundRoot> sound_root = new osgAudio::SoundRoot;
+
+	// Specify the camera from our viewer. The view matrix from this camera
+    // will be used during update to set the Listener position. Note this
+    // will not work if the viewer is rendering to multiple displays; will
+    // need to select a slave camera.
+    sound_root->setCamera( viewer.getCamera() );
+
+	// The position in the scenegraph of this node is not important.
+    // Just as long as the cull traversal should be called after any changes to the SoundManager are made.
+    root->addChild(sound_root.get());
+
+	/* fail begins here */
 
 	// Se agrega el sonido raiz al grafo de escena
-	sound_root = new osgAL::SoundRoot;
+	/*sound_root = new osgAL::SoundRoot;
 	sceneRoot = root;
-	sceneRoot->addChild(sound_root.get());
+	sceneRoot->addChild(sound_root.get());*/
 
 }
 
 SoundHandler::~SoundHandler()
 {
-
 }
 
 // Apaga al manejador de sonidos, antes de ser destruido
 void SoundHandler::shutDownHandler()
 {
-
-	if (osg::Referenced::getDeleteHandler()) {
-		osg::Referenced::getDeleteHandler()->setNumFramesToRetainObjects(0);
-		osg::Referenced::getDeleteHandler()->flushAll();
-	}
-	osgAL::SoundManager::instance()->shutdown();
-
+	// Very important to call before end of main!
+    if (osg::Referenced::getDeleteHandler()) {
+        osg::Referenced::getDeleteHandler()->setNumFramesToRetainObjects(0);
+        osg::Referenced::getDeleteHandler()->flushAll();
+    }
+    osgAudio::SoundManager::instance()->shutdown();
 }
 
 // Detiene el sonido con el indice ssindex
@@ -65,49 +80,47 @@ void SoundHandler::playSound(int ssindex)
 }
 
 // Crea y configura un sonido puntual
-osg::ref_ptr<osgAL::SoundNode> SoundHandler::createPositionalSound(const std::string& file, const std::string& sname)
+osg::ref_ptr<osgAudio::SoundState> createSoundState(const std::string& file)
 {
-	// Carga el archivo de sonido
-	openalpp::Sample *sample = new openalpp::Sample(file.c_str());
+	// Create a sample, load a .wav file.
+    osgAudio::Sample *sample = new osgAudio::Sample(
+        osgDB::findDataFile( file ) );
 
-	// Crea un estado para el sonido
-	osg::ref_ptr<osgAL::SoundState> sound_state = new osgAL::SoundState(sname.c_str());
+	// Create a named sound state.
+    osg::ref_ptr<osgAudio::SoundState> sound_state = new osgAudio::SoundState( file );
 
-	// Se asigna el sonido al estado
-	sound_state->setSample(sample);
+	// Let the soundstate use the sample we just created
+    sound_state->setSample(sample);
 
-	// Se configura la ganancia (volumen) en 0.9
-	sound_state->setGain(0.9f);
+	// Set its gain (volume) to 0.9
+    sound_state->setGain(0.9f);
 
-	// Se configura  el pitch en 1 (velocidad normal)
-	sound_state->setPitch(1);
+	// Set its pitch to 1 (normal speed)
+    sound_state->setPitch(1);
 
-	// Reproduccion del sonido
-	sound_state->setPlay(true);
+	// Make it play
+    sound_state->setPlay(true);
 
-	// Se configura un loop de sonido
-	sound_state->setLooping(true);
+	// The sound should loop over and over again
+    sound_state->setLooping(true);
 
-	// Se crea una fuente para el sonido y se define su prioridad
-	sound_state->allocateSource(10, false);
+	// Allocate a hardware soundsource to this soundstate (priority 10)
+    sound_state->allocateSource(10, false);
 
-	// A una distancia de 30 unidades la ganacia sera 
-	// la mitad de su valor maximo
-	sound_state->setReferenceDistance(30);
-	sound_state->setRolloffFactor(4);
-
-	
-	sound_state->apply();
+	// At 70 the gain will be half of full!
+    sound_state->setReferenceDistance(70);
+    sound_state->setRolloffFactor(4);
+    sound_state->apply();
    
-	// Agrega el estado creado a la instancia del manejador de sonidos
-	osgAL::SoundManager::instance()->addSoundState(sound_state.get());
+	// Add the soundstate to the sound manager, so we can find it later on if we want to
+    osgAudio::SoundManager::instance()->addSoundState(sound_state.get());
 
 	
 	// Se crea un nodo de sonido con el estado configurado
-	osg::ref_ptr<osgAL::SoundNode> sound = new osgAL::SoundNode;
+	/*osg::ref_ptr<osgAL::SoundNode> sound = new osgAL::SoundNode;
 	sound->setSoundState(sound_state);
 
-	ssvector.push_back(sound_state.get());
+	ssvector.push_back(sound_state.get());*/
 
 	return sound.get();
 }

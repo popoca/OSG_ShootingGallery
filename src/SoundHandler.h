@@ -1,13 +1,25 @@
-#ifndef _SOUNDHANDLER_
-#define _SOUNDHANDLER_
+#ifndef SOUND_H
+#define SOUND_H
 
-#include <osgAL/SoundNode>
-#include <osgAL/SoundRoot>
-#include <osgAL/SoundManager>
-#include <osgAL/SoundState>
+#include <osgDB/FileUtils>
 #include <osg/DeleteHandler>
-#include <osg/Group>
+#include <osg/Notify>
+#include <osg/MatrixTransform>
+#include <osg/PositionAttitudeTransform>
+#include <osg/Geometry>
+#include <osg/Geode>
+#include <osgUtil/Optimizer>
+#include <osgDB/Registry>
+#include <osgDB/ReadFile>
+#include <osgViewer/ViewerEventHandlers>
+#include <osgViewer/Viewer>
 
+#include <osgAudio/FileStream.h>
+#include <osgAudio/SoundUpdateCB.h>
+#include <osgAudio/SoundRoot.h>
+#include <osgAudio/SoundManager.h>
+#include <osgAudio/SoundState.h>
+#include <osgAudio/Version.h>
 
 class SoundHandler: public osg::Referenced
 {
