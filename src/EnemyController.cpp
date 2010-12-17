@@ -176,7 +176,7 @@ void EnemyController::operator()( osg::Node* node, osg::NodeVisitor* nv )
 					 }
 					 else
 					 {
-						tData->setAttitude( osg::Quat(accAngle, osg::Vec3( 0.0f, 300.0f, 1.0f)) );
+						tData->setAttitude( osg::Quat(accAngle, osg::Vec3( 0.0f, 0.0f, 1.0f)) );
 						accAngle -= ( 1.0f * (float)delta );
 					 }
 				}
