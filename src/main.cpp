@@ -24,7 +24,7 @@ int main( int argc, char** argv )
 	/* Initialize viewer */
 	osg::ref_ptr<osgViewer::View> view = new osgViewer::View;
 	view->setUpViewAcrossAllScreens();
-	osg::ref_ptr<WorldSim> myGS = new WorldSim(updateText);
+	osg::ref_ptr<WorldSim> myGS = new WorldSim(updateText, view);
 	view->setSceneData(myGS->getRootNode());
 	view->setUpViewAcrossAllScreens();
 	osgViewer::Viewer viewer;

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding = "Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="example_oalpp_simple"
+	ProjectGUID="{D74AC28C-1C1E-428F-B1DE-120DCF90B32F}"
+	Keyword="Win32Proj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="example_oalpp_simple.dir\Debug"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000 /MP"
+				AdditionalIncludeDirectories="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\include;C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\include;&quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\include&quot;;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\include;&quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\include&quot;;"
+				BasicRuntimeChecks="3"
+				CompileAs="2"
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4290"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="0"
+				Optimization="0"
+				RuntimeLibrary="3"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;CMAKE_INTDIR=\&quot;Debug\&quot;"
+				AssemblerListingLocation="Debug"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\bin\Debug/../example_oalpp_simpled.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\include;C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\include;&quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\include&quot;;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\include;&quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\include&quot;;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;CMAKE_INTDIR=\&quot;Debug\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;CMAKE_INTDIR=\&quot;Debug\&quot;"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"
+CommandLine="&quot;C:\Program Files (x86)\CMake 2.8\bin\cmake.exe&quot; -E make_directory C:/Users/Aru/Git/OSG_ShootingGallery/plugins/osgaudio2005/lib/Debug&#x0D;&#x0A;if errorlevel 1 goto VCReportError"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86 /debug"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgSimd.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgTextd.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgViewerd.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgGAd.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgDBd.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgUtild.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgd.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\OpenThreadsd.lib&quot; ..\..\lib\Debug\..\openalppd.lib C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\libd\alut.lib &quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\libs\Win32\OpenAL32.lib&quot; C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\libd\libogg.lib C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\libd\libvorbis.lib C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\libd\libvorbisfile.lib &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgSimd.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgTextd.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgViewerd.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgGAd.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgDBd.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgUtild.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgd.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\OpenThreadsd.lib&quot; "
+				OutputFile="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\bin\Debug\..\example_oalpp_simpled.exe"
+				Version="0.0"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories=""
+				ProgramDatabaseFile="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\bin\Debug/../example_oalpp_simpled.pdb"
+				GenerateDebugInformation="TRUE"
+				SubSystem="1"
+				ImportLibrary="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\lib\Debug\example_oalpp_simpled.lib"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="example_oalpp_simple.dir\Release"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000 /MP"
+				AdditionalIncludeDirectories="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\include;C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\include;&quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\include&quot;;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\include;&quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\include&quot;;"
+				CompileAs="2"
+				DisableSpecificWarnings="4290"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="2"
+				Optimization="2"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;CMAKE_INTDIR=\&quot;Release\&quot;"
+				AssemblerListingLocation="Release"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\bin\Release/../example_oalpp_simple.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\include;C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\include;&quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\include&quot;;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\include;&quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\include&quot;;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;CMAKE_INTDIR=\&quot;Release\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;CMAKE_INTDIR=\&quot;Release\&quot;"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"
+CommandLine="&quot;C:\Program Files (x86)\CMake 2.8\bin\cmake.exe&quot; -E make_directory C:/Users/Aru/Git/OSG_ShootingGallery/plugins/osgaudio2005/lib/Release&#x0D;&#x0A;if errorlevel 1 goto VCReportError"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgSim.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgText.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgViewer.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgGA.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgDB.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgUtil.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osg.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\OpenThreads.lib&quot; ..\..\lib\Release\..\openalpp.lib C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\lib\alut.lib &quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\libs\Win32\OpenAL32.lib&quot; C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\lib\libogg.lib C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\lib\libvorbis.lib C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\lib\libvorbisfile.lib &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgSim.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgText.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgViewer.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgGA.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgDB.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgUtil.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osg.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\OpenThreads.lib&quot; "
+				OutputFile="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\bin\Release\..\example_oalpp_simple.exe"
+				Version="0.0"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories=""
+				ProgramDatabaseFile="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\bin\Release/../example_oalpp_simple.pdb"
+				SubSystem="1"
+				ImportLibrary="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\lib\Release\example_oalpp_simple.lib"/>
+		</Configuration>
+		<Configuration
+			Name="MinSizeRel|Win32"
+			OutputDirectory="MinSizeRel"
+			IntermediateDirectory="example_oalpp_simple.dir\MinSizeRel"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000 /MP"
+				AdditionalIncludeDirectories="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\include;C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\include;&quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\include&quot;;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\include;&quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\include&quot;;"
+				CompileAs="2"
+				DisableSpecificWarnings="4290"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="1"
+				Optimization="1"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;CMAKE_INTDIR=\&quot;MinSizeRel\&quot;"
+				AssemblerListingLocation="MinSizeRel"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\bin\MinSizeRel/../example_oalpp_simple.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\include;C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\include;&quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\include&quot;;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\include;&quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\include&quot;;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;CMAKE_INTDIR=\&quot;MinSizeRel\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;CMAKE_INTDIR=\&quot;MinSizeRel\&quot;"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"
+CommandLine="&quot;C:\Program Files (x86)\CMake 2.8\bin\cmake.exe&quot; -E make_directory C:/Users/Aru/Git/OSG_ShootingGallery/plugins/osgaudio2005/lib/MinSizeRel&#x0D;&#x0A;if errorlevel 1 goto VCReportError"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgSim.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgText.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgViewer.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgGA.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgDB.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgUtil.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osg.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\OpenThreads.lib&quot; ..\..\lib\MinSizeRel\..\openalpp.lib C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\lib\alut.lib &quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\libs\Win32\OpenAL32.lib&quot; C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\lib\libogg.lib C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\lib\libvorbis.lib C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\lib\libvorbisfile.lib &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgSim.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgText.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgViewer.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgGA.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgDB.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgUtil.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osg.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\OpenThreads.lib&quot; "
+				OutputFile="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\bin\MinSizeRel\..\example_oalpp_simple.exe"
+				Version="0.0"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories=""
+				ProgramDatabaseFile="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\bin\MinSizeRel/../example_oalpp_simple.pdb"
+				SubSystem="1"
+				ImportLibrary="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\lib\MinSizeRel\example_oalpp_simple.lib"/>
+		</Configuration>
+		<Configuration
+			Name="RelWithDebInfo|Win32"
+			OutputDirectory="RelWithDebInfo"
+			IntermediateDirectory="example_oalpp_simple.dir\RelWithDebInfo"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000 /MP"
+				AdditionalIncludeDirectories="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\include;C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\include;&quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\include&quot;;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\include;&quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\include&quot;;"
+				CompileAs="2"
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4290"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="1"
+				Optimization="2"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;"
+				AssemblerListingLocation="RelWithDebInfo"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\bin\RelWithDebInfo/../example_oalpp_simple.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\include;C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\include;&quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\include&quot;;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\include;&quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\include&quot;;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;_CONSOLE;CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"
+CommandLine="&quot;C:\Program Files (x86)\CMake 2.8\bin\cmake.exe&quot; -E make_directory C:/Users/Aru/Git/OSG_ShootingGallery/plugins/osgaudio2005/lib/RelWithDebInfo&#x0D;&#x0A;if errorlevel 1 goto VCReportError"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86 /debug"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgSim.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgText.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgViewer.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgGA.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgDB.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgUtil.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osg.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\OpenThreads.lib&quot; ..\..\lib\RelWithDebInfo\..\openalpp.lib C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\lib\alut.lib &quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\libs\Win32\OpenAL32.lib&quot; C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\lib\libogg.lib C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\lib\libvorbis.lib C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\lib\libvorbisfile.lib &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgSim.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgText.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgViewer.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgGA.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgDB.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osgUtil.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\osg.lib&quot; &quot;C:\Program Files (x86)\OpenSceneGraph-2.8.3\lib\OpenThreads.lib&quot; "
+				OutputFile="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\bin\RelWithDebInfo\..\example_oalpp_simple.exe"
+				Version="0.0"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories=""
+				ProgramDatabaseFile="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\bin\RelWithDebInfo/../example_oalpp_simple.pdb"
+				GenerateDebugInformation="TRUE"
+				SubSystem="1"
+				ImportLibrary="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\lib\RelWithDebInfo\example_oalpp_simple.lib"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+			<File
+				RelativePath="C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\examples\openalpp\CMakeLists.txt">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule C:/Users/Aru/Desktop/osgaudio/2005/osgAudio_02_00_00/osgAudio_02_00_00/examples/openalpp/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake 2.8\bin\cmake.exe&quot; -HC:/Users/Aru/Desktop/osgaudio/2005/osgAudio_02_00_00/osgAudio_02_00_00 -BC:/Users/Aru/Git/OSG_ShootingGallery/plugins/osgaudio2005 --check-stamp-file C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\examples\openalpp\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto VCReportError"
+					AdditionalDependencies="C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\examples\openalpp\CMakeLists.txt;C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\examples\openalpp\CMakeLists.txt;"
+					Outputs="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\examples\openalpp\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule C:/Users/Aru/Desktop/osgaudio/2005/osgAudio_02_00_00/osgAudio_02_00_00/examples/openalpp/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake 2.8\bin\cmake.exe&quot; -HC:/Users/Aru/Desktop/osgaudio/2005/osgAudio_02_00_00/osgAudio_02_00_00 -BC:/Users/Aru/Git/OSG_ShootingGallery/plugins/osgaudio2005 --check-stamp-file C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\examples\openalpp\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto VCReportError"
+					AdditionalDependencies="C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\examples\openalpp\CMakeLists.txt;C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\examples\openalpp\CMakeLists.txt;"
+					Outputs="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\examples\openalpp\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule C:/Users/Aru/Desktop/osgaudio/2005/osgAudio_02_00_00/osgAudio_02_00_00/examples/openalpp/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake 2.8\bin\cmake.exe&quot; -HC:/Users/Aru/Desktop/osgaudio/2005/osgAudio_02_00_00/osgAudio_02_00_00 -BC:/Users/Aru/Git/OSG_ShootingGallery/plugins/osgaudio2005 --check-stamp-file C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\examples\openalpp\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto VCReportError"
+					AdditionalDependencies="C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\examples\openalpp\CMakeLists.txt;C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\examples\openalpp\CMakeLists.txt;"
+					Outputs="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\examples\openalpp\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule C:/Users/Aru/Desktop/osgaudio/2005/osgAudio_02_00_00/osgAudio_02_00_00/examples/openalpp/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake 2.8\bin\cmake.exe&quot; -HC:/Users/Aru/Desktop/osgaudio/2005/osgAudio_02_00_00/osgAudio_02_00_00 -BC:/Users/Aru/Git/OSG_ShootingGallery/plugins/osgaudio2005 --check-stamp-file C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\examples\openalpp\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto VCReportError"
+					AdditionalDependencies="C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\examples\openalpp\CMakeLists.txt;C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\examples\openalpp\CMakeLists.txt;"
+					Outputs="C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio2005\examples\openalpp\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+			</File>
+		<Filter
+			Name="Source Files"
+			Filter="">
+			<File
+				RelativePath="C:\Users\Aru\Desktop\osgaudio\2005\osgAudio_02_00_00\osgAudio_02_00_00\examples\openalpp\simple.cpp">
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>
