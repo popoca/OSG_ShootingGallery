@@ -37,32 +37,23 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText, osg::ref_ptr< osgVie
 
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/pasto.osg", "pasto" ) );
 	mySH->transAOShader(mm->bg[2]->mNode);
-	//mySH->difShader(mm->bg[2]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/relleno.osg", "relleno" ) );
 	mySH->transAOShader(mm->bg[3]->mNode);
-	//mySH->difShader(mm->bg[3]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_1.osg", "obstaculo" ) );
 	mySH->transAOShader(mm->bg[4]->mNode);
-	//mySH->difShader(mm->bg[4]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_2.osg", "obstaculo" ) );
 	mySH->transAOShader(mm->bg[5]->mNode);
-	//mySH->difShader(mm->bg[5]->mNode);
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_transp_ao/zona_obstaculos_3.osg", "obstaculo" ) );
 	mySH->transAOShader(mm->bg[6]->mNode);
-	//mySH->difShader(mm->bg[6]->mNode);
-
 
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao_detail/shader_dif_normal_ao_detail.osg", "ao_detail" ) );
 	//mySH->difShader(mm->bg[7]->mNode);
-	//mySH->detailShader(mm->bg[7]->mNode);
 	mySH->BumpMappingShader(mm->bg[7]->mNode);
 	
-
-
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg", "ao" ) );
 	//mySH->difShader(mm->bg[8]->mNode);
 	mySH->aoShader(mm->bg[8]->mNode);
-	//mySH->bumpMap2Shader(mm->bg[8]->mNode);
+	mySH->bumpMap2Shader(mm->bg[8]->mNode);
 
 	/* Inicializa el escenario */
 	mm->setUpScene();
@@ -70,10 +61,10 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText, osg::ref_ptr< osgVie
 	// Creacion y configuracion de la luz
 	osg::Light* myLight = new osg::Light;
     myLight->setLightNum(0);
-	myLight->setPosition(osg::Vec4(0.0,1500.0,5000.0,20.0));
-    myLight->setAmbient(osg::Vec4(0.95f,0.95f,0.95f,1.0f));
+	myLight->setPosition(osg::Vec4(0.0,500.0,4500.0,21.0));
+    myLight->setAmbient(osg::Vec4(0.65f,0.75f,0.65f,1.0f));
     myLight->setDiffuse(osg::Vec4(0.75f,0.85f,0.75f,1.0f));
-	myLight->setSpecular(osg::Vec4(0.75f,0.85f,0.75f,1.0f));
+	myLight->setSpecular(osg::Vec4(0.75f,0.75f,0.35f,1.0f));
 	myLight->setDirection(osg::Vec3(-1.0,-1.0,-1.0));
     myLight->setConstantAttenuation(9.0f);
     myLight->setLinearAttenuation(2.0f/100.0f);
@@ -141,26 +132,26 @@ void WorldSim::update( float delta )
 			mm->en.push_back( new Enemy( 
 				"../content/npcs/buitre/buitre.osg", 
 				"../content/npcs/buitre/buitre_explosion.osg", 
-				"buitre", 
+				"buitre2", 
 				0.0, 
 				delta, 
-				1.0f,
+				0.4f,
 				pSys ) );
 			mm->en.push_back( new Enemy( 
 				"../content/npcs/cerdo/cerdito.osg", 
 				"../content/npcs/cerdo/cerdito_explosion.osg", 
-				"cerdito", 
+				"cerdito2", 
 				10.0, 
 				delta, 
-				1.0f,
+				0.1f,
 				pSys ) );
 			mm->en.push_back( new Enemy( 
 				"../content/npcs/conejo/conejo.osg", 
 				"../content/npcs/conejo/conejo_explosion.osg", 
-				"conejo", 
+				"conejo2", 
 				20.0, 
 				delta, 
-				1.0f,
+				0.4f,
 				pSys ) );
 
 			hasLoaded = true;
@@ -193,11 +184,11 @@ void WorldSim::update( float delta )
 
 			mm->end = false;
 			
-			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 1.3f, pSys ) );
-			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 5.0, delta, 1.3f, pSys ) );
-			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 10.0, delta, 1.3f, pSys ) );
-			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 15.0, delta, 1.3f, pSys ) );
-			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 20.0, delta, 1.3f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 0.6f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 5.0, delta, 0.3f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 10.0, delta, 0.6f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 15.0, delta, 0.6f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 20.0, delta, 0.3f, pSys ) );
 
 			hasLoaded = true;
 
@@ -229,11 +220,11 @@ void WorldSim::update( float delta )
 
 			mm->end = false;
 			
-			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 1.6f, pSys ) );
-			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 5.0, delta, 1.6f, pSys ) );
-			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 10.0, delta, 1.6f, pSys ) );
-			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 15.0, delta, 1.6f, pSys ) );
-			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 20.0, delta, 1.6f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 0.8f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 5.0, delta, 0.5f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 10.0, delta, 0.8f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 15.0, delta, 0.8f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 20.0, delta, 0.5f, pSys ) );
 
 			hasLoaded = true;
 
@@ -264,9 +255,9 @@ void WorldSim::update( float delta )
 		{
 			mm->end = false;
 			
-			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 1.9f, pSys ) );
-			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 10.0, delta, 1.9f, pSys ) );
-			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 20.0, delta, 1.9f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 0.9f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 10.0, delta, 0.6f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 20.0, delta, 0.9f, pSys ) );
 
 			hasLoaded = true;
 
@@ -297,9 +288,9 @@ void WorldSim::update( float delta )
 		{
 			mm->end = false;
 			
-			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 2.2f, pSys ) );
-			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 10.0, delta, 2.2f, pSys ) );
-			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 20.0, delta, 2.2f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 1.0f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/cerdo/cerdito.osg", "../content/npcs/cerdo/cerdito_explosion.osg", "cerdito", 10.0, delta, 0.7f, pSys ) );
+			mm->en.push_back( new Enemy( "../content/npcs/conejo/conejo.osg", "../content/npcs/conejo/conejo_explosion.osg", "conejo", 20.0, delta, 1.0f, pSys ) );
 
 			hasLoaded = true;
 

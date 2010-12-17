@@ -261,9 +261,9 @@ void ShaderHandler::bumpMap2Shader(osg::Node* node)
 			osg::Geometry *tmpGeo = dynamic_cast<osg::Geometry *>(tmpgeode->getDrawable(0));
 
 			osg::Material *material = new osg::Material();
-			material->setAmbient(osg::Material::FRONT_AND_BACK, osg::Vec4(0.5f,0.5f,0.0f,1.0f));
-			material->setDiffuse(osg::Material::FRONT_AND_BACK, osg::Vec4(0.5f,0.5f,0.0f,1.0f));
-			material->setSpecular(osg::Material::FRONT_AND_BACK, osg::Vec4(0.5f,0.5f,0.5f,1.0f));
+			material->setAmbient(osg::Material::FRONT_AND_BACK, osg::Vec4(0.45f,0.45f,0.45f,1.0f));
+			material->setDiffuse(osg::Material::FRONT_AND_BACK, osg::Vec4(0.7f,0.7f,0.7f,1.0f));
+			material->setSpecular(osg::Material::FRONT_AND_BACK, osg::Vec4(0.7f,0.7f,0.7f,1.0f));
 			material->setShininess(osg::Material::FRONT_AND_BACK, 128.0f);
 			tmpstate->setAttribute(material, osg::StateAttribute::ON);
 
