@@ -100,19 +100,19 @@ void PickHandler::pick(osgViewer::View* view, const osgGA::GUIEventAdapter& ea)
 				{
 					cout << "Finding parent..." << parent->className() << " " << parent->getName() << endl;
 					//hitr->nodePath.pop_back();
-					if( !strcmp( parent->getName().c_str(), "buitre") )
+					if( (!strcmp( parent->getName().c_str(), "buitre") || (!strcmp( parent->getName().c_str(), "buitre2")) ))
 					{
 						myHH->achieveBird();
 						parent->setName("X");
 						break;
 					}
-					if( !strcmp( parent->getName().c_str(), "cerdito") )
+					if(( !strcmp( parent->getName().c_str(), "cerdito") || ( !strcmp( parent->getName().c_str(), "cerdito2"))))
 					{
 						myHH->achievePork();
 						parent->setName("X");
 						break;
 					}
-					if( !strcmp( parent->getName().c_str(), "conejo") )
+					if(( !strcmp( parent->getName().c_str(), "conejo") ||( !strcmp( parent->getName().c_str(), "conejo2"))))
 					{
 						myHH->achieveRabbit();
 						parent->setName("X");

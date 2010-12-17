@@ -11,19 +11,19 @@ Enemy::Enemy( const char* file, const char* file2, const char* name, double spaw
 		// mPat->addChild( mNodeXplode.get() );
 	}
 
-	if( !strcmp( mNode->getName().c_str(), "buitre" ) )
+	if( (!strcmp (mNode->getName().c_str(), "buitre" )|| (!strcmp (mNode->getName().c_str(), "buitre2" ))))
 	{
 		mPat->setUpdateCallback( new EnemyController( speed, osg::Vec3f( -10.0f, 0.0f, 0.0f ), "buitre" ) );
 		cout << "AI cargada para " << mNode->getName() << endl;
 	}
 
-	if( !strcmp( mNode->getName().c_str(), "cerdito" ) )
+	if( (!strcmp (mNode->getName().c_str(), "cerdito" )|| (!strcmp (mNode->getName().c_str(), "cerdito2" ))) )
 	{
 		mPat->setUpdateCallback( new EnemyController( speed, osg::Vec3f( -10.0f, 0.0f, 0.0f ), "cerdito" ) );
 		cout << "AI cargada para " << mNode->getName() << endl;
 	}
 
-	if( !strcmp( mNode->getName().c_str(), "conejo" ) )
+	if( (!strcmp (mNode->getName().c_str(), "conejo" )|| (!strcmp (mNode->getName().c_str(), "conejo2" ))) )
 	{
 		mPat->setUpdateCallback( new EnemyController( speed, osg::Vec3f( -20.0f, 0.0f, 0.0f ), "conejo" ) );
 		cout << "AI cargada para " << mNode->getName() << endl;
