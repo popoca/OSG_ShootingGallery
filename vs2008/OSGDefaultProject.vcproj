@@ -221,10 +221,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\SoundHandler.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\src\WorldSim.cpp"
 				>
 			</File>
@@ -276,10 +272,6 @@
 			</File>
 			<File
 				RelativePath="..\src\ShaderHandler.h"
-				>
-			</File>
-			<File
-				RelativePath="..\src\SoundHandler.h"
 				>
 			</File>
 			<File
