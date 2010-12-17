@@ -114,7 +114,7 @@ void HUDHandler::initBullets()
 		patBullet1[i]->setPosition(osg::Vec3f(i*26+5,720.0f,-1.0f));
 		HUDModelViewMatrix->addChild(patBullet1[i]);
 	}
-	//Para hacerlas desaparecer las voy a escalar 
+	//Para hacerlas desaparecer las voy a escalar ---> como Genaro? lawl eso na mas funcionaba en mario64 doctor XD
 	/*
 	patBullet1[0]->setScale(osg::Vec3f(0.0f,0.0f,0.0f));
 	patBullet1[0]->setScale(osg::Vec3f(1.0f,1.0f,1.0f));

@@ -115,6 +115,7 @@ void WorldSim::update( float delta )
 	case Start:
 
 		// do stuff
+		myHH->SCORE = 0;
 		myHH->showMessage("Get Ready!\nPress any key");
 		myHH->showing = true;
 		if( myIH->myKBH->enter_pressed )
@@ -162,7 +163,7 @@ void WorldSim::update( float delta )
 		else
 			mm->updateScene( delta );
 
-		if( mm->end )
+		if( mm->end && myHH->SCORE >= 15 )
 		{
 			mm->en.clear();
 			hasLoaded = false;
@@ -182,6 +183,10 @@ void WorldSim::update( float delta )
 					sHandle->stopSound( 9 );
 					playing = false;
 			}
+		}
+		else if( mm->end && myHH->SCORE < 15 )
+		{
+			currState = GameOver;
 		}
 
 		break;
@@ -207,7 +212,7 @@ void WorldSim::update( float delta )
 		else
 			mm->updateScene( delta );
 
-		if( mm->end )
+		if( mm->end && myHH->SCORE >= 35 )
 		{
 			if( !playing )
 			{
@@ -227,6 +232,10 @@ void WorldSim::update( float delta )
 					sHandle->stopSound( 9 );
 					playing = false;
 			}
+		}
+		else if( mm->end && myHH->SCORE < 35 )
+		{
+			currState = GameOver;
 		}
 
 		break;
@@ -252,7 +261,7 @@ void WorldSim::update( float delta )
 		else
 			mm->updateScene( delta );
 
-		if( mm->end )
+		if( mm->end && myHH->SCORE >= 55  )
 		{
 			if( !playing )
 			{
@@ -272,6 +281,10 @@ void WorldSim::update( float delta )
 					sHandle->stopSound( 9 );
 					playing = false;
 			}
+		}
+		else if( mm->end && myHH->SCORE < 55 )
+		{
+			currState = GameOver;
 		}
 
 		break;
@@ -294,7 +307,7 @@ void WorldSim::update( float delta )
 		else
 			mm->updateScene( delta );
 
-		if( mm->end )
+		if( mm->end && myHH->SCORE >= 65 )
 		{
 			if( !playing )
 			{
@@ -314,6 +327,10 @@ void WorldSim::update( float delta )
 					sHandle->stopSound( 9 );
 					playing = false;
 			}
+		}
+		else if( mm->end && myHH->SCORE < 65 )
+		{
+			currState = GameOver;
 		}
 
 		break;
@@ -336,7 +353,7 @@ void WorldSim::update( float delta )
 		else
 			mm->updateScene( delta );
 
-		if( mm->end )
+		if( mm->end && myHH->SCORE >= 75 )
 		{
 			if( !playing )
 			{
@@ -352,26 +369,38 @@ void WorldSim::update( float delta )
 					myHH->quitMessage();
 					myIH->myKBH->enter_pressed = false;
 					mm->end = false;
-					currState = GameOver;
+					currState = Level1;
 					sHandle->stopSound( 9 );
 					playing = false;
 			}
+		}
+		else if( mm->end && myHH->SCORE < 75 )
+		{
+			currState = GameOver;
 		}
 
 		break;
 
 	case GameOver:
 
-		myHH->showMessage("Congratulations!\nPress any key");
+		if( !playing )
+		{
+			sHandle->playSound( 2 );
+			playing = true;
+		}
+		myHH->showMessage("YOU LOST!\nPress any key");
 		myHH->showing = true;
 		if( myIH->myKBH->enter_pressed )
 		{
 			mm->en.clear();
+			hasLoaded = false;
 			myHH->quitMessage();
 			myIH->myKBH->enter_pressed = false;
 			mm->end = false;
-			currState = Level1;
+			playing = false;
+			currState = Start;
 		}
+
 
 		break;
 	}

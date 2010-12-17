@@ -41,8 +41,13 @@ void ModelManager::updateScene( double delta )
 			en[i]->hasSpawned = true;
 		}
 
+		if( en[i]->hasSpawned )
+		{
+			en[i]->killTime -= delta;
+		}
+
 		// si le damos a un enemigo
-		if( !strcmp( en[i]->mNode->getName().c_str(), "X" ) )
+		if( !strcmp( en[i]->mNode->getName().c_str(), "X" ) || en[i]->killTime < 0 )
 		{
 			// y no estamos explotando
 			if( !en[i]->fluxing )

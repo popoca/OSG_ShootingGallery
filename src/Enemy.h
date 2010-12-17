@@ -59,6 +59,8 @@ public:
 	double spawnTime;
 	// Tiempo en el que desaparecera el enemigo del sceneGraph
 	double eraseTime;
+	// Tiempo para matar al enemigo
+	double killTime;
 
 	// Un sistema de particulas asociado para este tipo de enemigos
 	ParticleSystem* particle;

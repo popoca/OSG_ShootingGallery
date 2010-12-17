@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
 Enemy::Enemy( const char* file, const char* file2, const char* name, double spawnTime, float delta, float speed, ParticleSystem* particle, bool hasSpawned, bool isMoving )
-: BasicModel( file, name ), speed( speed ), spawnTime( spawnTime ), hasSpawned( false ), eraseTime( 5.0 ), delta( delta ), fluxing( false ), particle( particle )
+: BasicModel( file, name ), speed( speed ), spawnTime( spawnTime ), hasSpawned( false ), eraseTime( 5.0 ), delta( delta ), fluxing( false ), particle( particle ), killTime( 20.0 )
 {
 	mNodeXplode = osgDB::readNodeFile( file2 );
 	if( mNode )
