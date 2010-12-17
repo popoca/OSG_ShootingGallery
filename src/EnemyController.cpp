@@ -67,9 +67,9 @@ void EnemyController::operator()( osg::Node* node, osg::NodeVisitor* nv )
 			{
 				if( accAngle < 3.1416f )
 				{
-					if( x > 0.0f )
+					if( x > -100.0f )
 					{
-						tData->setPosition(osg::Vec3f( -50.0f + x, 300.0f, 10.0f ));
+						tData->setPosition(osg::Vec3f( -50.0f + x, 900.0f, 10.0f ));
 						x -= ( 2.0f * (float)delta );
 					 }
 					 else
@@ -89,7 +89,7 @@ void EnemyController::operator()( osg::Node* node, osg::NodeVisitor* nv )
 				{
 					if( x < 500.0f )
 					 {
-						tData->setPosition(osg::Vec3f( -50.0f + x, 300.0f, 10.0f ));
+						tData->setPosition(osg::Vec3f( -50.0f + x, 900.0f, 10.0f ));
 						x += ( 2.0f * (float)delta );
 					 }
 					 else
@@ -171,12 +171,12 @@ void EnemyController::operator()( osg::Node* node, osg::NodeVisitor* nv )
 				{
 					if( x < 160.0f )
 					 {
-						tData->setPosition(osg::Vec3f( -50.0f + x, 0.0f, 10.0f ));
+						tData->setPosition(osg::Vec3f( -50.0f + x, 300.0f, 10.0f ));
 						x += ( 2.0f * (float)delta );
 					 }
 					 else
 					 {
-						tData->setAttitude( osg::Quat(accAngle, osg::Vec3( 0.0f, 300.0f, 1.0f)) );
+						tData->setAttitude( osg::Quat(accAngle, osg::Vec3( 0.0f, 0.0f, 1.0f)) );
 						accAngle -= ( 1.0f * (float)delta );
 					 }
 				}
@@ -236,7 +236,7 @@ void EnemyController::operator()( osg::Node* node, osg::NodeVisitor* nv )
 				{
 					if( x > 0.0f )
 					{
-						tData->setPosition(osg::Vec3f( -400.0f + x, 500.0f, 190.0f + y * 100.0f * (float) delta ));
+						tData->setPosition(osg::Vec3f( -400.0f + x, 800.0f, 200.0f + y * 100.0f * (float) delta ));
 						x -= ( 2.0f * (float)delta );
 						y = sinf( x * ( Pi / 180.0f ) );
 					 }
@@ -255,9 +255,9 @@ void EnemyController::operator()( osg::Node* node, osg::NodeVisitor* nv )
 			 {
 				if( accAngle > 0.0f )
 				{
-					if( x < 900.0f )
+					if( x < 1200.0f )
 					 {
-						tData->setPosition(osg::Vec3f( -400.0f + x, 500.0f, 190.0f + y * 100.0f * (float) delta ));
+						tData->setPosition(osg::Vec3f( -400.0f + x, 800.0f, 200.0f + y * 100.0f * (float) delta ));
 						x += ( 2.0f * (float)delta );
 						y = sinf( x * ( Pi / 180.0f ) );
 					 }
