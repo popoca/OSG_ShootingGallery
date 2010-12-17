@@ -70,8 +70,8 @@ ShaderHandler::ShaderHandler()
 	_shadersList[4]->addShader(_vertexList[4]);
 	_shadersList[4]->addShader(_fragmentList[4]);
 	_shadersList[4]->setName( "detailShader" );
-	_vertexList[4]->loadShaderSourceFromFile( "../shaders/ppillu2.vert" );
-	_fragmentList[4]->loadShaderSourceFromFile( "../shaders/ppillu2.frag" );
+	_vertexList[4]->loadShaderSourceFromFile( "../shaders/illu2.vert" );
+	_fragmentList[4]->loadShaderSourceFromFile( "../shaders/illu2.frag" );
 
 }
 
@@ -240,7 +240,7 @@ void ShaderHandler::detailShader(osg::Node* node)
 {
 	osg::ref_ptr<osg::StateSet> nodeState = node->getOrCreateStateSet();
 
-	nodeState->addUniform( new osg::Uniform( "ambientO", 3 ) );
+	nodeState->addUniform( new osg::Uniform( "colorMap", 3 ) );
 
 	//osg::Texture2D* detalle = new osg::Texture2D;
 	//detalle->setDataVariance(osg::Object::DYNAMIC); 
@@ -265,6 +265,17 @@ void ShaderHandler::detailShader(osg::Node* node)
 		{
 			osg::StateSet *tmpstate = tmpgeode->getDrawable(i)->getOrCreateStateSet();
 			tmpstate->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
+			//tmpstate->setMode( GL_BLEND, osg::StateAttribute::ON );
+			//tmpstate->setRenderingHint( osg::StateSet::TRANSPARENT_BIN );
+			////--------Para activa el otro tipo de transparencia
+			//osg::Depth* depth = new osg::Depth;
+			//depth->setWriteMask( false );
+
+			//tmpstate->setAttributeAndModes( depth, osg::StateAttribute::ON );
+
+			//// Disable conflicting modes.
+			//tmpstate->setMode( GL_LIGHTING, osg::StateAttribute::OFF );
+
 			////-----Para activar detail que no funciona bien
 			//tmpstate->setTextureAttributeAndModes(3,detalle,osg::StateAttribute::ON);
 			//// Set the texture texture environment for texture 0 to the 

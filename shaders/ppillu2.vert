@@ -25,7 +25,7 @@ uniform vec3 lightdir;
 void main(void)
 {
 	gl_Position = ftransform();
-	texCoord = gl_MultiTexCoord0.xy*vec2(1.0, 1.0);
+	texCoord = gl_MultiTexCoord0.xy*vec2(-0.0009, -0.0009);
 	
 	vec3 n = normalize(gl_NormalMatrix * gl_Normal);
 	vec3 t = normalize(gl_NormalMatrix * vTangent);
