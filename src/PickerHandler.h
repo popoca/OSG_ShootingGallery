@@ -31,11 +31,12 @@
 #include <osgViewer/GraphicsWindow>
 #include <string>
 #include "HUDHandler.h"
+#include "SoundHandler.h"
 
 class PickHandler : public osgGA::GUIEventHandler {
 public: 
 
-    PickHandler(osgText::Text* updateText, HUDHandler* _myHH);
+    PickHandler(osgText::Text* updateText, HUDHandler* _myHH, SoundHandler *sHandle );
     ~PickHandler();
     
     bool handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter& aa);
@@ -47,6 +48,7 @@ public:
         if (_updateText.get()) _updateText->setText(name);
     }
     HUDHandler* myHH;
+	SoundHandler *sHandle;
 protected:
 
     osg::ref_ptr<osgText::Text>  _updateText;
