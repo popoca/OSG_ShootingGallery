@@ -1,7 +1,7 @@
 #include "SoundHandler.h"
 
 // Constructor
-SoundHandler::SoundHandler(osg::ref_ptr< osg::Group > root, osgViewer::Viewer viewer )
+SoundHandler::SoundHandler(osg::ref_ptr< osg::Group > root, osg::ref_ptr< osgViewer::Viewer > viewer )
 {
 	// Se inicializa la instancias del manejador de sonidos de osgAL
 	// con 16 canales de audio y se configura el modelo de atenuacion
@@ -14,13 +14,13 @@ SoundHandler::SoundHandler(osg::ref_ptr< osg::Group > root, osgViewer::Viewer vi
     // SoundRoot that will make sure the listener is updated and
     // to keep the internal state of the SoundManager updated
     // This could also be done manually, this is just a handy way of doing it.
-    osg::ref_ptr<osgAudio::SoundRoot> sound_root = new osgAudio::SoundRoot;
+    sound_root = new osgAudio::SoundRoot;
 
 	// Specify the camera from our viewer. The view matrix from this camera
     // will be used during update to set the Listener position. Note this
     // will not work if the viewer is rendering to multiple displays; will
     // need to select a slave camera.
-    sound_root->setCamera( viewer.getCamera() );
+    sound_root->setCamera( viewer->getCamera() );
 
 	// The position in the scenegraph of this node is not important.
     // Just as long as the cull traversal should be called after any changes to the SoundManager are made.
@@ -55,12 +55,12 @@ void SoundHandler::stopSound(int ssindex)
 {
 	ssiter = ssvector.begin();
 	ssiter = ssiter + ssindex;
-	(*ssiter)->setStopMethod(openalpp::SourceState::Stopped);
+	(*ssiter)->setStopMethod( openalpp::SourceState::Stopped );
 	(*ssiter)->setPlay(false);
 }
 
 // Pausa el sonido con el indice ssindex
-void SoundHandler::pauseSound(int ssindex)
+void SoundHandler::pauseSound( int ssindex )
 {
 	ssiter = ssvector.begin();
 	ssiter = ssiter + ssindex;
@@ -118,9 +118,9 @@ osg::ref_ptr<osgAudio::SoundState> createSoundState(const std::string& file)
 	
 	// Se crea un nodo de sonido con el estado configurado
 	/*osg::ref_ptr<osgAL::SoundNode> sound = new osgAL::SoundNode;
-	sound->setSoundState(sound_state);
+	sound->setSoundState(sound_state);*/
 
-	ssvector.push_back(sound_state.get());*/
+	ssvector.push_back(sound_state.get());
 
 	return sound.get();
 }

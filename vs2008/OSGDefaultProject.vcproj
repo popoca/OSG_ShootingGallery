@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(OSG_INCLUDE_PATH)"
+				AdditionalIncludeDirectories="&quot;$(OSG_INCLUDE_PATH)&quot;;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\include;&quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\include&quot;;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio\include;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio\include2"
 				PreprocessorDefinitions="WIN32;_WIN32;_DEBUG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -60,8 +60,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="osgd.lib osgGAd.lib osgDBd.lib osgViewerd.lib osgTextd.lib osgUtild.lib osgParticled.lib OpenThreadsd.lib"
-				AdditionalLibraryDirectories="$(OSG_LIB_PATH)"
+				AdditionalDependencies="osgd.lib osgGAd.lib osgDBd.lib osgViewerd.lib osgTextd.lib osgUtild.lib osgParticled.lib OpenThreadsd.lib openalppd.lib osgAudiod.lib"
+				AdditionalLibraryDirectories="&quot;$(OSG_LIB_PATH)&quot;;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\freealut\libd;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libogg\libd;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\libvorbis\libd;&quot;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\OpenAL 1.1 SDK\libs\Win32&quot;;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio\lib"
 				GenerateDebugInformation="true"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
@@ -221,6 +221,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\src\SoundHandler.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\src\WorldSim.cpp"
 				>
 			</File>
@@ -272,6 +276,10 @@
 			</File>
 			<File
 				RelativePath="..\src\ShaderHandler.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\SoundHandler.h"
 				>
 			</File>
 			<File
