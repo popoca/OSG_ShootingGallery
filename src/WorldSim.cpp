@@ -51,7 +51,6 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText, osg::ref_ptr< osgVie
 	mySH->BumpMappingShader(mm->bg[7]->mNode);
 	
 	mm->bg.push_back( new BasicModel( "../content/bg/shader_dif_normal_ao/shader_dif_normal_ao.osg", "ao" ) );
-	//mySH->difShader(mm->bg[8]->mNode);
 	mySH->aoShader(mm->bg[8]->mNode);
 	mySH->bumpMap2Shader(mm->bg[8]->mNode);
 
