@@ -13,7 +13,7 @@
 #include "WorldSim.h"
 
 WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText, osg::ref_ptr< osgViewer::View > view )
-: currState( Start ), hasLoaded( false )
+: currState( Start ), hasLoaded( false ), playing( false )
 {
 	start = false;
 
@@ -26,6 +26,20 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText, osg::ref_ptr< osgVie
 	mySH= new ShaderHandler();
 	
 	myIH->myKBH->getHH(myHH);
+
+	cout << "Cargando sonidos" << endl;
+
+	/* carga de sonidos */
+	sHandle->createAmbientSound( "../content/sounds/ambientacion.wav", "AmbientSound" ); // 0
+	sHandle->createEventSound( "../content/sounds/disparo.wav", "ShootingSound" ); // 1
+	sHandle->createEventSound( "../content/sounds/game_over.wav", "GameOver" ); // 2
+	sHandle->createEventSound( "../content/sounds/impacto.wav", "Hit" ); // 3
+	sHandle->createEventSound( "../content/sounds/level1.wav", "Intro1" ); // 4
+	sHandle->createEventSound( "../content/sounds/level2.wav", "Intro2" ); // 5
+	sHandle->createEventSound( "../content/sounds/level3.wav", "Intro3" ); // 6
+	sHandle->createEventSound( "../content/sounds/level4.wav", "Intro4" ); // 7
+	sHandle->createEventSound( "../content/sounds/level5.wav", "Intro5" ); // 8
+	sHandle->createEventSound( "../content/sounds/winner.wav", "Winner" ); // 9
 
 	cout << "Iniciando el grafo de escena..." << endl;
 
@@ -90,18 +104,6 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText, osg::ref_ptr< osgVie
 	osg::StateSet *rootState = new osg::StateSet();
 	root->setStateSet(rootState);
 
-	/* carga de sonidos */
-	sHandle->createAmbientSound( "../content/sounds/ambientacion.wav", "AmbientSound" );
-	sHandle->createEventSound( "../content/sounds/disparo.wav", "AmbientSound" );
-	sHandle->createEventSound( "../content/sounds/game_over.wav", "AmbientSound" );
-	sHandle->createEventSound( "../content/sounds/impacto.wav", "AmbientSound" );
-	sHandle->createEventSound( "../content/sounds/level1.wav", "AmbientSound" );
-	sHandle->createEventSound( "../content/sounds/level2.wav", "AmbientSound" );
-	sHandle->createEventSound( "../content/sounds/level3.wav", "AmbientSound" );
-	sHandle->createEventSound( "../content/sounds/level4.wav", "AmbientSound" );
-	sHandle->createEventSound( "../content/sounds/level5.wav", "AmbientSound" );
-	sHandle->createEventSound( "../content/sounds/winner.wav", "AmbientSound" );
-
 }
 	
 void WorldSim::update( float delta )
@@ -125,9 +127,9 @@ void WorldSim::update( float delta )
 
 	case Level1:
 
-		if( !hasLoaded )
+		if( !hasLoaded && !mm->end )
 		{
-			
+			sHandle->playSound( 4 );
 			mm->en.push_back( new Enemy( 
 				"../content/npcs/buitre/buitre.osg", 
 				"../content/npcs/buitre/buitre_explosion.osg", 
@@ -165,12 +167,19 @@ void WorldSim::update( float delta )
 			hasLoaded = false;
 			myHH->showMessage("Level Cleared!\nPress any key!");
 			myHH->showing = true;
+			if( !playing )
+			{
+				sHandle->playSound( 9 );
+				playing = true;
+			}
 			if( myIH->myKBH->enter_pressed )
 			{
 					myHH->quitMessage();
 					myIH->myKBH->enter_pressed = false;
 					mm->end = false;
 					currState = Level2;
+					sHandle->stopSound( 9 );
+					playing = false;
 			}
 		}
 
@@ -178,8 +187,10 @@ void WorldSim::update( float delta )
 
 	case Level2:
 
-		if( !hasLoaded )
+		if( !hasLoaded && !mm->end )
 		{
+
+			sHandle->playSound( 5 );
 
 			mm->end = false;
 			
@@ -197,6 +208,11 @@ void WorldSim::update( float delta )
 
 		if( mm->end )
 		{
+			if( !playing )
+			{
+				sHandle->playSound( 9 );
+				playing = true;
+			}
 			mm->en.clear();
 			hasLoaded = false;
 			myHH->showMessage("Level Cleared!\nPress any key!");
@@ -207,6 +223,8 @@ void WorldSim::update( float delta )
 					myIH->myKBH->enter_pressed = false;
 					mm->end = false;
 					currState = Level3;
+					sHandle->stopSound( 9 );
+					playing = false;
 			}
 		}
 
@@ -214,8 +232,10 @@ void WorldSim::update( float delta )
 
 	case Level3:
 
-		if( !hasLoaded )
+		if( !hasLoaded && !mm->end )
 		{
+
+			sHandle->playSound( 6 );
 
 			mm->end = false;
 			
@@ -233,6 +253,11 @@ void WorldSim::update( float delta )
 
 		if( mm->end )
 		{
+			if( !playing )
+			{
+				sHandle->playSound( 9 );
+				playing = true;
+			}
 			mm->en.clear();
 			hasLoaded = false;
 			myHH->showMessage("Level Cleared!\nPress any key!");
@@ -243,6 +268,8 @@ void WorldSim::update( float delta )
 					myIH->myKBH->enter_pressed = false;
 					mm->end = false;
 					currState = Level4;
+					sHandle->stopSound( 9 );
+					playing = false;
 			}
 		}
 
@@ -250,8 +277,10 @@ void WorldSim::update( float delta )
 
 	case Level4:
 
-		if( !hasLoaded )
+		if( !hasLoaded && !mm->end )
 		{
+			sHandle->playSound( 7 );
+
 			mm->end = false;
 			
 			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 0.9f, pSys ) );
@@ -266,6 +295,11 @@ void WorldSim::update( float delta )
 
 		if( mm->end )
 		{
+			if( !playing )
+			{
+				sHandle->playSound( 9 );
+				playing = true;
+			}
 			mm->en.clear();
 			hasLoaded = false;
 			myHH->showMessage("Level Cleared!\nPress any key!");
@@ -276,6 +310,8 @@ void WorldSim::update( float delta )
 					myIH->myKBH->enter_pressed = false;
 					mm->end = false;
 					currState = Level5;
+					sHandle->stopSound( 9 );
+					playing = false;
 			}
 		}
 
@@ -283,8 +319,10 @@ void WorldSim::update( float delta )
 
 	case Level5:
 
-		if( !hasLoaded )
+		if( !hasLoaded && !mm->end )
 		{
+			sHandle->playSound( 8 );
+
 			mm->end = false;
 			
 			mm->en.push_back( new Enemy( "../content/npcs/buitre/buitre.osg", "../content/npcs/buitre/buitre_explosion.osg", "buitre", 0.0, delta, 1.0f, pSys ) );
@@ -299,6 +337,11 @@ void WorldSim::update( float delta )
 
 		if( mm->end )
 		{
+			if( !playing )
+			{
+				sHandle->playSound( 9 );
+				playing = true;
+			}
 			mm->en.clear();
 			hasLoaded = false;
 			myHH->showMessage("Level Cleared!\nPress any key!");
@@ -309,6 +352,8 @@ void WorldSim::update( float delta )
 					myIH->myKBH->enter_pressed = false;
 					mm->end = false;
 					currState = GameOver;
+					sHandle->stopSound( 9 );
+					playing = false;
 			}
 		}
 

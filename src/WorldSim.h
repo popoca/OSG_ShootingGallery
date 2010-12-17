@@ -48,6 +48,7 @@ private:
 	 osg::ref_ptr<ShaderHandler> mySH;
 	 osg::ref_ptr< ModelManager > mm;
 	 bool start;
+	 bool playing;
 };
 
 #endif
