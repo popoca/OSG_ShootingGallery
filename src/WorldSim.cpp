@@ -100,7 +100,17 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText, osg::ref_ptr< osgVie
 	osg::StateSet *rootState = new osg::StateSet();
 	root->setStateSet(rootState);
 
+	/* carga de sonidos */
 	sHandle->createAmbientSound( "../content/sounds/ambientacion.wav", "AmbientSound" );
+	sHandle->createEventSound( "../content/sounds/disparo.wav", "AmbientSound" );
+	sHandle->createEventSound( "../content/sounds/game_over.wav", "AmbientSound" );
+	sHandle->createEventSound( "../content/sounds/impacto.wav", "AmbientSound" );
+	sHandle->createEventSound( "../content/sounds/level1.wav", "AmbientSound" );
+	sHandle->createEventSound( "../content/sounds/level2.wav", "AmbientSound" );
+	sHandle->createEventSound( "../content/sounds/level3.wav", "AmbientSound" );
+	sHandle->createEventSound( "../content/sounds/level4.wav", "AmbientSound" );
+	sHandle->createEventSound( "../content/sounds/level5.wav", "AmbientSound" );
+	sHandle->createEventSound( "../content/sounds/winner.wav", "AmbientSound" );
 
 }
 	

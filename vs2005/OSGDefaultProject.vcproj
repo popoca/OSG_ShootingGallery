@@ -60,7 +60,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="osgd.lib osgGAd.lib osgDBd.lib osgViewerd.lib osgTextd.lib osgUtild.lib OpenThreadsd.lib osgParticled.lib osgAudiod.lib"
-				AdditionalLibraryDirectories="&quot;$(OSG_LIB_PATH)&quot;;../plugins/freealut/libd;../plugins/libogg/libd;&quot;../plugins/OpenAL 1.1 SDK/libs/Win32&quot;;../plugins/libvorbis/libd;C:\Users\Aru\Git\OSG_ShootingGallery\plugins\osgaudio\lib"
+				AdditionalLibraryDirectories="&quot;$(OSG_LIB_PATH)&quot;;../plugins/freealut/libd;../plugins/libogg/libd;&quot;../plugins/OpenAL 1.1 SDK/libs/Win32&quot;;../plugins/libvorbis/libd;../plugins/osgaudio/lib"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
