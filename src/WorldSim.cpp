@@ -19,8 +19,8 @@ WorldSim::WorldSim(osg::ref_ptr<osgText::Text> _updateText, osg::ref_ptr< osgVie
 
 	root = new osg::Group;
 	myHH = new HUDHandler(root);
-	myIH = new InputHandler(_updateText,myHH);
 	sHandle = new SoundHandler( root, view );
+	myIH = new InputHandler(_updateText,myHH, sHandle );
 	pSys = new ParticleSystem( root );
 	
 	mySH= new ShaderHandler();

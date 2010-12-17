@@ -3,11 +3,11 @@
 #include "InputHandler.h"
 #include <osg/Group>
 
-InputHandler::InputHandler(osgText::Text* _updateText,HUDHandler* _myHH)
+InputHandler::InputHandler(osgText::Text* _updateText,HUDHandler* _myHH, SoundHandler *sHandle )
 {
 	updateText = _updateText;
 	//printf("Not created");
-	myPKH = new PickHandler( updateText,_myHH );
+	myPKH = new PickHandler( updateText,_myHH, sHandle );
 	myKBH = new MyKeyboardEventHandler();
 	//myMSH->setRootNode(rootNode);
 }

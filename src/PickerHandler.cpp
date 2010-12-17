@@ -1,7 +1,8 @@
 #include "PickerHandler.h"
 
 using namespace std;
-PickHandler::PickHandler( osgText::Text* updateText, HUDHandler* _myHH )
+PickHandler::PickHandler( osgText::Text* updateText, HUDHandler* _myHH, SoundHandler *sHandle )
+: sHandle( sHandle )
 {
 	_updateText = updateText;
 	myHH = _myHH;
@@ -31,6 +32,7 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapte
 				{
 					printf("Shooting\n");
 					myHH->shoot();
+					sHandle->playSound( 1 );
 					osgViewer::View* view = dynamic_cast<osgViewer::View*>(&aa);
 					if (view) pick(view,ea);
 				}
@@ -103,18 +105,21 @@ void PickHandler::pick(osgViewer::View* view, const osgGA::GUIEventAdapter& ea)
 					if( (!strcmp( parent->getName().c_str(), "buitre") || (!strcmp( parent->getName().c_str(), "buitre2")) ))
 					{
 						myHH->achieveBird();
+						sHandle->playSound( 3 );
 						parent->setName("X");
 						break;
 					}
 					if(( !strcmp( parent->getName().c_str(), "cerdito") || ( !strcmp( parent->getName().c_str(), "cerdito2"))))
 					{
 						myHH->achievePork();
+						sHandle->playSound( 3 );
 						parent->setName("X");
 						break;
 					}
 					if(( !strcmp( parent->getName().c_str(), "conejo") ||( !strcmp( parent->getName().c_str(), "conejo2"))))
 					{
 						myHH->achieveRabbit();
+						sHandle->playSound( 3 );
 						parent->setName("X");
 						break;
 					}
